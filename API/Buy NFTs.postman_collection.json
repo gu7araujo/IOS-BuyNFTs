@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "700c2b51-c4ed-4b7b-9e37-c248d0d176af",
+		"name": "Buy NFTs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13980391"
+	},
+	"item": [
+		{
+			"name": "login success",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"gustavosantos\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{$baseUrl}}/login",
+					"host": [
+						"{{$baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login erro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{$baseUrl}}/login",
+					"host": [
+						"{{$baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login erro 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{$baseUrl}}/login",
+					"host": [
+						"{{$baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nft success",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{$token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{$baseUrl}}/nft",
+					"host": [
+						"{{$baseUrl}}"
+					],
+					"path": [
+						"nft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nft erro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{$baseUrl}}/nft",
+					"host": [
+						"{{$baseUrl}}"
+					],
+					"path": [
+						"nft"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

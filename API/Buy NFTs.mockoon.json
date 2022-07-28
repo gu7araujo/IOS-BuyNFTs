@@ -1,0 +1,140 @@
+{
+  "uuid": "1d2e0b6b-0cee-4aa7-b6ab-8e952ea4ab65",
+  "lastMigration": 19,
+  "name": "Buy NFTs",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "127.0.0.1",
+  "routes": [
+    {
+      "uuid": "b0f5f443-b254-42f7-9a4a-e36f62e65c72",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "login",
+      "responses": [
+        {
+          "uuid": "ad2488f4-a62f-4995-be8a-ddb84a88063a",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "187a93c1-b30d-4ce6-a7ff-de26f4a566de",
+          "body": "{\n  \"name\": \"Gustavo Santos\",\n  \"email\": \"gustavosantos@test.com\",\n  \"token\": \"{{faker 'random.uuid'}}-1ce8622e-{{faker 'random.uuid'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success (gustavosantos)",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "username",
+              "value": "gustavosantos",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "123456",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "505d4ebd-5c0b-4706-8799-1f52d2c6b915",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "nft",
+      "responses": [
+        {
+          "uuid": "128218d6-0cd4-4c3c-a9c0-648dc8cc17fe",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "665b8256-5c33-4ea5-865a-b41b1ce17b62",
+          "body": "[\n  {\n    \"id\": 548,\n    \"name\": \"7139\",\n    \"price\": 500.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/MmeOv3QD2WNYzC9oi5N7JQXl56kKMOndlKX_b4RIP0wu1og7AlQdVXcIEd7VLYL1Ir2dXLBQ7QSIDkccOPqx9AlbUfoO3qmMd5CAUA=w600\"\n  },\n  {\n    \"id\": 649,\n    \"name\": \"3954\",\n    \"price\": 750.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/EEDsD5vxwzFeRpH9n5v475Xo7DX1jU91_ICDDe9U34h11_M9eG8UPNr-hhgCIQBxDhUCTWfM7vzV9jeHxyilnXE4XwO3cdZhHI1Y=w600\"\n  },\n  {\n    \"id\": 245,\n    \"name\": \"9573\",\n    \"price\": 620.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/0iApFDQkAxMAfY4kWbBX7unwO_5JGA16He2hIWxakVVrGF8-1iBYnSAYqj_ckwjWP3fWJk2mwXpFdWnrGgOi6hRv0WmkT3D_G4ZORg=w600\"\n  },\n  {\n    \"id\": 1056,\n    \"name\": \"6572\",\n    \"price\": 27654.28,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Mutant Ape Yacht Club\",\n    \"image\": \"https://img.seadn.io/files/fa01b488ea2556d0f45b8b3b80a2e5e6.png?fit=max&w=600\"\n  },\n  {\n    \"id\": 106,\n    \"name\": \"2216\",\n    \"price\": 38.90,\n    \"creator\": \"LoomiDeployer\",\n    \"collection\": \"The Loomi Heads\",\n    \"image\": \"https://lh3.googleusercontent.com/jAUPupwXX_PpBjg6Q-XQilebu-IKCAtzkH0s-ChQxB6rt5YMBLz9HPI9fedY40FYekNl6jhwuWk1myHkl6U3sY0dLt8Fm9qPQ4TyQw=w600\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer [0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}-1ce8622e-[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}",
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
