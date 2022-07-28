@@ -29,7 +29,7 @@
         },
         {
           "uuid": "187a93c1-b30d-4ce6-a7ff-de26f4a566de",
-          "body": "{\n  \"name\": \"Gustavo Santos\",\n  \"email\": \"gustavosantos@test.com\",\n  \"token\": \"{{faker 'random.uuid'}}-1ce8622e-{{faker 'random.uuid'}}\"\n}",
+          "body": "{\n  \"id\": 548,\n  \"name\": \"Gustavo Santos\",\n  \"token\": \"{{faker 'random.uuid'}}-1ce8622e-{{faker 'random.uuid'}}\",\n  \"wallet\": \"0xB6ad42D615759E50C8087849a2F6f0E2032f7085\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "Success (gustavosantos)",

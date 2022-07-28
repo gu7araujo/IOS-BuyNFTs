@@ -10,7 +10,7 @@ import Foundation
 struct Customer: User {
     let id: Int
     let name: String
-    let username: String
-    var password: String
-    var wallet: String?
+    let userName: String
+    let password: String
+    let wallet: String
 }

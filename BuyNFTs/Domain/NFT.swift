@@ -8,9 +8,10 @@
 import Foundation
 
 struct NFT: Product {
-    var id: Int
-    var name: String
-    var price: Double
-    var creator: String
-    var collection: String
+    let id: Int
+    let name: String
+    let price: Double
+    let creator: String
+    let collection: String
+    let image: String
 }
