@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B729931628945E4B00EB3EC0 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B729931528945E4B00EB3EC0 /* LoginUseCase.swift */; };
+		B7299318289461FC00EB3EC0 /* ListProductsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7299317289461FC00EB3EC0 /* ListProductsUseCase.swift */; };
 		B773049A2892E40D00F0F3F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77304992892E40D00F0F3F5 /* User.swift */; };
 		B773049C2892E77F00F0F3F5 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049B2892E77F00F0F3F5 /* Customer.swift */; };
 		B773049E2892E9D300F0F3F5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049D2892E9D300F0F3F5 /* Product.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		B729931528945E4B00EB3EC0 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		B7299317289461FC00EB3EC0 /* ListProductsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsUseCase.swift; sourceTree = "<group>"; };
 		B77304922892DFA000F0F3F5 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77304992892E40D00F0F3F5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B773049B2892E77F00F0F3F5 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				B729931528945E4B00EB3EC0 /* LoginUseCase.swift */,
+				B7299317289461FC00EB3EC0 /* ListProductsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				B77304A22892EF1000F0F3F5 /* ShoppingCart.swift in Sources */,
 				B77304A02892EABF00F0F3F5 /* NFT.swift in Sources */,
 				B773049A2892E40D00F0F3F5 /* User.swift in Sources */,
+				B7299318289461FC00EB3EC0 /* ListProductsUseCase.swift in Sources */,
 				B729931628945E4B00EB3EC0 /* LoginUseCase.swift in Sources */,
 				B773049C2892E77F00F0F3F5 /* Customer.swift in Sources */,
 				B773049E2892E9D300F0F3F5 /* Product.swift in Sources */,
