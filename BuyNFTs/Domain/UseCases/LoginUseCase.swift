@@ -19,7 +19,7 @@ final class LoginUseCase: LoginUseCaseProtocol {
     init() { }
 
     func execute(userName: String, password: String) throws -> Customer {
-        // do call api here
+        // do call to api here
 
         if true {
             throw LoginError.notFound
