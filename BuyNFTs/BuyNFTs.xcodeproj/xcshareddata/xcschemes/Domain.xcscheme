@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B77304822892DE0000F0F3F5"
-               BuildableName = "BuyNFTs.framework"
-               BlueprintName = "BuyNFTs"
+               BlueprintIdentifier = "B77304912892DFA000F0F3F5"
+               BuildableName = "Domain.framework"
+               BlueprintName = "Domain"
                ReferencedContainer = "container:BuyNFTs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B77304822892DE0000F0F3F5"
-            BuildableName = "BuyNFTs.framework"
-            BlueprintName = "BuyNFTs"
+            BlueprintIdentifier = "B77304912892DFA000F0F3F5"
+            BuildableName = "Domain.framework"
+            BlueprintName = "Domain"
             ReferencedContainer = "container:BuyNFTs.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
