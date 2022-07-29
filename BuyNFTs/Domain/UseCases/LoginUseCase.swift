@@ -7,15 +7,23 @@
 
 import Foundation
 
+enum LoginError: Error {
+    case notFound
+}
+
 protocol LoginUseCaseProtocol {
-    func execute(userName: String, password: String) -> Customer
+    func execute(userName: String, password: String) throws -> Customer
 }
 
 final class LoginUseCase: LoginUseCaseProtocol {
     init() { }
 
-    func execute(userName: String, password: String) -> Customer {
+    func execute(userName: String, password: String) throws -> Customer {
         // do call api here
+
+        if true {
+            throw LoginError.notFound
+        }
 
         let id = 0
         let name = ""
