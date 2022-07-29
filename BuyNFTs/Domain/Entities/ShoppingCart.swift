@@ -10,5 +10,5 @@ import Foundation
 struct ShoppingCart {
     let id: Int
     let customer: Customer
-    let products: [Product]
+    var products: [Product]
 }
