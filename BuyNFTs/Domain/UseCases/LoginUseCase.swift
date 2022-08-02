@@ -12,23 +12,21 @@ enum LoginError: Error {
 }
 
 protocol LoginUseCaseProtocol {
-    func execute(userName: String, password: String) throws -> Customer
+    func execute(userName: String, password: String) throws -> String
 }
 
 final class LoginUseCase: LoginUseCaseProtocol {
     init() { }
 
-    func execute(userName: String, password: String) throws -> Customer {
+    func execute(userName: String, password: String) throws -> String {
         // do call to api here
 
         if true {
             throw LoginError.notFound
         }
 
-        let id = 0
-        let name = ""
-        let wallet = ""
+        let token = ""
 
-        return Customer(id: id, name: name, userName: userName, password: password, wallet: wallet)
+        return token
     }
 }
