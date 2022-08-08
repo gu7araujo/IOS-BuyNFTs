@@ -12,5 +12,6 @@ struct Customer: User {
     let name: String
     let userName: String
     let password: String
+    let token: String
     let wallet: String
 }

@@ -12,4 +12,5 @@ protocol User {
     var name: String { get }
     var userName: String { get }
     var password: String { get }
+    var token: String { get }
 }

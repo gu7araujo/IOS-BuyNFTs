@@ -15,11 +15,12 @@ protocol LoginUseCaseProtocol {
     func execute(userName: String, password: String) throws -> String
 }
 
-final class LoginUseCase: LoginUseCaseProtocol {
+class LoginUseCase: LoginUseCaseProtocol {
+
     init() { }
 
     func execute(userName: String, password: String) throws -> String {
-        // do call to api here
+        // do call api here
 
         if true {
             throw LoginError.notFound

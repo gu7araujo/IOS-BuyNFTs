@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct ShoppingCart {
+protocol ShoppingCartProtocol {
+    var id: Int { get }
+    var customer: Customer { get }
+    var products: [Product] { get }
+    var totalValue: Double { get }
+}
+
+struct ShoppingCart: ShoppingCartProtocol {
     let id: Int
     let customer: Customer
     var products: [Product]
