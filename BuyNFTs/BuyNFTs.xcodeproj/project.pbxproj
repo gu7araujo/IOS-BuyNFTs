@@ -15,7 +15,7 @@
 		B773049E2892E9D300F0F3F5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049D2892E9D300F0F3F5 /* Product.swift */; };
 		B77304A02892EABF00F0F3F5 /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049F2892EABF00F0F3F5 /* NFT.swift */; };
 		B77304A22892EF1000F0F3F5 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77304A12892EF1000F0F3F5 /* ShoppingCart.swift */; };
-		B7C06F5E28A42F9D00F50070 /* Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C06F5D28A42F9D00F50070 /* Infrastructure.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7C06F6428A42FD300F50070 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C06F6328A42FD300F50070 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,7 +42,7 @@
 		B773049F2892EABF00F0F3F5 /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
 		B77304A12892EF1000F0F3F5 /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infrastructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7C06F5D28A42F9D00F50070 /* Infrastructure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Infrastructure.h; sourceTree = "<group>"; };
+		B7C06F6328A42FD300F50070 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +123,17 @@
 		B7C06F5C28A42F9D00F50070 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				B7C06F5D28A42F9D00F50070 /* Infrastructure.h */,
+				B7C06F6228A42FC700F50070 /* Network */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		B7C06F6228A42FC700F50070 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B7C06F6328A42FD300F50070 /* NetworkService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +150,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7C06F5E28A42F9D00F50070 /* Infrastructure.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +209,7 @@
 					};
 					B7C06F5A28A42F9D00F50070 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 				};
 			};
@@ -261,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7C06F6428A42FD300F50070 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +462,7 @@
 		B7C06F6028A42F9D00F50070 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -476,6 +486,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -483,6 +494,7 @@
 		B7C06F6128A42F9D00F50070 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
