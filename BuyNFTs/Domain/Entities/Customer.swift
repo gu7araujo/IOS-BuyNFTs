@@ -10,8 +10,6 @@ import Foundation
 public struct Customer: User, Decodable {
     let id: Int
     let name: String
-    let userName: String
-    let password: String
     let token: String
     let wallet: String
 }

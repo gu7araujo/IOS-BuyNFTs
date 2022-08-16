@@ -9,15 +9,19 @@ import Foundation
 import Domain
 import Infrastructure
 
-protocol UserRepositoryProtocol {
+public protocol UserRepositoryProtocol {
     func get(userName: String, password: String) async -> Result<Customer, Error>
 }
 
-class UserRepository: UserRepositoryProtocol {
+public class UserRepository: UserRepositoryProtocol {
 
-    private var network = NetworkService()
+    private var network: NetworkServiceProtocol
 
-    func get(userName: String, password: String) async -> Result<Customer, Error> {
+    public init() {
+        self.network = NetworkService()
+    }
+
+    public func get(userName: String, password: String) async -> Result<Customer, Error> {
         let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: ["userName": userName, "password": password])
 
         switch result {

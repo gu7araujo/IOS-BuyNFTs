@@ -10,7 +10,5 @@ import Foundation
 protocol User {
     var id: Int { get }
     var name: String { get }
-    var userName: String { get }
-    var password: String { get }
     var token: String { get }
 }

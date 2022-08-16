@@ -17,7 +17,7 @@ public enum HTTPMethodType: String {
     case post   = "POST"
 }
 
-protocol NetworkServiceProtocol {
+public protocol NetworkServiceProtocol {
     func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]) async -> Result<Data, Error>
 }
 
