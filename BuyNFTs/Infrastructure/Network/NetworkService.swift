@@ -12,7 +12,7 @@ enum NetworkError: Error {
     case urlGeneration
 }
 
-enum HTTPMethodType: String {
+public enum HTTPMethodType: String {
     case get    = "GET"
     case post   = "POST"
 }
@@ -21,10 +21,10 @@ protocol NetworkServiceProtocol {
     func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]) async -> Result<Data, Error>
 }
 
-class NetworkService: NetworkServiceProtocol {
-    init() {}
+public class NetworkService: NetworkServiceProtocol {
+    public init() {}
 
-    func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]) async -> Result<Data, Error> {
+    public func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]) async -> Result<Data, Error> {
         // make url
         guard var urlComponents = URLComponents(string: "http://localhost:3001") else {
             return .failure(NetworkError.urlGeneration)
