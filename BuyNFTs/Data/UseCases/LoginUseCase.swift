@@ -8,29 +8,29 @@
 import Domain
 
 enum LoginError: Error {
-    case notFound
+    case userNotFound
 }
 
 protocol LoginUseCaseProtocol {
     func execute(userName: String, password: String) async -> Result<String, Error>
 }
 
-class LoginUseCase: LoginUseCaseProtocol {
+public class LoginUseCase: LoginUseCaseProtocol {
 
     private var userRepository: UserRepositoryProtocol
 
-    init() {
+    public init() {
         self.userRepository = UserRepository()
     }
 
-    func execute(userName: String, password: String) async -> Result<String, Error> {
+    public func execute(userName: String, password: String) async -> Result<String, Error> {
         let result = await userRepository.get(userName: userName, password: password)
 
         switch result {
         case .success(let user):
             return .success(user.token)
         case .failure(_):
-            return .failure(LoginError.notFound)
+            return .failure(LoginError.userNotFound)
         }
     }
 }

@@ -39,7 +39,7 @@
           "rules": [
             {
               "target": "body",
-              "modifier": "userName",
+              "modifier": "username",
               "value": "gustavosantos",
               "operator": "equals"
             },

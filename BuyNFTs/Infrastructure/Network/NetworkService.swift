@@ -37,6 +37,10 @@ public class NetworkService: NetworkServiceProtocol {
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = httpMethod.rawValue
+        urlRequest.allHTTPHeaderFields = [
+            "Accept": "application/json",
+            "Content-Type":"application/json"
+        ]
 
         // make body in JSON
         do {

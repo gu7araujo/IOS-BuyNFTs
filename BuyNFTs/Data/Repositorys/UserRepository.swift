@@ -26,7 +26,7 @@ public class UserRepository: UserRepositoryProtocol {
         // refatorar o parse da response
         // criar e lidar com os erros
         // extrair Router
-        let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: ["userName": userName, "password": password])
+        let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: ["username": userName, "password": password])
 
         switch result {
         case .success(let data):

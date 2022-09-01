@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7136AF628C10F8D009780A0 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B75E61ED28A5749600D4E7A4 /* Data.framework */; };
+		B7136AF728C10F8D009780A0 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B75E61ED28A5749600D4E7A4 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B75E61FA28A574D700D4E7A4 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E61F928A574D700D4E7A4 /* UserRepository.swift */; };
 		B75FD6FA28C0EBD100141F62 /* Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */; };
 		B75FD6FB28C0EBD100141F62 /* Infrastructure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -29,6 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B7136AF828C10F8D009780A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B773047A2892DE0000F0F3F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B75E61EC28A5749600D4E7A4;
+			remoteInfo = Data;
+		};
 		B75FD6FC28C0EBD100141F62 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B773047A2892DE0000F0F3F5 /* Project object */;
@@ -46,6 +55,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		B7136AFA28C10F8D009780A0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B7136AF728C10F8D009780A0 /* Data.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B75FD6FE28C0EBD100141F62 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7136AF628C10F8D009780A0 /* Data.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +299,12 @@
 				B75FD70428C0F91100141F62 /* Sources */,
 				B75FD70528C0F91100141F62 /* Frameworks */,
 				B75FD70628C0F91100141F62 /* Resources */,
+				B7136AFA28C10F8D009780A0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B7136AF928C10F8D009780A0 /* PBXTargetDependency */,
 			);
 			name = buyNFTs;
 			productName = buyNFTs;
@@ -450,6 +473,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B7136AF928C10F8D009780A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B75E61EC28A5749600D4E7A4 /* Data */;
+			targetProxy = B7136AF828C10F8D009780A0 /* PBXContainerItemProxy */;
+		};
 		B75FD6FD28C0EBD100141F62 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B7C06F5A28A42F9D00F50070 /* Infrastructure */;
@@ -498,7 +526,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Data;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -530,7 +558,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Data;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -547,6 +575,7 @@
 				DEVELOPMENT_TEAM = RHBH6Q62PG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = buyNFTs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = buyNFTs;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -560,7 +589,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -574,6 +603,7 @@
 				DEVELOPMENT_TEAM = RHBH6Q62PG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = buyNFTs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = buyNFTs;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -587,7 +617,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -735,7 +765,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -767,7 +797,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -798,7 +828,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Infrastructure;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -830,7 +860,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = gusta.Infrastructure;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
