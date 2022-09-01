@@ -5,7 +5,7 @@
 //  Created by Gustavo Araujo Santos on 29/07/22.
 //
 
-import Foundation
+import Domain
 
 enum ListProductsError: Error {
     case notReturnedProducts

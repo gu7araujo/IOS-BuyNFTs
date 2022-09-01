@@ -5,13 +5,25 @@
 //  Created by Gustavo Araujo Santos on 28/07/22.
 //
 
-import Foundation
+public struct NFT: Product {
+    public let id: Int
+    public let name: String
+    public let price: Double
+    public let creator: String
+    public let collection: String
+    public let image: String
 
-struct NFT: Product {
-    let id: Int
-    let name: String
-    let price: Double
-    let creator: String
-    let collection: String
-    let image: String
+    public init(id: Int,
+                name: String,
+                price: Double,
+                creator: String,
+                collection: String,
+                image: String) {
+        self.id = id
+        self.name = name
+        self.price = price
+        self.creator = creator
+        self.collection = collection
+        self.image = image
+    }
 }

@@ -5,8 +5,6 @@
 //  Created by Gustavo Araujo Santos on 28/07/22.
 //
 
-import Foundation
-
 protocol ShoppingCartProtocol {
     var id: Int { get }
     var customer: Customer { get }
@@ -14,7 +12,7 @@ protocol ShoppingCartProtocol {
     var totalValue: Double { get }
 }
 
-struct ShoppingCart: ShoppingCartProtocol {
+public struct ShoppingCart: ShoppingCartProtocol {
     let id: Int
     let customer: Customer
     var products: [Product]

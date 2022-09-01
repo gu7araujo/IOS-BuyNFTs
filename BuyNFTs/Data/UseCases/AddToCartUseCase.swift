@@ -5,7 +5,7 @@
 //  Created by Gustavo Araujo Santos on 29/07/22.
 //
 
-import Foundation
+import Domain
 
 enum AddToCartError: Error {
     case notAdded
@@ -26,7 +26,7 @@ final class AddToCartUseCase: AddToCartUseCaseProtocol {
         }
 
         var newCart = cart
-        newCart.products.append(product)
+//        newCart.products.append(product)
 
         return newCart
     }

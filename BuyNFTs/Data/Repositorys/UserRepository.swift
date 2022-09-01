@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Domain
 import Infrastructure
+import Domain
 
 public protocol UserRepositoryProtocol {
     func get(userName: String, password: String) async -> Result<Customer, Error>
@@ -22,6 +22,10 @@ public class UserRepository: UserRepositoryProtocol {
     }
 
     public func get(userName: String, password: String) async -> Result<Customer, Error> {
+        // refatorar a criacao do body
+        // refatorar o parse da response
+        // criar e lidar com os erros
+        // extrair Router
         let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: ["userName": userName, "password": password])
 
         switch result {
