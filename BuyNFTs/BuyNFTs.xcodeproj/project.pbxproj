@@ -12,6 +12,12 @@
 		B75FD6FB28C0EBD100141F62 /* Infrastructure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B75FD6FF28C0EBE600141F62 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77304922892DFA000F0F3F5 /* Domain.framework */; };
 		B75FD70028C0EBE600141F62 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B77304922892DFA000F0F3F5 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B75FD70B28C0F91100141F62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FD70A28C0F91100141F62 /* AppDelegate.swift */; };
+		B75FD70D28C0F91100141F62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FD70C28C0F91100141F62 /* SceneDelegate.swift */; };
+		B75FD70F28C0F91100141F62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FD70E28C0F91100141F62 /* ViewController.swift */; };
+		B75FD71228C0F91100141F62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75FD71028C0F91100141F62 /* Main.storyboard */; };
+		B75FD71428C0F91300141F62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75FD71328C0F91300141F62 /* Assets.xcassets */; };
+		B75FD71728C0F91300141F62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75FD71528C0F91300141F62 /* LaunchScreen.storyboard */; };
 		B773049A2892E40D00F0F3F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77304992892E40D00F0F3F5 /* User.swift */; };
 		B773049C2892E77F00F0F3F5 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049B2892E77F00F0F3F5 /* Customer.swift */; };
 		B773049E2892E9D300F0F3F5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049D2892E9D300F0F3F5 /* Product.swift */; };
@@ -61,6 +67,14 @@
 		B72993192894637900EB3EC0 /* AddToCartUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartUseCase.swift; sourceTree = "<group>"; };
 		B75E61ED28A5749600D4E7A4 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75E61F928A574D700D4E7A4 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		B75FD70828C0F91100141F62 /* buyNFTs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buyNFTs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B75FD70A28C0F91100141F62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B75FD70C28C0F91100141F62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B75FD70E28C0F91100141F62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B75FD71128C0F91100141F62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B75FD71328C0F91300141F62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B75FD71628C0F91300141F62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B75FD71828C0F91300141F62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B77304922892DFA000F0F3F5 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77304992892E40D00F0F3F5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B773049B2892E77F00F0F3F5 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -78,6 +92,13 @@
 			files = (
 				B75FD6FF28C0EBE600141F62 /* Domain.framework in Frameworks */,
 				B75FD6FA28C0EBD100141F62 /* Infrastructure.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B75FD70528C0F91100141F62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,9 +165,24 @@
 			path = Repositorys;
 			sourceTree = "<group>";
 		};
+		B75FD70928C0F91100141F62 /* buyNFTs */ = {
+			isa = PBXGroup;
+			children = (
+				B75FD70A28C0F91100141F62 /* AppDelegate.swift */,
+				B75FD70C28C0F91100141F62 /* SceneDelegate.swift */,
+				B75FD70E28C0F91100141F62 /* ViewController.swift */,
+				B75FD71028C0F91100141F62 /* Main.storyboard */,
+				B75FD71328C0F91300141F62 /* Assets.xcassets */,
+				B75FD71528C0F91300141F62 /* LaunchScreen.storyboard */,
+				B75FD71828C0F91300141F62 /* Info.plist */,
+			);
+			path = buyNFTs;
+			sourceTree = "<group>";
+		};
 		B77304792892DE0000F0F3F5 = {
 			isa = PBXGroup;
 			children = (
+				B75FD70928C0F91100141F62 /* buyNFTs */,
 				B77304932892DFA000F0F3F5 /* Domain */,
 				B75E61EE28A5749600D4E7A4 /* Data */,
 				B7C06F5C28A42F9D00F50070 /* Infrastructure */,
@@ -161,6 +197,7 @@
 				B77304922892DFA000F0F3F5 /* Domain.framework */,
 				B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */,
 				B75E61ED28A5749600D4E7A4 /* Data.framework */,
+				B75FD70828C0F91100141F62 /* buyNFTs.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +274,23 @@
 			productReference = B75E61ED28A5749600D4E7A4 /* Data.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B75FD70728C0F91100141F62 /* buyNFTs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B75FD71928C0F91300141F62 /* Build configuration list for PBXNativeTarget "buyNFTs" */;
+			buildPhases = (
+				B75FD70428C0F91100141F62 /* Sources */,
+				B75FD70528C0F91100141F62 /* Frameworks */,
+				B75FD70628C0F91100141F62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = buyNFTs;
+			productName = buyNFTs;
+			productReference = B75FD70828C0F91100141F62 /* buyNFTs.app */;
+			productType = "com.apple.product-type.application";
+		};
 		B77304912892DFA000F0F3F5 /* Domain */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B77304962892DFA000F0F3F5 /* Build configuration list for PBXNativeTarget "Domain" */;
@@ -287,6 +341,9 @@
 						CreatedOnToolsVersion = 13.4.1;
 						LastSwiftMigration = 1340;
 					};
+					B75FD70728C0F91100141F62 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					B77304912892DFA000F0F3F5 = {
 						CreatedOnToolsVersion = 13.4.1;
 						LastSwiftMigration = 1340;
@@ -310,6 +367,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				B75FD70728C0F91100141F62 /* buyNFTs */,
 				B77304912892DFA000F0F3F5 /* Domain */,
 				B75E61EC28A5749600D4E7A4 /* Data */,
 				B7C06F5A28A42F9D00F50070 /* Infrastructure */,
@@ -322,6 +380,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B75FD70628C0F91100141F62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B75FD71728C0F91300141F62 /* LaunchScreen.storyboard in Resources */,
+				B75FD71428C0F91300141F62 /* Assets.xcassets in Resources */,
+				B75FD71228C0F91100141F62 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +418,16 @@
 				B7FE48F528C0E0BC001C0E8D /* AddToCartUseCase.swift in Sources */,
 				B75E61FA28A574D700D4E7A4 /* UserRepository.swift in Sources */,
 				B7FE48F728C0E0C5001C0E8D /* LoginUseCase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B75FD70428C0F91100141F62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B75FD70F28C0F91100141F62 /* ViewController.swift in Sources */,
+				B75FD70B28C0F91100141F62 /* AppDelegate.swift in Sources */,
+				B75FD70D28C0F91100141F62 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +465,25 @@
 			targetProxy = B75FD70128C0EBE600141F62 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B75FD71028C0F91100141F62 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B75FD71128C0F91100141F62 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B75FD71528C0F91300141F62 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B75FD71628C0F91300141F62 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B75E61F128A5749600D4E7A4 /* Debug */ = {
@@ -449,6 +546,62 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B75FD71A28C0F91300141F62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RHBH6Q62PG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = buyNFTs/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gusta.buyNFTs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B75FD71B28C0F91300141F62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RHBH6Q62PG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = buyNFTs/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gusta.buyNFTs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -706,6 +859,15 @@
 			buildConfigurations = (
 				B75E61F128A5749600D4E7A4 /* Debug */,
 				B75E61F228A5749600D4E7A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B75FD71928C0F91300141F62 /* Build configuration list for PBXNativeTarget "buyNFTs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B75FD71A28C0F91300141F62 /* Debug */,
+				B75FD71B28C0F91300141F62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
