@@ -7,7 +7,6 @@
 
 import Foundation
 import Infrastructure
-import Domain
 
 public protocol UserRepositoryProtocol {
     func get(userName: String, password: String) async -> Result<Customer, Error>

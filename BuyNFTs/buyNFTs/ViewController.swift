@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Data
+import Domain
 
 class ViewController: UIViewController {
 

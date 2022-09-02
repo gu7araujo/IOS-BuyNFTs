@@ -5,8 +5,6 @@
 //  Created by Gustavo Araujo Santos on 29/07/22.
 //
 
-import Domain
-
 enum LoginError: Error {
     case userNotFound
 }
