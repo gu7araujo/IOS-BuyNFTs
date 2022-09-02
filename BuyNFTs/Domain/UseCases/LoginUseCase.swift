@@ -5,8 +5,19 @@
 //  Created by Gustavo Araujo Santos on 29/07/22.
 //
 
+import Foundation
+
 enum LoginError: Error {
     case userNotFound
+}
+
+extension LoginError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .userNotFound:
+            return NSLocalizedString("Credentials not found..", comment: "Login Error")
+        }
+    }
 }
 
 protocol LoginUseCaseProtocol {
