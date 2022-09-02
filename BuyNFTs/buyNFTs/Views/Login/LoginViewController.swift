@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import Domain
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     lazy var loginField: UITextField = {
         let field = UITextField()
@@ -42,10 +42,10 @@ class ViewController: UIViewController {
         return button
     }()
 
-    private var viewModel: ViewModel?
+    private var viewModel: LoginViewModelProtocol?
     private var cancellables: Set<AnyCancellable> = []
 
-    init(_ viewModel: ViewModel) {
+    init(_ viewModel: LoginViewModelProtocol) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
     }
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     }
 
     func setupBinders() {
-        viewModel?.$error.sink { error in
+        viewModel?.errorPublisher.sink { error in
             guard let error = error else {
                 return
             }
