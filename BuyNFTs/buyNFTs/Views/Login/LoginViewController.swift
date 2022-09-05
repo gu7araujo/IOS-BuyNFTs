@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     lazy var loginField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
-        field.textColor = .white
         field.font = .systemFont(ofSize: 20)
         field.placeholder = "login"
         field.borderStyle = .roundedRect
@@ -25,7 +24,6 @@ class LoginViewController: UIViewController {
     lazy var passwordField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
-        field.textColor = .white
         field.font = .systemFont(ofSize: 20)
         field.placeholder = "password"
         field.borderStyle = .roundedRect

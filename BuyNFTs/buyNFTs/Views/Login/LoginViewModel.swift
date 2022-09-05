@@ -30,6 +30,7 @@ final class LoginViewModel: LoginViewModelProtocol {
             switch result {
             case .success(let token):
                 saveToken(username: username, token: token)
+                // here navigate to home
             case .failure(let error):
                 self.error = error.localizedDescription
             }

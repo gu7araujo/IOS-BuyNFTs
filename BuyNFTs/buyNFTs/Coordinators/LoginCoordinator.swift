@@ -23,7 +23,7 @@ class LoginCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
 
     func start() {
         if verifyExistsToken() {
-            // if exists valid token in key chain, go to Home
+            // here navigation to home
         } else {
             navigationController.delegate = self
             let viewModel = LoginViewModel()
