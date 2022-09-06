@@ -18,13 +18,13 @@ public enum HTTPMethodType: String {
 }
 
 public protocol NetworkServiceProtocol {
-    func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]) async -> Result<Data, Error>
+    func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]?, headerAuthorization: String?) async -> Result<Data, Error>
 }
 
 public class NetworkService: NetworkServiceProtocol {
     public init() {}
 
-    public func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]) async -> Result<Data, Error> {
+    public func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]?, headerAuthorization: String?) async -> Result<Data, Error> {
         // make url
         guard var urlComponents = URLComponents(string: "http://localhost:3001") else {
             return .failure(NetworkError.urlGeneration)
@@ -42,12 +42,18 @@ public class NetworkService: NetworkServiceProtocol {
             "Content-Type":"application/json"
         ]
 
-        // make body in JSON
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: body)
-            urlRequest.httpBody = jsonData
-        } catch {
-            return .failure(NetworkError.error(error))
+        if let token = headerAuthorization {
+            urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
+        if let body = body {
+            // make body in JSON
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: body)
+                urlRequest.httpBody = jsonData
+            } catch {
+                return .failure(NetworkError.error(error))
+            }
         }
 
         // urlSession

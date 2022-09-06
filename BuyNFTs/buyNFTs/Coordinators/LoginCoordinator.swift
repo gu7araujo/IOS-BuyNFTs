@@ -9,12 +9,18 @@ import UIKit
 import Security
 import Domain
 
+protocol LoginCoordinatorDelegate: AnyObject {
+    func navigateToHome(_ child: Coordinator?)
+}
+
 class LoginCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
 
     var children: [Coordinator] = []
     var navigationController: UINavigationController
 
     private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
+
+    weak var delegate: LoginCoordinatorDelegate?
 
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -23,7 +29,7 @@ class LoginCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
 
     func start() {
         if verifyExistsToken() {
-            // here navigation to home
+            delegate?.navigateToHome(self)
         } else {
             navigationController.delegate = self
             let viewModel = LoginViewModel()
@@ -32,7 +38,7 @@ class LoginCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         }
     }
 
-    func verifyExistsToken() -> Bool {
+    private func verifyExistsToken() -> Bool {
         do {
             _ = try readTokenInKeyChainUseCase.execute()
             return true

@@ -5,7 +5,7 @@
 //  Created by Gustavo Araujo Santos on 28/07/22.
 //
 
-public struct NFT: Product {
+public struct NFT: Product, Decodable {
     public let id: Int
     public let name: String
     public let price: Double

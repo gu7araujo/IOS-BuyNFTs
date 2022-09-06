@@ -8,24 +8,24 @@
 import Foundation
 import Infrastructure
 
-public protocol UserRepositoryProtocol {
+protocol UserRepositoryProtocol {
     func get(userName: String, password: String) async -> Result<Customer, Error>
 }
 
-public class UserRepository: UserRepositoryProtocol {
+class UserRepository: UserRepositoryProtocol {
 
     private var network: NetworkServiceProtocol
 
-    public init() {
+    init() {
         self.network = NetworkService()
     }
 
-    public func get(userName: String, password: String) async -> Result<Customer, Error> {
+    func get(userName: String, password: String) async -> Result<Customer, Error> {
         // refatorar a criacao do body
         // refatorar o parse da response
         // criar e lidar com os erros
         // extrair Router
-        let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: ["username": userName, "password": password])
+        let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: ["username": userName, "password": password], headerAuthorization: nil)
 
         switch result {
         case .success(let data):
