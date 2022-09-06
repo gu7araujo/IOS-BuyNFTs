@@ -16,13 +16,17 @@ protocol HomeViewModelProtocol {
 
 class HomeViewModel: HomeViewModelProtocol {
 
-    let getProductsUseCase = ListProductsUseCase()
-
-    @Published var products: [NFT] = []
-
     @Published var error: String?
     var errorPublished: Published<String?> { _error }
     var errorPublisher: Published<String?>.Publisher { $error }
+
+    @Published var products: [NFT] = []
+
+    private let getProductsUseCase: ListProductsUseCaseProtocol
+
+    init() {
+        self.getProductsUseCase = ListProductsUseCase()
+    }
 
     func getProducts() {
         Task {

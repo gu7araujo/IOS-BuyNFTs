@@ -21,11 +21,8 @@ class UserRepository: UserRepositoryProtocol {
     }
 
     func get(userName: String, password: String) async -> Result<Customer, Error> {
-        // refatorar a criacao do body
-        // refatorar o parse da response
-        // criar e lidar com os erros
-        // extrair Router
-        let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: ["username": userName, "password": password], headerAuthorization: nil)
+        let body = ["username": userName, "password": password]
+        let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: body, headerAuthorization: nil)
 
         switch result {
         case .success(let data):
@@ -34,33 +31,10 @@ class UserRepository: UserRepositoryProtocol {
 
                 return .success(parsedData)
             } catch {
-                return .failure(error)
+                fatalError("Json Decoder with Customer in login router")
             }
         case .failure(let error):
             return .failure(error)
-        }
-    }
-}
-
-enum Router {
-    case doLogin
-    case getNFTs
-
-    var path: String {
-        switch self {
-        case .doLogin:
-            return "/login"
-        case .getNFTs:
-            return "/nft"
-        }
-    }
-
-    var httpMethod: HTTPMethodType {
-        switch self {
-        case .doLogin:
-            return HTTPMethodType.post
-        case .getNFTs:
-            return HTTPMethodType.get
         }
     }
 }

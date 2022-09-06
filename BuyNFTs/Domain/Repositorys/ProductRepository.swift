@@ -40,7 +40,7 @@ class ProductRepository: ProductRepositoryProtocol {
 
                 return .success(parsedData)
             } catch {
-                return .failure(error)
+                fatalError("Json Decoder with Product in getNFTs router")
             }
         case .failure(let error):
             return .failure(error)

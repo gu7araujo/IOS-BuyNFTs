@@ -14,14 +14,19 @@ protocol LoginViewModelProtocol {
     func doLogin(_ username: String, _ password: String)
 }
 
-final class LoginViewModel: LoginViewModelProtocol {
+class LoginViewModel: LoginViewModelProtocol {
 
     @Published var error: String?
     var errorPublished: Published<String?> { _error }
     var errorPublisher: Published<String?>.Publisher { $error }
 
-    let loginUseCase = LoginUseCase()
-    let saveTokenUseCase = SaveTokenInKeyChainUseCase()
+    private let loginUseCase: LoginUseCaseProtocol
+    private let saveTokenUseCase: SaveTokenInKeyChainUseCaseProtocol
+
+    init() {
+        self.loginUseCase = LoginUseCase()
+        self.saveTokenUseCase = SaveTokenInKeyChainUseCase()
+    }
 
     func doLogin(_ username: String, _ password: String) {
         Task {
@@ -37,7 +42,7 @@ final class LoginViewModel: LoginViewModelProtocol {
         }
     }
 
-    func saveToken(username: String, token: String) {
+    private func saveToken(username: String, token: String) {
         do {
             try saveTokenUseCase.execute(userName: username, token: token)
         } catch KeyChainError.unsuccessfulSave {

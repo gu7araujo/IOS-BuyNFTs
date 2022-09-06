@@ -20,7 +20,7 @@ extension LoginError: LocalizedError {
     }
 }
 
-protocol LoginUseCaseProtocol {
+public protocol LoginUseCaseProtocol {
     func execute(userName: String, password: String) async -> Result<String, Error>
 }
 
