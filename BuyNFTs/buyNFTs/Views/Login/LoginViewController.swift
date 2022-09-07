@@ -52,13 +52,6 @@ class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        setupConstraints()
-        setupBinders()
-    }
-
     func setupConstraints() {
         view.addSubview(loginField)
         NSLayoutConstraint.activate([
@@ -83,6 +76,13 @@ class LoginViewController: UIViewController {
             loginButton.widthAnchor.constraint(equalToConstant: 150),
             loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupConstraints()
+        setupBinders()
     }
 
     func setupBinders() {
