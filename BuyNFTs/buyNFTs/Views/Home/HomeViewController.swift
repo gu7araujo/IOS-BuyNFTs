@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+        view.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .vertical
         view.setCollectionViewLayout(layout, animated: false)
@@ -112,14 +112,15 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
         cell?.product = self.products[indexPath.row]
 
         return cell ?? UICollectionViewCell()
     }
 }
 
-class CustomCollectionViewCell: UICollectionViewCell {
+// MARK: - HomeCollectionViewCell
+class HomeCollectionViewCell: UICollectionViewCell {
 
     var product: NFT? {
         didSet {
