@@ -11,6 +11,8 @@ import Domain
 protocol HomeViewModelProtocol {
     var errorPublished: Published<String?> { get }
     var errorPublisher: Published<String?>.Publisher { get }
+    var productsPublished: Published<[NFT]> { get }
+    var productsPublisher: Published<[NFT]>.Publisher { get }
     func getProducts()
 }
 
@@ -21,6 +23,8 @@ class HomeViewModel: HomeViewModelProtocol {
     var errorPublisher: Published<String?>.Publisher { $error }
 
     @Published var products: [NFT] = []
+    var productsPublished: Published<[NFT]> { _products }
+    var productsPublisher: Published<[NFT]>.Publisher { $products }
 
     private let getProductsUseCase: ListProductsUseCaseProtocol
 

@@ -7,8 +7,11 @@
 
 import UIKit
 import Combine
+import Domain
 
 class HomeViewController: UIViewController {
+
+    private var products: [NFT] = []
 
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
@@ -58,6 +61,13 @@ class HomeViewController: UIViewController {
             }
             print(error)
         }.store(in: &cancellables)
+
+        viewModel?.productsPublisher
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] products in
+                self?.products = products
+                self?.collectionView.reloadData()
+            }).store(in: &cancellables)
     }
 }
 
@@ -75,24 +85,55 @@ extension HomeViewController: UICollectionViewDelegate { }
 // MARK: - UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return products.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell
+        cell?.product = self.products[indexPath.row]
 
         return cell ?? UICollectionViewCell()
+    }
+}
+
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+
+    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
     }
 }
 
 
 class CustomCollectionViewCell: UICollectionViewCell {
 
+    var product: NFT? {
+        didSet {
+            guard let product = product else { return }
+            self.title.text = product.name
+            self.price.text = String(product.price) + " ETH"
+            image.downloaded(from: product.image)
+        }
+    }
+
     static let identifier: String = "CustomCollectionViewCell"
 
     let image: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "macaco.png")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -100,14 +141,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
     let title: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Macaco #47566"
         return label
     }()
 
     let price: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "0,11 ETH"
         return label
     }()
 
