@@ -25,6 +25,28 @@ class HomeViewController: UIViewController {
         return view
     }()
 
+    lazy var cartBadge: UILabel = {
+        let label = UILabel(frame: CGRect(x: 10, y: -10, width: 20, height: 20))
+        label.layer.borderColor = UIColor.clear.cgColor
+        label.layer.borderWidth = 2
+        label.layer.cornerRadius = label.bounds.size.height / 2
+        label.textAlignment = .center
+        label.layer.masksToBounds = true
+        label.font = UIFont(name: "SanFranciscoText-Light", size: 13)
+        label.textColor = .white
+        label.backgroundColor = .red
+        label.text = String(0)
+        return label
+    }()
+
+    lazy var cartButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 18, height: 16))
+        button.setBackgroundImage(UIImage(named: "shopping_cart"), for: .normal)
+        button.addTarget(self, action: "", for: .touchUpInside)
+        button.addSubview(cartBadge)
+        return button
+    }()
+
     private var viewModel: HomeViewModelProtocol?
     private var cancellables: Set<AnyCancellable> = []
 
@@ -37,6 +59,14 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cartButton)
+        setupConstraints()
+        setupBinders()
+        viewModel?.getProducts()
+    }
+
     func setupConstraints() {
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -45,45 +75,6 @@ class HomeViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-    }
-
-    let label = UILabel(frame: CGRect(x: 10, y: -10, width: 20, height: 20))
-
-    var count = 5 {
-        didSet {
-            label.text = String(count)
-        }
-    }
-
-    @objc func rightButtonTouched() {
-      count = count+1
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        label.layer.borderColor = UIColor.clear.cgColor
-        label.layer.borderWidth = 2
-        label.layer.cornerRadius = label.bounds.size.height / 2
-        label.textAlignment = .center
-        label.layer.masksToBounds = true
-        label.font = UIFont(name: "SanFranciscoText-Light", size: 13)
-        label.textColor = .white
-        label.backgroundColor = .red
-        label.text = String(count)
-
-        // button
-        let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 18, height: 16))
-        rightButton.setBackgroundImage(UIImage(named: "shopping_cart"), for: .normal)
-        rightButton.addTarget(self, action: #selector(rightButtonTouched), for: .touchUpInside)
-        rightButton.addSubview(label)
-
-        let rightBarButtomItem = UIBarButtonItem(customView: rightButton)
-
-        self.navigationItem.rightBarButtonItem = rightBarButtomItem
-        setupConstraints()
-        setupBinders()
-        viewModel?.getProducts()
     }
 
     func setupBinders() {
@@ -127,29 +118,6 @@ extension HomeViewController: UICollectionViewDataSource {
         return cell ?? UICollectionViewCell()
     }
 }
-
-extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-            }
-        }.resume()
-    }
-
-    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
-    }
-}
-
 
 class CustomCollectionViewCell: UICollectionViewCell {
 

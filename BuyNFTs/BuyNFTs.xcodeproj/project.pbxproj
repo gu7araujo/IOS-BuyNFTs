@@ -36,6 +36,7 @@
 		B78D972228C2841200C99AF1 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D972128C2841200C99AF1 /* LoginCoordinator.swift */; };
 		B78D972428C2845000C99AF1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D972328C2845000C99AF1 /* Coordinator.swift */; };
 		B78D972628C2861C00C99AF1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D972528C2861C00C99AF1 /* MainCoordinator.swift */; };
+		B7B9B30928CA6A81002175B3 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B9B30828CA6A81002175B3 /* UIImageView+Extension.swift */; };
 		B7C06F6428A42FD300F50070 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C06F6328A42FD300F50070 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		B78D972128C2841200C99AF1 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B78D972328C2845000C99AF1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B78D972528C2861C00C99AF1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		B7B9B30828CA6A81002175B3 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infrastructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C06F6328A42FD300F50070 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,6 +241,7 @@
 		B78D971D28C2808700C99AF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B7B9B30728CA6A56002175B3 /* Extensions */,
 				B72ABF6928C7757500028027 /* Home */,
 				B78D971E28C2808E00C99AF1 /* Login */,
 			);
@@ -263,6 +266,14 @@
 				B78D972528C2861C00C99AF1 /* MainCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		B7B9B30728CA6A56002175B3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B7B9B30828CA6A81002175B3 /* UIImageView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B7C06F5C28A42F9D00F50070 /* Infrastructure */ = {
@@ -439,6 +450,7 @@
 				B75FD70B28C0F91100141F62 /* AppDelegate.swift in Sources */,
 				B72ABF6B28C7757F00028027 /* HomeViewController.swift in Sources */,
 				B78D972428C2845000C99AF1 /* Coordinator.swift in Sources */,
+				B7B9B30928CA6A81002175B3 /* UIImageView+Extension.swift in Sources */,
 				B78D972228C2841200C99AF1 /* LoginCoordinator.swift in Sources */,
 				B78D971C28C2484500C99AF1 /* LoginViewModel.swift in Sources */,
 				B75FD70D28C0F91100141F62 /* SceneDelegate.swift in Sources */,
