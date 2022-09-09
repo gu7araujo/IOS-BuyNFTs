@@ -10,6 +10,7 @@ import Infrastructure
 enum Router {
     case doLogin
     case getNFTs
+    case getUser
 
     var path: String {
         switch self {
@@ -17,6 +18,8 @@ enum Router {
             return "/login"
         case .getNFTs:
             return "/nft"
+        case .getUser:
+            return "/login"
         }
     }
 
@@ -25,6 +28,8 @@ enum Router {
         case .doLogin:
             return HTTPMethodType.post
         case .getNFTs:
+            return HTTPMethodType.get
+        case .getUser:
             return HTTPMethodType.get
         }
     }

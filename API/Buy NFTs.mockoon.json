@@ -60,6 +60,52 @@
       "sequentialResponse": false
     },
     {
+      "uuid": "b744c6fd-b871-42ef-b21f-7552ca5b59a1",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "login",
+      "responses": [
+        {
+          "uuid": "ed27ac53-aac5-4719-9cd2-6a3bbdf64097",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "8149a2e9-aeee-4f9c-b107-e9270bceb8a2",
+          "body": "{\n  \"id\": 548,\n  \"name\": \"Gustavo Santos\",\n  \"token\": \"{{faker 'random.uuid'}}-1ce8622e-{{faker 'random.uuid'}}\",\n  \"wallet\": \"gustavo.eth\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success (gustavosantos)",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer [0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}-1ce8622e-[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}",
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
       "uuid": "505d4ebd-5c0b-4706-8799-1f52d2c6b915",
       "documentation": "",
       "method": "get",

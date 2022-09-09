@@ -5,15 +5,17 @@
 //  Created by Gustavo Araujo Santos on 28/07/22.
 //
 
+import Foundation
+
 protocol ShoppingCartProtocol {
-    var id: Int { get }
+    var id: UUID { get }
     var customer: Customer { get }
     var products: [Product] { get }
     var totalValue: Double { get }
 }
 
 public struct ShoppingCart: ShoppingCartProtocol {
-    let id: Int
+    let id = UUID()
     let customer: Customer
     var products: [Product]
     var totalValue: Double {
