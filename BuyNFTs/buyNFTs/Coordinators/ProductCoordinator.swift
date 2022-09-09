@@ -20,6 +20,6 @@ class ProductCoordinator: NSObject, Coordinator, UINavigationControllerDelegate 
         navigationController.delegate = self
         let viewModel = HomeViewModel()
         let viewController = HomeViewController(viewModel)
-        navigationController.pushViewController(viewController, animated: false)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

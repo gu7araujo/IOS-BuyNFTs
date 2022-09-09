@@ -33,6 +33,7 @@ class LoginCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         } else {
             navigationController.delegate = self
             let viewModel = LoginViewModel()
+            viewModel.delegate = self
             let viewController = LoginViewController(viewModel)
             navigationController.pushViewController(viewController, animated: true)
         }
@@ -47,4 +48,10 @@ class LoginCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         }
     }
 
+}
+
+extension LoginCoordinator: LoginViewModelDelegate {
+    func loginDone() {
+        delegate?.navigateToHome(self)
+    }
 }

@@ -40,6 +40,7 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
 extension MainCoordinator: LoginCoordinatorDelegate {
     func navigateToHome(_ child: Coordinator?) {
         removeChild(child)
+        navigationController.viewControllers.removeAll()
         startProductCoordinator()
     }
 }

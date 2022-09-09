@@ -8,6 +8,10 @@
 import Foundation
 import Domain
 
+protocol LoginViewModelDelegate: AnyObject {
+    func loginDone()
+}
+
 protocol LoginViewModelProtocol {
     var errorPublished: Published<String?> { get }
     var errorPublisher: Published<String?>.Publisher { get }
@@ -23,6 +27,8 @@ class LoginViewModel: LoginViewModelProtocol {
     private let loginUseCase: LoginUseCaseProtocol
     private let saveTokenUseCase: SaveTokenInKeyChainUseCaseProtocol
 
+    weak var delegate: LoginViewModelDelegate?
+
     init() {
         self.loginUseCase = LoginUseCase()
         self.saveTokenUseCase = SaveTokenInKeyChainUseCase()
@@ -35,10 +41,16 @@ class LoginViewModel: LoginViewModelProtocol {
             switch result {
             case .success(let token):
                 saveToken(username: username, token: token)
-                // here navigate to home
+                navigateToHome()
             case .failure(let error):
                 self.error = error.localizedDescription
             }
+        }
+    }
+
+    private func navigateToHome() {
+        DispatchQueue.main.async {
+            self.delegate?.loginDone()
         }
     }
 
