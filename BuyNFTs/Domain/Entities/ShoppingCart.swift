@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ShoppingCartProtocol {
+public protocol ShoppingCartProtocol {
     var id: UUID { get }
     var customer: Customer { get }
     var products: [Product] { get }
@@ -15,10 +15,10 @@ protocol ShoppingCartProtocol {
 }
 
 public struct ShoppingCart: ShoppingCartProtocol {
-    let id = UUID()
-    let customer: Customer
-    var products: [Product]
-    var totalValue: Double {
+    public let id = UUID()
+    public let customer: Customer
+    public var products: [Product]
+    public var totalValue: Double {
         get {
             var value = 0.0
             for product in products {

@@ -64,6 +64,7 @@ class HomeViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cartButton)
         setupConstraints()
         setupBinders()
+        viewModel?.createShoopingCart()
         viewModel?.getProducts()
     }
 
@@ -91,6 +92,15 @@ class HomeViewController: UIViewController {
                 self?.products = products
                 self?.collectionView.reloadData()
             }).store(in: &cancellables)
+
+        viewModel?.cartPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] cart in
+            guard let cart = cart else {
+                return
+            }
+            self?.cartBadge.text = String(cart.products.count)
+        }.store(in: &cancellables)
     }
 }
 
@@ -114,6 +124,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
         cell?.product = self.products[indexPath.row]
+        cell?.addProductToShoopingCart = viewModel?.addProductToShoopingCart
 
         return cell ?? UICollectionViewCell()
     }
@@ -130,6 +141,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
             image.downloaded(from: product.image)
         }
     }
+
+    var addProductToShoopingCart: ((Product?) -> Void)?
 
     static let identifier: String = "CustomCollectionViewCell"
 
@@ -196,6 +209,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func tapButton() {
-        print("tapped")
+        if let addProductToShoopingCart = addProductToShoopingCart {
+            addProductToShoopingCart(product)
+        }
     }
 }
