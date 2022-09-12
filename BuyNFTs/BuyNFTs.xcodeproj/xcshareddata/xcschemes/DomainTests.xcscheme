@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B77304912892DFA000F0F3F5"
-               BuildableName = "Domain.framework"
-               BlueprintName = "Domain"
+               BlueprintIdentifier = "B7B2DABB28CF750F000B5D83"
+               BuildableName = "DomainTests.xctest"
+               BlueprintName = "DomainTests"
                ReferencedContainer = "container:BuyNFTs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,8 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -61,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B77304912892DFA000F0F3F5"
-            BuildableName = "Domain.framework"
-            BlueprintName = "Domain"
+            BlueprintIdentifier = "B7B2DABB28CF750F000B5D83"
+            BuildableName = "DomainTests.xctest"
+            BlueprintName = "DomainTests"
             ReferencedContainer = "container:BuyNFTs.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

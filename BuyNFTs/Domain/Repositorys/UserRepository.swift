@@ -8,22 +8,22 @@
 import Foundation
 import Infrastructure
 
-protocol UserRepositoryProtocol {
+public protocol UserRepositoryProtocol {
     func get(userName: String, password: String) async -> Result<Customer, Error>
     func getByToken() async -> Result<Customer, Error>
 }
 
-class UserRepository: UserRepositoryProtocol {
+public class UserRepository: UserRepositoryProtocol {
 
     private var network: NetworkServiceProtocol
     private var getTokenAuthorization: ReadTokenInKeyChainUseCaseProtocol
 
-    init() {
+    public init() {
         self.network = NetworkService()
         self.getTokenAuthorization = ReadTokenInKeyChainUseCase()
     }
 
-    func get(userName: String, password: String) async -> Result<Customer, Error> {
+    public func get(userName: String, password: String) async -> Result<Customer, Error> {
         let body = ["username": userName, "password": password]
         let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: body, headerAuthorization: nil)
 
@@ -41,7 +41,7 @@ class UserRepository: UserRepositoryProtocol {
         }
     }
 
-    func getByToken() async -> Result<Customer, Error> {
+    public func getByToken() async -> Result<Customer, Error> {
         var token = ""
 
         do {

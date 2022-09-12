@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LoginError: Error {
+public enum LoginError: Error {
     case userNotFound
 }
 
@@ -28,8 +28,8 @@ public class LoginUseCase: LoginUseCaseProtocol {
 
     private var userRepository: UserRepositoryProtocol
 
-    public init() {
-        self.userRepository = UserRepository()
+    public init(useRepository: UserRepositoryProtocol = UserRepository()) {
+        self.userRepository = useRepository
     }
 
     public func execute(userName: String, password: String) async -> Result<String, Error> {
