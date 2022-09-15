@@ -1,4 +1,5 @@
 # Technology
+**Xcode:** 13.4.1 <br/>
 **Navigation:** Coordinator pattern <br/>
 **Minimum SDK:** iOS 13+ <br/>
 **Reactivity:** Combine <br/>
