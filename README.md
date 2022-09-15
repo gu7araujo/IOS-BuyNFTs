@@ -1,7 +1,7 @@
 # Technology
 **Xcode:** 13.4.1 <br/>
 **Navigation:** Coordinator pattern <br/>
-**Minimum SDK:** iOS 13+ <br/>
+**Minimum SDK:** iOS 15+ <br/>
 **Reactivity:** Combine <br/>
 **Network:** URLSession <br/>
 **Api Mock:** Mockoon <br/>
