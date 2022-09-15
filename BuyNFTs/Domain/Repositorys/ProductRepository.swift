@@ -9,7 +9,7 @@ import Foundation
 import Infrastructure
 
 protocol ProductRepositoryProtocol {
-    func get() async -> Result<[NFT], Error>
+    func get() async -> Result<[Product], Error>
 }
 
 class ProductRepository: ProductRepositoryProtocol {
@@ -22,7 +22,7 @@ class ProductRepository: ProductRepositoryProtocol {
         self.getTokenAuthorization = ReadTokenInKeyChainUseCase()
     }
 
-    func get() async -> Result<[NFT], Error> {
+    func get() async -> Result<[Product], Error> {
         var token = ""
 
         do {
@@ -31,16 +31,16 @@ class ProductRepository: ProductRepositoryProtocol {
             return .failure(error)
         }
 
-        let result = await network.request(path: Router.getNFTs.path, httpMethod: Router.getNFTs.httpMethod, body: nil, headerAuthorization: token)
+        let result = await network.request(path: Router.getProducts.path, httpMethod: Router.getProducts.httpMethod, body: nil, headerAuthorization: token)
 
         switch result {
         case .success(let data):
             do {
-                let parsedData = try JSONDecoder().decode([NFT].self, from: data)
+                let parsedData = try JSONDecoder().decode([Product].self, from: data)
 
                 return .success(parsedData)
             } catch {
-                fatalError("Json Decoder with Product in getNFTs router")
+                fatalError("Json Decoder with Product in getProducts router")
             }
         case .failure(let error):
             return .failure(error)

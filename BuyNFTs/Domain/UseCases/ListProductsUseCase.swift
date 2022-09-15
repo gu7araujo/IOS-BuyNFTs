@@ -21,7 +21,7 @@ extension ListProductsError: LocalizedError {
 }
 
 public protocol ListProductsUseCaseProtocol {
-    func execute() async -> Result<[NFT], Error>
+    func execute() async -> Result<[Product], Error>
 }
 
 public class ListProductsUseCase: ListProductsUseCaseProtocol {
@@ -32,12 +32,12 @@ public class ListProductsUseCase: ListProductsUseCaseProtocol {
         self.productRepository = ProductRepository()
     }
 
-    public func execute() async -> Result<[NFT], Error> {
+    public func execute() async -> Result<[Product], Error> {
         let result = await productRepository.get()
 
         switch result {
-        case .success(let nfts):
-            return .success(nfts)
+        case .success(let products):
+            return .success(products)
         case .failure(_):
             return .failure(ListProductsError.notReturnedProducts)
         }

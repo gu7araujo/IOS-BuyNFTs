@@ -21,7 +21,6 @@
 		B773049A2892E40D00F0F3F5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77304992892E40D00F0F3F5 /* User.swift */; };
 		B773049C2892E77F00F0F3F5 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049B2892E77F00F0F3F5 /* Customer.swift */; };
 		B773049E2892E9D300F0F3F5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049D2892E9D300F0F3F5 /* Product.swift */; };
-		B77304A02892EABF00F0F3F5 /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049F2892EABF00F0F3F5 /* NFT.swift */; };
 		B77304A22892EF1000F0F3F5 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77304A12892EF1000F0F3F5 /* ShoppingCart.swift */; };
 		B789AF4B28C79B25001DF7FE /* BackendRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B789AF4A28C79B25001DF7FE /* BackendRouters.swift */; };
 		B78D970E28C2324100C99AF1 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E61F928A574D700D4E7A4 /* UserRepository.swift */; };
@@ -116,7 +115,6 @@
 		B77304992892E40D00F0F3F5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B773049B2892E77F00F0F3F5 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B773049D2892E9D300F0F3F5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		B773049F2892EABF00F0F3F5 /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
 		B77304A12892EF1000F0F3F5 /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		B789AF4A28C79B25001DF7FE /* BackendRouters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRouters.swift; sourceTree = "<group>"; };
 		B78D971B28C2484500C99AF1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -173,9 +171,8 @@
 			children = (
 				B77304992892E40D00F0F3F5 /* User.swift */,
 				B773049B2892E77F00F0F3F5 /* Customer.swift */,
-				B773049D2892E9D300F0F3F5 /* Product.swift */,
-				B773049F2892EABF00F0F3F5 /* NFT.swift */,
 				B77304A12892EF1000F0F3F5 /* ShoppingCart.swift */,
+				B773049D2892E9D300F0F3F5 /* Product.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -539,7 +536,6 @@
 				B789AF4B28C79B25001DF7FE /* BackendRouters.swift in Sources */,
 				B7B9B30C28CA6BED002175B3 /* CartRepository.swift in Sources */,
 				B77304A22892EF1000F0F3F5 /* ShoppingCart.swift in Sources */,
-				B77304A02892EABF00F0F3F5 /* NFT.swift in Sources */,
 				B752F90328C569E700E279F2 /* ReadTokenInKeyChain.swift in Sources */,
 				B78D970E28C2324100C99AF1 /* UserRepository.swift in Sources */,
 				B773049A2892E40D00F0F3F5 /* User.swift in Sources */,

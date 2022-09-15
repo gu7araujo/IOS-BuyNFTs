@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"gustavosantos\",\n    \"password\": \"123456\"\n}",
+					"raw": "{\"password\":\"123456\",\"username\":\"gustavosantos\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -76,7 +76,30 @@
 			"response": []
 		},
 		{
-			"name": "nft success",
+			"name": "login success with token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 2c328a15-296a-4ce2-bfc5-cd742e4d5079-1ce8622e-59dd7ef8-4e77-4c1f-ae23-11ce43ce0327",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{$baseUrl}}/login",
+					"host": [
+						"{{$baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products success",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -87,29 +110,29 @@
 					}
 				],
 				"url": {
-					"raw": "{{$baseUrl}}/nft",
+					"raw": "{{$baseUrl}}/products",
 					"host": [
 						"{{$baseUrl}}"
 					],
 					"path": [
-						"nft"
+						"products"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "nft erro",
+			"name": "products erro",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{$baseUrl}}/nft",
+					"raw": "{{$baseUrl}}/products",
 					"host": [
 						"{{$baseUrl}}"
 					],
 					"path": [
-						"nft"
+						"products"
 					]
 				}
 			},

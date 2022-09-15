@@ -11,7 +11,7 @@ import Domain
 
 class HomeViewController: UIViewController {
 
-    private var products: [NFT] = []
+    private var products: [Product] = []
 
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
@@ -133,7 +133,7 @@ extension HomeViewController: UICollectionViewDataSource {
 // MARK: - HomeCollectionViewCell
 class HomeCollectionViewCell: UICollectionViewCell {
 
-    var product: NFT? {
+    var product: Product? {
         didSet {
             guard let product = product else { return }
             self.title.text = product.name

@@ -12,9 +12,9 @@ protocol HomeViewModelProtocol {
     var error: String? { get }
     var errorPublished: Published<String?> { get }
     var errorPublisher: Published<String?>.Publisher { get }
-    var products: [NFT] { get }
-    var productsPublished: Published<[NFT]> { get }
-    var productsPublisher: Published<[NFT]>.Publisher { get }
+    var products: [Product] { get }
+    var productsPublished: Published<[Product]> { get }
+    var productsPublisher: Published<[Product]>.Publisher { get }
     var cart: ShoppingCart? { get }
     var cartPublished: Published<ShoppingCart?> { get }
     var cartPublisher: Published<ShoppingCart?>.Publisher { get }
@@ -29,9 +29,9 @@ class HomeViewModel: HomeViewModelProtocol {
     var errorPublished: Published<String?> { _error }
     var errorPublisher: Published<String?>.Publisher { $error }
 
-    @Published var products: [NFT] = []
-    var productsPublished: Published<[NFT]> { _products }
-    var productsPublisher: Published<[NFT]>.Publisher { $products }
+    @Published var products: [Product] = []
+    var productsPublished: Published<[Product]> { _products }
+    var productsPublisher: Published<[Product]>.Publisher { $products }
 
     @Published var cart: ShoppingCart?
     var cartPublished: Published<ShoppingCart?> { _cart }
