@@ -136,8 +136,17 @@ class HomeCollectionViewCell: UICollectionViewCell {
     var product: Product? {
         didSet {
             guard let product = product else { return }
-            self.title.text = product.name
-            self.price.text = String(product.price) + " ETH"
+            var price = "", title = ""
+            switch product.type {
+            case .nft:
+                price = String(product.price) + " ETH"
+                title = "\(product.collection ?? "") - \(product.name) - \(product.creator ?? "")"
+            case .crypto:
+                price = String(product.price) + " USD"
+                title = product.tracker ?? ""
+            }
+            self.title.text = title
+            self.price.text = price
             image.downloaded(from: product.image)
         }
     }
