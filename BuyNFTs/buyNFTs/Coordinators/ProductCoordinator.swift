@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Domain
 
 class ProductCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
 
@@ -19,7 +20,19 @@ class ProductCoordinator: NSObject, Coordinator, UINavigationControllerDelegate 
     func start() {
         navigationController.delegate = self
         let viewModel = HomeViewModel()
+        viewModel.delegate = self
         let viewController = HomeViewController(viewModel)
         navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func openDetails(product: Product) {
+        let viewController = ProductDetailsViewController(product: product)
+        navigationController.present(viewController, animated: true)
+    }
+}
+
+extension ProductCoordinator: HomeViewModelDelegate {
+    func openProductDetails(_ product: Product) {
+        openDetails(product: product)
     }
 }

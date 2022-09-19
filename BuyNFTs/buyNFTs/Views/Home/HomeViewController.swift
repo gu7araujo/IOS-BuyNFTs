@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
     lazy var cartButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 18, height: 16))
         button.setBackgroundImage(UIImage(named: "shopping_cart"), for: .normal)
-        button.addTarget(self, action: "", for: .touchUpInside)
+        button.addTarget(self, action: #selector(cartTapped), for: .touchUpInside)
         button.addSubview(cartBadge)
         return button
     }()
@@ -102,6 +102,10 @@ class HomeViewController: UIViewController {
             self?.cartBadge.text = String(cart.products.count)
         }.store(in: &cancellables)
     }
+
+    @objc func cartTapped() {
+        print("cart Tapped")
+    }
 }
 
 // MARK: - UICollectionViewFlowLayout
@@ -125,6 +129,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
         cell?.product = self.products[indexPath.row]
         cell?.addProductToShoopingCart = viewModel?.addProductToShoopingCart
+        cell?.openProductDetails = viewModel?.openProductDetails
 
         return cell ?? UICollectionViewCell()
     }
@@ -152,6 +157,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     var addProductToShoopingCart: ((Product?) -> Void)?
+    var openProductDetails: ((Product?) -> Void)?
 
     static let identifier: String = "CustomCollectionViewCell"
 
@@ -178,7 +184,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Adicionar ao carrinho", for: .normal)
         button.setTitleColor(.blue, for: .normal)
-        button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
         return button
     }()
 
@@ -201,6 +207,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
             image.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -80)
         ])
 
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openDetails))
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(tapGestureRecognizer)
+
         addSubview(title)
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: image.bottomAnchor)
@@ -217,7 +227,13 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    @objc func tapButton() {
+    @objc func openDetails() {
+        if let openProductDetails = openProductDetails {
+            openProductDetails(product)
+        }
+    }
+
+    @objc func addToCart() {
         if let addProductToShoopingCart = addProductToShoopingCart {
             addProductToShoopingCart(product)
         }
