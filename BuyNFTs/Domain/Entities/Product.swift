@@ -30,4 +30,26 @@ public struct Product: Decodable {
     public let creator: String?
     public let collection: String?
     public let tracker: String?
+
+    public func getProductTitle() -> String {
+        switch type {
+        case .crypto:
+            guard let tracker = tracker else { fatalError("Attribute tracker should get from API") }
+            return tracker
+        case .nft:
+            guard let collection = collection, let creator = creator else {
+                fatalError("Attributes collection, creator should get from API")
+            }
+            return "\(collection) - \(self.name) - \(creator)"
+        }
+    }
+
+    public func getProductPrice() -> String {
+        switch type {
+        case .crypto:
+            return String(self.price) + " USD"
+        case .nft:
+            return String(self.price) + " ETH"
+        }
+    }
 }
