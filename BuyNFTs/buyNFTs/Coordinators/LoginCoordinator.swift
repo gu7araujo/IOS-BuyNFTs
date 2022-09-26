@@ -6,52 +6,55 @@
 //
 
 import UIKit
-import Security
 import Domain
 
-protocol LoginCoordinatorDelegate: AnyObject {
-    func navigateToHome(_ child: Coordinator?)
+protocol LoginCoordinatorProtocol: Coordinator {
+    func verifyExistsApiToken() -> Bool
+    func showLoginViewController()
 }
 
-class LoginCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
+class LoginCoordinator: LoginCoordinatorProtocol {
 
-    var children: [Coordinator] = []
+    weak var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
+    var childCoordinators: [Coordinator] = []
+    var type: CoordinatorType { .login }
 
     private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
 
-    weak var delegate: LoginCoordinatorDelegate?
-
-    init(_ navigationController: UINavigationController) {
+    required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.readTokenInKeyChainUseCase = ReadTokenInKeyChainUseCase()
     }
 
+    deinit {
+        print("LoginCoordinator deinit")
+    }
+
     func start() {
-        if verifyExistsToken() {
-            delegate?.navigateToHome(self)
+        if verifyExistsApiToken() {
+            self.finish()
         } else {
-            navigationController.delegate = self
-            let viewModel = LoginViewModel()
-            viewModel.delegate = self
-            let viewController = LoginViewController(viewModel)
-            navigationController.pushViewController(viewController, animated: true)
+            showLoginViewController()
         }
     }
 
-    private func verifyExistsToken() -> Bool {
+
+    func showLoginViewController() {
+        let loginVM = LoginViewModel()
+        loginVM.didSendEventClosure = { _ in
+            self.finish()
+        }
+        let loginVC = LoginViewController(loginVM)
+        navigationController.pushViewController(loginVC, animated: true)
+    }
+
+    func verifyExistsApiToken() -> Bool {
         do {
-            _ = try readTokenInKeyChainUseCase.execute()
+            try readTokenInKeyChainUseCase.execute()
             return true
         } catch {
             return false
         }
-    }
-
-}
-
-extension LoginCoordinator: LoginViewModelDelegate {
-    func loginDone() {
-        delegate?.navigateToHome(self)
     }
 }

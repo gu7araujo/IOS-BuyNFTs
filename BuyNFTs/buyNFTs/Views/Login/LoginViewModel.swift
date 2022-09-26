@@ -8,9 +8,6 @@
 import Foundation
 import Domain
 
-protocol LoginViewModelDelegate: AnyObject {
-    func loginDone()
-}
 
 protocol LoginViewModelProtocol {
     var errorPublished: Published<String?> { get }
@@ -27,7 +24,7 @@ class LoginViewModel: LoginViewModelProtocol {
     private let loginUseCase: LoginUseCaseProtocol
     private let saveTokenUseCase: SaveTokenInKeyChainUseCaseProtocol
 
-    weak var delegate: LoginViewModelDelegate?
+    var didSendEventClosure: ((LoginViewModel.Event) -> Void)?
 
     init() {
         self.loginUseCase = LoginUseCase()
@@ -50,7 +47,8 @@ class LoginViewModel: LoginViewModelProtocol {
 
     private func navigateToHome() {
         DispatchQueue.main.async {
-            self.delegate?.loginDone()
+            // erro here
+            self.didSendEventClosure?(.login)
         }
     }
 
@@ -62,5 +60,11 @@ class LoginViewModel: LoginViewModelProtocol {
         } catch {
             self.error = "Error with token in keychain"
         }
+    }
+}
+
+extension LoginViewModel {
+    enum Event {
+        case login
     }
 }

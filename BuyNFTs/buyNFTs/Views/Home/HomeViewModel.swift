@@ -8,10 +8,6 @@
 import Foundation
 import Domain
 
-protocol HomeViewModelDelegate: AnyObject {
-    func openProductDetails(_ product: Product)
-}
-
 protocol HomeViewModelProtocol {
     var error: String? { get }
     var errorPublished: Published<String?> { get }
@@ -46,7 +42,7 @@ class HomeViewModel: HomeViewModelProtocol {
     private let createShoopingCartUseCase: CreateCartUseCaseProtocol
     private var addProductToShoopingCartUseCase: AddToCartUseCaseProtocol
 
-    weak var delegate: HomeViewModelDelegate?
+    var didSendEventClosure: ((HomeViewModel.Event) -> Void)?
 
     init() {
         self.getProductsUseCase = ListProductsUseCase()
@@ -59,7 +55,7 @@ class HomeViewModel: HomeViewModelProtocol {
             return
         }
 
-        delegate?.openProductDetails(product)
+        didSendEventClosure?(.openDetails(product))
     }
 
     func addProductToShoopingCart(_ product: Product?) {
@@ -99,5 +95,11 @@ class HomeViewModel: HomeViewModelProtocol {
                 self.error = error.localizedDescription
             }
         }
+    }
+}
+
+extension HomeViewModel {
+    enum Event {
+        case openDetails(_ product: Product)
     }
 }

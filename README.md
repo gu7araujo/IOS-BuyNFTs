@@ -12,6 +12,7 @@
 # Architecture
 <p align="center">
   <img src="documentation/BuyNFTs-Modules.png"/>
+  <img src="documentation/BuyNFTs-Coordinators.png"/>
 </p>
 
 # Diagrams

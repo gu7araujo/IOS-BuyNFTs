@@ -7,40 +7,58 @@
 
 import UIKit
 
-class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
+protocol MainCoordinatorProtocol: Coordinator {
+    func showLoginFlow()
+    func showMainFlow()
+}
 
-    var children: [Coordinator] = []
+class MainCoordinator: MainCoordinatorProtocol {
+
+    weak var finishDelegate: CoordinatorFinishDelegate? = nil
     var navigationController: UINavigationController
+    var childCoordinators: [Coordinator] = []
+    var type: CoordinatorType { .main }
 
-    init(_ navigationController: UINavigationController) {
+    required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 
+    deinit {
+        print("MainCoordinator deinit")
+    }
+
     func start() {
-        navigationController.delegate = self
-        let child = LoginCoordinator(navigationController)
-        child.delegate = self
-        children.append(child)
-        child.start()
+        showLoginFlow()
     }
 
-    func removeChild(_ child: Coordinator?) {
-        guard let index = children.firstIndex(where: { $0 === child }) else { return }
-        children.remove(at: index)
+    func showLoginFlow() {
+        let loginCoordinator = LoginCoordinator.init(navigationController)
+        loginCoordinator.finishDelegate = self
+        loginCoordinator.start()
+        childCoordinators.append(loginCoordinator)
     }
 
-    private func startProductCoordinator() {
-        navigationController.delegate = self
-        let child = ProductCoordinator(navigationController)
-        children.append(child)
-        child.start()
+    func showMainFlow() {
+        let tabCoordinator = TabCoordinator.init(navigationController)
+        tabCoordinator.finishDelegate = self
+        tabCoordinator.start()
+        childCoordinators.append(tabCoordinator)
     }
 }
 
-extension MainCoordinator: LoginCoordinatorDelegate {
-    func navigateToHome(_ child: Coordinator?) {
-        removeChild(child)
-        navigationController.viewControllers.removeAll()
-        startProductCoordinator()
+extension MainCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
+
+        switch childCoordinator.type {
+        case .login:
+            navigationController.viewControllers.removeAll()
+            showMainFlow()
+        case .tab:
+            navigationController.viewControllers.removeAll()
+            showLoginFlow()
+        default:
+            break
+        }
     }
 }
