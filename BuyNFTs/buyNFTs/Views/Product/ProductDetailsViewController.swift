@@ -59,6 +59,10 @@ class ProductDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        print("ProductDetailsViewController deinit")
+    }
+
     func setupConstraints() {
         view.addSubview(scroll)
         NSLayoutConstraint.activate([

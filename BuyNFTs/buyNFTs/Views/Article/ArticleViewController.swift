@@ -30,6 +30,6 @@ class ArticleViewController: UIViewController {
     }
 
     deinit {
-        print("LoginViewController deinit")
+        print("ArticleViewController deinit")
     }
 }

@@ -206,6 +206,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        print("HomeViewController deinit")
+    }
+
     func setupConstraints() {
         addSubview(image)
         NSLayoutConstraint.activate([
