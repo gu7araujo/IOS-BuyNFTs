@@ -22,15 +22,6 @@ enum TabBarPage {
         }
     }
 
-    func pageTitleValue() -> String {
-        switch self {
-        case .home:
-            return "Home"
-        case .article:
-            return "Articles"
-        }
-    }
-
     func pageOrderNumber() -> Int {
         switch self {
         case .home:
@@ -40,9 +31,23 @@ enum TabBarPage {
         }
     }
 
-    // add tab icon value
-    // add tab icon selected / deselected color
-    // etc
+    func pageTitleValue() -> String {
+        switch self {
+        case .home:
+            return "Home"
+        case .article:
+            return "Articles"
+        }
+    }
+
+    func pageIcon() -> UITabBarItem.SystemItem {
+        switch self {
+        case .home:
+            return .search
+        case .article:
+            return .bookmarks
+        }
+    }
 }
 
 protocol TabCoordinatorProtocol: Coordinator {
@@ -103,6 +108,8 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber()
         tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.backgroundColor = .systemGray
         navigationController.viewControllers = [tabBarController]
     }
 
@@ -110,9 +117,7 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
         let navController = UINavigationController()
         navController.setNavigationBarHidden(false, animated: false)
 
-        navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
-                                                     image: nil,
-                                                     tag: page.pageOrderNumber())
+        navController.tabBarItem = UITabBarItem.init(tabBarSystemItem: page.pageIcon(), tag: page.pageOrderNumber())
 
         switch page {
         case .home:

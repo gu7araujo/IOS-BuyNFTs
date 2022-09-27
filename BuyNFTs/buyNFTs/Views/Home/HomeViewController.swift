@@ -19,36 +19,16 @@ class HomeViewController: UIViewController {
         view.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: -25, left: 0, bottom: 0, right: 0)
         view.setCollectionViewLayout(layout, animated: false)
         view.delegate = self
         view.dataSource = self
         return view
     }()
 
-    lazy var cartBadge: UILabel = {
-        let label = UILabel(frame: CGRect(x: 10, y: -10, width: 20, height: 20))
-        label.layer.borderColor = UIColor.clear.cgColor
-        label.layer.borderWidth = 2
-        label.layer.cornerRadius = label.bounds.size.height / 2
-        label.textAlignment = .center
-        label.layer.masksToBounds = true
-        label.font = UIFont(name: "SanFranciscoText-Light", size: 13)
-        label.textColor = .white
-        label.backgroundColor = .red
-        label.text = String(0)
-        return label
-    }()
-
-    lazy var cartButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 18, height: 16))
-        button.setBackgroundImage(UIImage(named: "shopping_cart"), for: .normal)
-        button.addTarget(self, action: #selector(cartTapped), for: .touchUpInside)
-        button.addSubview(cartBadge)
-        return button
-    }()
-
     // MARK: - Private properties
 
+    private let navView = CartNavigationView()
     private var viewModel: HomeViewModelProtocol?
     private var cancellables: Set<AnyCancellable> = []
 
@@ -59,6 +39,7 @@ class HomeViewController: UIViewController {
     init(_ viewModel: HomeViewModelProtocol) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -66,9 +47,20 @@ class HomeViewController: UIViewController {
     }
 
     func setupConstraints() {
+        let guide = view.safeAreaLayoutGuide
+        navView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(navView)
+        NSLayoutConstraint.activate([
+            navView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            navView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            navView.topAnchor.constraint(equalTo: view.topAnchor),
+            navView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+
+        collectionView.backgroundColor = .red
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: navView.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -96,7 +88,7 @@ class HomeViewController: UIViewController {
             guard let cart = cart else {
                 return
             }
-            self?.cartBadge.text = String(cart.products.count)
+            self?.navView.setBadge(value: cart.products.count)
         }.store(in: &cancellables)
     }
 
@@ -104,17 +96,10 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cartButton)
-        setupConstraints()
+        self.navigationController?.isNavigationBarHidden = true
         setupBinders()
         viewModel?.createShoopingCart()
         viewModel?.getProducts()
-    }
-
-    // MARK: - Methods
-
-    @objc func cartTapped() {
-        print("cart Tapped")
     }
 }
 
@@ -251,5 +236,69 @@ class HomeCollectionViewCell: UICollectionViewCell {
         if let addProductToShoopingCart = addProductToShoopingCart {
             addProductToShoopingCart(product)
         }
+    }
+}
+
+// MARK: - CartNavigationView
+class CartNavigationView: UIView {
+
+    // MARK: - UI properties
+
+    lazy var cartBadge: UILabel = {
+        let label = UILabel(frame: CGRect(x: 10, y: -10, width: 20, height: 20))
+        label.layer.borderColor = UIColor.clear.cgColor
+        label.layer.borderWidth = 2
+        label.layer.cornerRadius = label.bounds.size.height / 2
+        label.textAlignment = .center
+        label.layer.masksToBounds = true
+        label.font = UIFont(name: "SanFranciscoText-Light", size: 13)
+        label.textColor = .white
+        label.backgroundColor = .red
+        label.text = String(0)
+        return label
+    }()
+
+    lazy var cartButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 18, height: 16))
+        button.setBackgroundImage(UIImage(named: "shopping_cart"), for: .normal)
+        button.addTarget(self, action: #selector(cartTapped), for: .touchUpInside)
+        button.addSubview(cartBadge)
+        return button
+    }()
+
+
+    // MARK: - Initialization
+
+    public init() {
+        super.init(frame: .zero)
+        backgroundColor = .green
+        buildTree()
+        buildConstraints()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func buildTree() {
+        addSubview(cartButton)
+    }
+
+    func buildConstraints() {
+        cartButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cartButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            cartButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+        ])
+    }
+
+    // MARK: - Methods
+
+    @objc func cartTapped() {
+        print("cart Tapped")
+    }
+
+    func setBadge(value: Int) {
+        cartBadge.text = String(value)
     }
 }
