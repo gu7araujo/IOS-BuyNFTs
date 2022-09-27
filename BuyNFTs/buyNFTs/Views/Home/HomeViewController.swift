@@ -11,7 +11,7 @@ import Domain
 
 class HomeViewController: UIViewController {
 
-    private var products: [Product] = []
+    // MARK: - UI properties
 
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
@@ -47,8 +47,14 @@ class HomeViewController: UIViewController {
         return button
     }()
 
+    // MARK: - Private properties
+
     private var viewModel: HomeViewModelProtocol?
     private var cancellables: Set<AnyCancellable> = []
+
+    private var products: [Product] = []
+
+    // MARK: - Initialization
 
     init(_ viewModel: HomeViewModelProtocol) {
         super.init(nibName: nil, bundle: nil)
@@ -57,15 +63,6 @@ class HomeViewController: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cartButton)
-        setupConstraints()
-        setupBinders()
-        viewModel?.createShoopingCart()
-        viewModel?.getProducts()
     }
 
     func setupConstraints() {
@@ -103,6 +100,19 @@ class HomeViewController: UIViewController {
         }.store(in: &cancellables)
     }
 
+    // MARK: - View lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cartButton)
+        setupConstraints()
+        setupBinders()
+        viewModel?.createShoopingCart()
+        viewModel?.getProducts()
+    }
+
+    // MARK: - Methods
+
     @objc func cartTapped() {
         print("cart Tapped")
     }
@@ -138,19 +148,7 @@ extension HomeViewController: UICollectionViewDataSource {
 // MARK: - HomeCollectionViewCell
 class HomeCollectionViewCell: UICollectionViewCell {
 
-    var product: Product? {
-        didSet {
-            guard let product = product else { return }
-            self.title.text = product.getProductTitle()
-            self.price.text = product.getProductPrice()
-            image.downloaded(from: product.image)
-        }
-    }
-
-    var addProductToShoopingCart: ((Product?) -> Void)?
-    var openProductDetails: ((Product?) -> Void)?
-
-    static let identifier: String = "CustomCollectionViewCell"
+    // MARK: - UI properties
 
     let image: UIImageView = {
         let imageView = UIImageView()
@@ -178,6 +176,25 @@ class HomeCollectionViewCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
         return button
     }()
+
+
+    // MARK: - Properties
+
+    var product: Product? {
+        didSet {
+            guard let product = product else { return }
+            self.title.text = product.getProductTitle()
+            self.price.text = product.getProductPrice()
+            image.downloaded(from: product.image)
+        }
+    }
+
+    var addProductToShoopingCart: ((Product?) -> Void)?
+    var openProductDetails: ((Product?) -> Void)?
+
+    static let identifier: String = "CustomCollectionViewCell"
+
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -217,6 +234,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
             addButton.topAnchor.constraint(equalTo: price.bottomAnchor)
         ])
     }
+
+    // MARK: - Methods
 
     @objc func openDetails() {
         if let openProductDetails = openProductDetails {

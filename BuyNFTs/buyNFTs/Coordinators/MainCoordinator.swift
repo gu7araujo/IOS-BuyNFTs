@@ -14,10 +14,14 @@ protocol MainCoordinatorProtocol: Coordinator {
 
 class MainCoordinator: MainCoordinatorProtocol {
 
+    // MARK: - Public properties
+
     weak var finishDelegate: CoordinatorFinishDelegate? = nil
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType { .main }
+
+    // MARK: - Initialization
 
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -26,6 +30,8 @@ class MainCoordinator: MainCoordinatorProtocol {
     deinit {
         print("MainCoordinator deinit")
     }
+
+    // MARK: - Methods
 
     func start() {
         showLoginFlow()
@@ -46,6 +52,7 @@ class MainCoordinator: MainCoordinatorProtocol {
     }
 }
 
+// MARK: - CoordinatorFinishDelegate
 extension MainCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })

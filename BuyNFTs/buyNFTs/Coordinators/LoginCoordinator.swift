@@ -15,12 +15,18 @@ protocol LoginCoordinatorProtocol: Coordinator {
 
 class LoginCoordinator: LoginCoordinatorProtocol {
 
+    // MARK: - Public properties
+
     weak var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType { .login }
 
+    // MARK: - Private properties
+
     private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
+
+    // MARK: - Initialization
 
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -30,6 +36,8 @@ class LoginCoordinator: LoginCoordinatorProtocol {
     deinit {
         print("LoginCoordinator deinit")
     }
+
+    // MARK: - Methods
 
     func start() {
         if verifyExistsApiToken() {

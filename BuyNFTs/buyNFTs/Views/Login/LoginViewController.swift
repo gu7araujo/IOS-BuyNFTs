@@ -11,6 +11,8 @@ import Domain
 
 class LoginViewController: UIViewController {
 
+    // MARK: - UI properties
+
     lazy var loginField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -40,8 +42,12 @@ class LoginViewController: UIViewController {
         return button
     }()
 
+    // MARK: - Private properties
+
     private var viewModel: LoginViewModelProtocol?
     private var cancellables: Set<AnyCancellable> = []
+
+    // MARK: - Initialization
 
     init(_ viewModel: LoginViewModelProtocol) {
         super.init(nibName: nil, bundle: nil)
@@ -78,12 +84,16 @@ class LoginViewController: UIViewController {
         ])
     }
 
+    // MARK: - View lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupConstraints()
         setupBinders()
     }
+
+    // MARK: - Methods
 
     func setupBinders() {
         viewModel?.errorPublisher.sink { error in

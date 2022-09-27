@@ -17,19 +17,27 @@ protocol LoginViewModelProtocol {
 
 class LoginViewModel: LoginViewModelProtocol {
 
+    // MARK: - Public properties
+
     @Published var error: String?
     var errorPublished: Published<String?> { _error }
     var errorPublisher: Published<String?>.Publisher { $error }
 
+    var didSendEventClosure: ((LoginViewModel.Event) -> Void)?
+
+    // MARK: - Private properties
+
     private let loginUseCase: LoginUseCaseProtocol
     private let saveTokenUseCase: SaveTokenInKeyChainUseCaseProtocol
 
-    var didSendEventClosure: ((LoginViewModel.Event) -> Void)?
+    // MARK: - Initialization
 
     init() {
         self.loginUseCase = LoginUseCase()
         self.saveTokenUseCase = SaveTokenInKeyChainUseCase()
     }
+
+    // MARK: - Public methods
 
     func doLogin(_ username: String, _ password: String) {
         Task {
@@ -44,6 +52,8 @@ class LoginViewModel: LoginViewModelProtocol {
             }
         }
     }
+
+    // MARK: - Private methods
 
     private func navigateToHome() {
         DispatchQueue.main.async {

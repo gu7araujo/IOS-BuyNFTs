@@ -55,11 +55,15 @@ protocol TabCoordinatorProtocol: Coordinator {
 
 class TabCoordinator: NSObject, TabCoordinatorProtocol {
 
+    // MARK: - Properties
+
     weak var finishDelegate: CoordinatorFinishDelegate?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
     var type: CoordinatorType { .tab }
+
+    // MARK: - Initialization
 
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -70,6 +74,8 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
         print("TabCoordinator deinit")
     }
 
+    // MARK: - Public methods
+
     func start() {
         let pages: [TabBarPage] = [.home, .article]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
@@ -77,6 +83,20 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
         prepareTabBarController(withTabControllers: controllers)
     }
+
+    func currentPage() -> TabBarPage? { TabBarPage.init(index: tabBarController.selectedIndex) }
+
+    func selectPage(_ page: TabBarPage) {
+        tabBarController.selectedIndex = page.pageOrderNumber()
+    }
+
+    func setSelectedIndex(_ index: Int) {
+        guard let page = TabBarPage.init(index: index) else { return }
+
+        tabBarController.selectedIndex = page.pageOrderNumber()
+    }
+
+    // MARK: - Private methods
 
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         tabBarController.delegate = self
@@ -105,20 +125,9 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
 
         return navController
     }
-
-    func currentPage() -> TabBarPage? { TabBarPage.init(index: tabBarController.selectedIndex) }
-
-    func selectPage(_ page: TabBarPage) {
-        tabBarController.selectedIndex = page.pageOrderNumber()
-    }
-
-    func setSelectedIndex(_ index: Int) {
-        guard let page = TabBarPage.init(index: index) else { return }
-
-        tabBarController.selectedIndex = page.pageOrderNumber()
-    }
 }
 
+// MARK: - UITabBarControllerDelegate
 extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         // Some implementation

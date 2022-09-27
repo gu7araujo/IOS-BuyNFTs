@@ -14,10 +14,14 @@ protocol HomeCoordinatorProtocol: Coordinator {
 
 class HomeCoordinator: HomeCoordinatorProtocol {
 
+    // MARK: - Properties
+
     weak var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType { .home }
+
+    // MARK: - Initialization
 
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -26,6 +30,8 @@ class HomeCoordinator: HomeCoordinatorProtocol {
     deinit {
         print("HomeCoordinator deinit")
     }
+
+    // MARK: - Methods
 
     func start() {
         let homeVM = HomeViewModel()

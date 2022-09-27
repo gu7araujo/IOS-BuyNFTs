@@ -26,6 +26,8 @@ protocol HomeViewModelProtocol {
 
 class HomeViewModel: HomeViewModelProtocol {
 
+    // MARK: - Public properties
+
     @Published var error: String?
     var errorPublished: Published<String?> { _error }
     var errorPublisher: Published<String?>.Publisher { $error }
@@ -38,17 +40,23 @@ class HomeViewModel: HomeViewModelProtocol {
     var cartPublished: Published<ShoppingCart?> { _cart }
     var cartPublisher: Published<ShoppingCart?>.Publisher { $cart }
 
+    var didSendEventClosure: ((HomeViewModel.Event) -> Void)?
+
+    // MARK: - Private properties
+
     private let getProductsUseCase: ListProductsUseCaseProtocol
     private let createShoopingCartUseCase: CreateCartUseCaseProtocol
     private var addProductToShoopingCartUseCase: AddToCartUseCaseProtocol
 
-    var didSendEventClosure: ((HomeViewModel.Event) -> Void)?
+    // MARK: - Initialization
 
     init() {
         self.getProductsUseCase = ListProductsUseCase()
         self.createShoopingCartUseCase = CreateCartUseCase()
         self.addProductToShoopingCartUseCase = AddToCartUseCase()
     }
+
+    // MARK: - Methods
 
     func openProductDetails(_ product: Product?) {
         guard let product = product else {
