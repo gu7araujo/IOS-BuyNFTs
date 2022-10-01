@@ -202,18 +202,10 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		B72ABF6928C7757500028027 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				B72ABF6A28C7757F00028027 /* HomeViewController.swift */,
-				B72ABF6C28C775B500028027 /* HomeViewModel.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		B734A04B28E20DB500359633 /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				B734A04928E20D3400359633 /* ArticleCoordinator.swift */,
 				B734A04C28E20DEE00359633 /* ArticleViewController.swift */,
 			);
 			path = Article;
@@ -240,8 +232,11 @@
 		B75FD70928C0F91100141F62 /* buyNFTs */ = {
 			isa = PBXGroup;
 			children = (
-				B78D972028C2840000C99AF1 /* Coordinators */,
-				B78D971D28C2808700C99AF1 /* Views */,
+				B7B9B30728CA6A56002175B3 /* Extension */,
+				B734A04B28E20DB500359633 /* Article */,
+				B78C517528E8CE3700B4F0FA /* Home */,
+				B78C517428E8CE0F00B4F0FA /* Login */,
+				B78D972028C2840000C99AF1 /* Coordinator */,
 				B75FD70A28C0F91100141F62 /* AppDelegate.swift */,
 				B75FD70C28C0F91100141F62 /* SceneDelegate.swift */,
 				B75FD71328C0F91300141F62 /* Assets.xcassets */,
@@ -249,14 +244,6 @@
 				B75FD71828C0F91300141F62 /* Info.plist */,
 			);
 			path = buyNFTs;
-			sourceTree = "<group>";
-		};
-		B770092628D4B46C007232B8 /* Product */ = {
-			isa = PBXGroup;
-			children = (
-				B770092728D4B48E007232B8 /* ProductDetailsViewController.swift */,
-			);
-			path = Product;
 			sourceTree = "<group>";
 		};
 		B77304792892DE0000F0F3F5 = {
@@ -292,38 +279,35 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		B78D971D28C2808700C99AF1 /* Views */ = {
+		B78C517428E8CE0F00B4F0FA /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B7B9B30728CA6A56002175B3 /* Extensions */,
-				B734A04B28E20DB500359633 /* Article */,
-				B770092628D4B46C007232B8 /* Product */,
-				B72ABF6928C7757500028027 /* Home */,
-				B78D971E28C2808E00C99AF1 /* Login */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		B78D971E28C2808E00C99AF1 /* Login */ = {
-			isa = PBXGroup;
-			children = (
+				B78D972128C2841200C99AF1 /* LoginCoordinator.swift */,
 				B75FD70E28C0F91100141F62 /* LoginViewController.swift */,
 				B78D971B28C2484500C99AF1 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
 		};
-		B78D972028C2840000C99AF1 /* Coordinators */ = {
+		B78C517528E8CE3700B4F0FA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B72ABF6E28C778C400028027 /* HomeCoordinator.swift */,
+				B72ABF6A28C7757F00028027 /* HomeViewController.swift */,
+				B72ABF6C28C775B500028027 /* HomeViewModel.swift */,
+				B770092728D4B48E007232B8 /* ProductDetailsViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B78D972028C2840000C99AF1 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 				B78D972328C2845000C99AF1 /* Coordinator.swift */,
 				B78D972528C2861C00C99AF1 /* MainCoordinator.swift */,
-				B78D972128C2841200C99AF1 /* LoginCoordinator.swift */,
 				B734A04728E2060E00359633 /* TabCoordinator.swift */,
-				B72ABF6E28C778C400028027 /* HomeCoordinator.swift */,
-				B734A04928E20D3400359633 /* ArticleCoordinator.swift */,
 			);
-			path = Coordinators;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		B7B2DABD28CF750F000B5D83 /* DomainTests */ = {
@@ -334,12 +318,12 @@
 			path = DomainTests;
 			sourceTree = "<group>";
 		};
-		B7B9B30728CA6A56002175B3 /* Extensions */ = {
+		B7B9B30728CA6A56002175B3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				B7B9B30828CA6A81002175B3 /* UIImageView+Extension.swift */,
 			);
-			path = Extensions;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		B7B9B30A28CA6B9F002175B3 /* Helpers */ = {
