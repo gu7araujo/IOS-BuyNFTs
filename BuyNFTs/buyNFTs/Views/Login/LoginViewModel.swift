@@ -8,7 +8,6 @@
 import Foundation
 import Domain
 
-
 protocol LoginViewModelProtocol {
     var errorPublished: Published<String?> { get }
     var errorPublisher: Published<String?>.Publisher { get }
@@ -32,9 +31,9 @@ class LoginViewModel: LoginViewModelProtocol {
 
     // MARK: - Initialization
 
-    init() {
-        self.loginUseCase = LoginUseCase()
-        self.saveTokenUseCase = SaveTokenInKeyChainUseCase()
+    init(loginUseCase: LoginUseCaseProtocol = LoginUseCase(), saveTokenUseCase: SaveTokenInKeyChainUseCaseProtocol = SaveTokenInKeyChainUseCase()) {
+        self.loginUseCase = loginUseCase
+        self.saveTokenUseCase = saveTokenUseCase
     }
 
     // MARK: - Public methods
@@ -57,8 +56,8 @@ class LoginViewModel: LoginViewModelProtocol {
 
     private func navigateToHome() {
         DispatchQueue.main.async {
-            // erro here
-            self.didSendEventClosure?(.login)
+            guard let didSendEventClosure = self.didSendEventClosure else { fatalError("Closure didn't set") }
+            didSendEventClosure(.login)
         }
     }
 

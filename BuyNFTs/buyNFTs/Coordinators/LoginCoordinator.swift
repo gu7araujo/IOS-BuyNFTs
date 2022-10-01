@@ -24,13 +24,12 @@ class LoginCoordinator: LoginCoordinatorProtocol {
 
     // MARK: - Private properties
 
-    private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
+    private var existsTokenInKeyChainUseCase: ExistsTokenInKeyChainUseCase = .init()
 
     // MARK: - Initialization
 
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.readTokenInKeyChainUseCase = ReadTokenInKeyChainUseCase()
     }
 
     deinit {
@@ -47,11 +46,10 @@ class LoginCoordinator: LoginCoordinatorProtocol {
         }
     }
 
-
     func showLoginViewController() {
         let loginVM = LoginViewModel()
-        loginVM.didSendEventClosure = { _ in
-            self.finish()
+        loginVM.didSendEventClosure = { [weak self] _ in
+            self?.finish()
         }
         let loginVC = LoginViewController(loginVM)
         navigationController.pushViewController(loginVC, animated: true)
@@ -59,7 +57,7 @@ class LoginCoordinator: LoginCoordinatorProtocol {
 
     func verifyExistsApiToken() -> Bool {
         do {
-            try readTokenInKeyChainUseCase.execute()
+            try existsTokenInKeyChainUseCase.execute()
             return true
         } catch {
             return false

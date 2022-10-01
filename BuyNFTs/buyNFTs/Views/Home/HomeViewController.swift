@@ -123,7 +123,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell
         cell?.product = self.products[indexPath.row]
-        cell?.addProductToShoopingCart = viewModel?.addProductToShoopingCart
+        cell?.addProductToShoopingCart = viewModel?.addToShoopingCart
         cell?.openProductDetails = viewModel?.openProductDetails
 
         return cell ?? UICollectionViewCell()
@@ -174,8 +174,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    var addProductToShoopingCart: ((Product?) -> Void)?
-    var openProductDetails: ((Product?) -> Void)?
+    var addProductToShoopingCart: ((Product) -> Void)?
+    var openProductDetails: ((Product) -> Void)?
 
     static let identifier: String = "CustomCollectionViewCell"
 
@@ -227,15 +227,13 @@ class HomeCollectionViewCell: UICollectionViewCell {
     // MARK: - Methods
 
     @objc func openDetails() {
-        if let openProductDetails = openProductDetails {
-            openProductDetails(product)
-        }
+        guard let openProductDetails = openProductDetails, let product = product else { return }
+        openProductDetails(product)
     }
 
     @objc func addToCart() {
-        if let addProductToShoopingCart = addProductToShoopingCart {
-            addProductToShoopingCart(product)
-        }
+        guard let addProductToShoopingCart = addProductToShoopingCart, let product = product else { return }
+        addProductToShoopingCart(product)
     }
 }
 

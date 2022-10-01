@@ -20,8 +20,8 @@ protocol HomeViewModelProtocol {
     var cartPublisher: Published<ShoppingCart?>.Publisher { get }
     func getProducts()
     func createShoopingCart()
-    func addProductToShoopingCart(_ product: Product?)
-    func openProductDetails(_ product: Product?)
+    func addToShoopingCart(product: Product)
+    func openProductDetails(_ product: Product)
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -44,44 +44,36 @@ class HomeViewModel: HomeViewModelProtocol {
 
     // MARK: - Private properties
 
-    private let getProductsUseCase: ListProductsUseCaseProtocol
-    private let createShoopingCartUseCase: CreateCartUseCaseProtocol
-    private var addProductToShoopingCartUseCase: AddToCartUseCaseProtocol
+    private let listProductsUseCase: ListProductsUseCaseProtocol
+    private let createCartUseCase: CreateCartUseCaseProtocol
+    private var addToCartUseCase: AddToCartUseCaseProtocol
 
     // MARK: - Initialization
 
-    init() {
-        self.getProductsUseCase = ListProductsUseCase()
-        self.createShoopingCartUseCase = CreateCartUseCase()
-        self.addProductToShoopingCartUseCase = AddToCartUseCase()
+    init(listProductsUseCase: ListProductsUseCaseProtocol = ListProductsUseCase(), createCartUseCase: CreateCartUseCaseProtocol = CreateCartUseCase(), addToCartUseCase: AddToCartUseCaseProtocol = AddToCartUseCase()) {
+        self.listProductsUseCase = listProductsUseCase
+        self.createCartUseCase = createCartUseCase
+        self.addToCartUseCase = addToCartUseCase
     }
 
     // MARK: - Methods
 
-    func openProductDetails(_ product: Product?) {
-        guard let product = product else {
-            return
-        }
-
-        didSendEventClosure?(.openDetails(product))
+    func openProductDetails(_ product: Product) {
+        guard let didSendEventClosure = self.didSendEventClosure else { fatalError("Closure didn't set") }
+        didSendEventClosure(.openDetails(product))
     }
 
-    func addProductToShoopingCart(_ product: Product?) {
-        guard let cart = self.cart, let product = product else {
-            return
-        }
+    func addToShoopingCart(product: Product) {
+        guard let cart = self.cart else { return }
+        guard !cart.products.contains(where: { $0.id == product.id }) else { return }
 
-        guard !cart.products.contains(where: { $0.id == product.id }) else {
-            return
-        }
-
-        let newCart = addProductToShoopingCartUseCase.execute(product: product, cart: cart)
+        let newCart = addToCartUseCase.execute(product: product, cart: cart)
         self.cart = newCart
     }
 
     func createShoopingCart() {
         Task {
-            let result = await createShoopingCartUseCase.execute()
+            let result = await createCartUseCase.execute()
 
             switch result {
             case .success(let cart):
@@ -94,7 +86,7 @@ class HomeViewModel: HomeViewModelProtocol {
 
     func getProducts() {
         Task {
-            let result = await getProductsUseCase.execute()
+            let result = await listProductsUseCase.execute()
 
             switch result {
             case .success(let products):
