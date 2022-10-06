@@ -14,11 +14,12 @@ extension UIImageView {
         static var cache: ImageCache?
     }
 
-    func loadImage(url: String) {
+    func loadImage(url: String, contentMode mode: ContentMode = .scaleAspectFit) {
         let url = URL(string: url)
         KF.url(url)
             .targetCache(getCache())
             .set(to: self)
+        contentMode = mode
     }
 
     private func getCache() -> ImageCache {
