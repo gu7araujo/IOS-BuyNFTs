@@ -80,7 +80,7 @@ class ProductDetailsViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: scroll.trailingAnchor, constant: 10)
         ])
 
-        artImage.downloaded(from: product?.image ?? "")
+        artImage.loadImage(url: product?.image ?? "")
         scroll.addSubview(artImage)
         NSLayoutConstraint.activate([
             artImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),

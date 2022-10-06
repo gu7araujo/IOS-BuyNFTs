@@ -174,7 +174,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
             guard let product = product else { return }
             self.title.text = product.getProductTitle()
             self.price.text = product.getProductPrice()
-            image.downloaded(from: product.image)
+            image.loadImage(url: product.image)
         }
     }
 

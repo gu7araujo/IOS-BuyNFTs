@@ -51,6 +51,7 @@
 		B7B9B30928CA6A81002175B3 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B9B30828CA6A81002175B3 /* UIImageView+Extension.swift */; };
 		B7B9B30C28CA6BED002175B3 /* CartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B9B30B28CA6BED002175B3 /* CartRepository.swift */; };
 		B7C06F6428A42FD300F50070 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C06F6328A42FD300F50070 /* NetworkService.swift */; };
+		C9274493D733F1B9FD860AF0 /* Pods_buyNFTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758DE29630854AA7C3FDA3A7 /* Pods_buyNFTs.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		51B228BD42CE3CE100F9392C /* Pods-buyNFTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyNFTs.debug.xcconfig"; path = "Target Support Files/Pods-buyNFTs/Pods-buyNFTs.debug.xcconfig"; sourceTree = "<group>"; };
+		758DE29630854AA7C3FDA3A7 /* Pods_buyNFTs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buyNFTs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B13E76CBF7D37B2EC27A3EF1 /* Pods-buyNFTs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyNFTs.release.xcconfig"; path = "Target Support Files/Pods-buyNFTs/Pods-buyNFTs.release.xcconfig"; sourceTree = "<group>"; };
 		B729931528945E4B00EB3EC0 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		B7299317289461FC00EB3EC0 /* ListProductsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsUseCase.swift; sourceTree = "<group>"; };
 		B72993192894637900EB3EC0 /* AddToCartUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartUseCase.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B78D971728C2327A00C99AF1 /* Domain.framework in Frameworks */,
+				C9274493D733F1B9FD860AF0 /* Pods_buyNFTs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +189,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51ED7DBE994D32B97907D5F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				51B228BD42CE3CE100F9392C /* Pods-buyNFTs.debug.xcconfig */,
+				B13E76CBF7D37B2EC27A3EF1 /* Pods-buyNFTs.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B729931328945DBB00EB3EC0 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +240,7 @@
 		B75BBE82289D756E0008E9A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				758DE29630854AA7C3FDA3A7 /* Pods_buyNFTs.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,6 +283,7 @@
 				B7B2DABD28CF750F000B5D83 /* DomainTests */,
 				B77304842892DE0000F0F3F5 /* Products */,
 				B75BBE82289D756E0008E9A1 /* Frameworks */,
+				51ED7DBE994D32B97907D5F9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -386,10 +403,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B75FD71928C0F91300141F62 /* Build configuration list for PBXNativeTarget "buyNFTs" */;
 			buildPhases = (
+				FE65E021FB4DC17132295C9D /* [CP] Check Pods Manifest.lock */,
 				B75FD70428C0F91100141F62 /* Sources */,
 				B75FD70528C0F91100141F62 /* Frameworks */,
 				B75FD70628C0F91100141F62 /* Resources */,
 				B7136AFA28C10F8D009780A0 /* Embed Frameworks */,
+				460B42AD50E9CE146451827C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -537,6 +556,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		460B42AD50E9CE146451827C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-buyNFTs/Pods-buyNFTs-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-buyNFTs/Pods-buyNFTs-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-buyNFTs/Pods-buyNFTs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE65E021FB4DC17132295C9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-buyNFTs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B75FD70428C0F91100141F62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -637,6 +698,7 @@
 /* Begin XCBuildConfiguration section */
 		B75FD71A28C0F91300141F62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51B228BD42CE3CE100F9392C /* Pods-buyNFTs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -665,6 +727,7 @@
 		};
 		B75FD71B28C0F91300141F62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B13E76CBF7D37B2EC27A3EF1 /* Pods-buyNFTs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
