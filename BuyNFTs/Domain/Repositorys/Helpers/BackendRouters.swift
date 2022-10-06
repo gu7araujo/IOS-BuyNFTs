@@ -11,6 +11,7 @@ enum Router {
     case doLogin
     case getProducts
     case getUser
+    case getArticles
 
     var path: String {
         switch self {
@@ -20,6 +21,8 @@ enum Router {
             return "/products"
         case .getUser:
             return "/login"
+        case .getArticles:
+            return "/articles"
         }
     }
 
@@ -30,6 +33,8 @@ enum Router {
         case .getProducts:
             return HTTPMethodType.get
         case .getUser:
+            return HTTPMethodType.get
+        case .getArticles:
             return HTTPMethodType.get
         }
     }

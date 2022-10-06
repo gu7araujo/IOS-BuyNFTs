@@ -46,6 +46,10 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        print("HomeViewController deinit")
+    }
+
     func setupConstraints() {
         let guide = view.safeAreaLayoutGuide
         navView.translatesAutoresizingMaskIntoConstraints = false
@@ -192,7 +196,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     deinit {
-        print("HomeViewController deinit")
+        print("HomeCollectionViewCell deinit")
     }
 
     func setupConstraints() {

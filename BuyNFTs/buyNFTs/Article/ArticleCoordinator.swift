@@ -31,7 +31,8 @@ class ArticleCoordinator: ArticleCoordinatorProtocol {
     // MARK: - Methods
 
     func start() {
-        let articleVC: ArticleViewController = .init()
-        navigationController.pushViewController(articleVC, animated: true)
+        let articleVM = ArticleViewModel()
+        let articleVC = ArticleViewController(articleVM)
+        navigationController.pushViewController(articleVC, animated: false)
     }
 }

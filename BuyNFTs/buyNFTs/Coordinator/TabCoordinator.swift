@@ -108,16 +108,22 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber()
         tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.tintColor = .white
         tabBarController.tabBar.backgroundColor = .systemGray
+        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.unselectedItemTintColor = .black
         navigationController.viewControllers = [tabBarController]
+        setupTabItemsAppearance()
     }
 
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
         let navController = UINavigationController()
-        navController.setNavigationBarHidden(false, animated: false)
+        navController.setNavigationBarHidden(true, animated: false)
+        navController.tabBarController?.tabBar.isHidden = true
 
-        navController.tabBarItem = UITabBarItem.init(tabBarSystemItem: page.pageIcon(), tag: page.pageOrderNumber())
+        navController.tabBarItem = UITabBarItem.init(
+            tabBarSystemItem: page.pageIcon(),
+            tag: page.pageOrderNumber()
+        )
 
         switch page {
         case .home:
@@ -130,11 +136,21 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
 
         return navController
     }
+
+    private func setupTabItemsAppearance() {
+        tabBarController.tabBar.items?.enumerated().forEach({ _, item in
+            if item == tabBarController.tabBar.selectedItem {
+                item.setTitleTextAttributes([.font: UIFont.boldSystemFont(ofSize: 15)], for: .normal)
+            } else {
+                item.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 10)], for: .normal)
+            }
+        })
+    }
 }
 
 // MARK: - UITabBarControllerDelegate
 extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        // Some implementation
+        setupTabItemsAppearance()
     }
 }

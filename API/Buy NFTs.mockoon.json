@@ -127,7 +127,53 @@
         },
         {
           "uuid": "665b8256-5c33-4ea5-865a-b41b1ce17b62",
-          "body": "[\n    {\n    \"id\": 200,\n    \"name\": \"Bitcoin/US Dollar\",\n    \"type\": \"crypto\",\n    \"price\": 19000.00,\n    \"image\": \"https://png.monster/wp-content/uploads/2022/02/png.monster-623.png\",\n    \"tracker\": \"BTC/USD\"\n  },\n  {\n    \"id\": 402,\n    \"name\": \"Ethereum/US Dollar\",\n    \"type\": \"crypto\",\n    \"price\": 1500.00,\n    \"image\": \"https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png\",\n    \"tracker\": \"ETH/USD\"\n  },\n  {\n    \"id\": 548,\n    \"name\": \"#7139\",\n    \"type\": \"nft\",\n    \"price\": 500.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/MmeOv3QD2WNYzC9oi5N7JQXl56kKMOndlKX_b4RIP0wu1og7AlQdVXcIEd7VLYL1Ir2dXLBQ7QSIDkccOPqx9AlbUfoO3qmMd5CAUA=w600\"\n  },\n  {\n    \"id\": 649,\n    \"name\": \"#3954\",\n    \"type\": \"nft\",\n    \"price\": 750.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/EEDsD5vxwzFeRpH9n5v475Xo7DX1jU91_ICDDe9U34h11_M9eG8UPNr-hhgCIQBxDhUCTWfM7vzV9jeHxyilnXE4XwO3cdZhHI1Y=w600\"\n  },\n  {\n    \"id\": 245,\n    \"name\": \"#9573\",\n    \"type\": \"nft\",\n    \"price\": 620.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/0iApFDQkAxMAfY4kWbBX7unwO_5JGA16He2hIWxakVVrGF8-1iBYnSAYqj_ckwjWP3fWJk2mwXpFdWnrGgOi6hRv0WmkT3D_G4ZORg=w600\"\n  },\n  {\n    \"id\": 1056,\n    \"name\": \"#6572\",\n    \"type\": \"nft\",\n    \"price\": 27654.28,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Mutant Ape Yacht Club\",\n    \"image\": \"https://img.seadn.io/files/fa01b488ea2556d0f45b8b3b80a2e5e6.png?fit=max&w=600\"\n  },\n  {\n    \"id\": 106,\n    \"name\": \"#2216\",\n    \"type\": \"nft\",\n    \"price\": 38.90,\n    \"creator\": \"LoomiDeployer\",\n    \"collection\": \"The Loomi Heads\",\n    \"image\": \"https://lh3.googleusercontent.com/jAUPupwXX_PpBjg6Q-XQilebu-IKCAtzkH0s-ChQxB6rt5YMBLz9HPI9fedY40FYekNl6jhwuWk1myHkl6U3sY0dLt8Fm9qPQ4TyQw=w600\"\n  }\n]",
+          "body": "[\n  {\n    \"id\": 200,\n    \"name\": \"Bitcoin/US Dollar\",\n    \"type\": \"crypto\",\n    \"price\": 19000.00,\n    \"image\": \"https://png.monster/wp-content/uploads/2022/02/png.monster-623.png\",\n    \"tracker\": \"BTC/USD\"\n  },\n  {\n    \"id\": 402,\n    \"name\": \"Ethereum/US Dollar\",\n    \"type\": \"crypto\",\n    \"price\": 1500.00,\n    \"image\": \"https://www.pngall.com/wp-content/uploads/10/Ethereum-Logo-PNG.png\",\n    \"tracker\": \"ETH/USD\"\n  },\n  {\n    \"id\": 548,\n    \"name\": \"#7139\",\n    \"type\": \"nft\",\n    \"price\": 500.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/MmeOv3QD2WNYzC9oi5N7JQXl56kKMOndlKX_b4RIP0wu1og7AlQdVXcIEd7VLYL1Ir2dXLBQ7QSIDkccOPqx9AlbUfoO3qmMd5CAUA=w600\"\n  },\n  {\n    \"id\": 649,\n    \"name\": \"#3954\",\n    \"type\": \"nft\",\n    \"price\": 750.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/EEDsD5vxwzFeRpH9n5v475Xo7DX1jU91_ICDDe9U34h11_M9eG8UPNr-hhgCIQBxDhUCTWfM7vzV9jeHxyilnXE4XwO3cdZhHI1Y=w600\"\n  },\n  {\n    \"id\": 245,\n    \"name\": \"#9573\",\n    \"type\": \"nft\",\n    \"price\": 620.00,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Bored Ape Yacht Club\",\n    \"image\": \"https://lh3.googleusercontent.com/0iApFDQkAxMAfY4kWbBX7unwO_5JGA16He2hIWxakVVrGF8-1iBYnSAYqj_ckwjWP3fWJk2mwXpFdWnrGgOi6hRv0WmkT3D_G4ZORg=w600\"\n  },\n  {\n    \"id\": 1056,\n    \"name\": \"#6572\",\n    \"type\": \"nft\",\n    \"price\": 27654.28,\n    \"creator\": \"YugaLabs\",\n    \"collection\": \"Mutant Ape Yacht Club\",\n    \"image\": \"https://img.seadn.io/files/fa01b488ea2556d0f45b8b3b80a2e5e6.png?fit=max&w=600\"\n  },\n  {\n    \"id\": 106,\n    \"name\": \"#2216\",\n    \"type\": \"nft\",\n    \"price\": 38.90,\n    \"creator\": \"LoomiDeployer\",\n    \"collection\": \"The Loomi Heads\",\n    \"image\": \"https://lh3.googleusercontent.com/jAUPupwXX_PpBjg6Q-XQilebu-IKCAtzkH0s-ChQxB6rt5YMBLz9HPI9fedY40FYekNl6jhwuWk1myHkl6U3sY0dLt8Fm9qPQ4TyQw=w600\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer [0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}-1ce8622e-[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}",
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "bc9776d1-34cc-4076-9aec-915257e35931",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "articles",
+      "responses": [
+        {
+          "uuid": "9ae21844-29b2-4a54-a4ab-a6e6318c64bf",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Unauthorized",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "d57d457d-b070-4c45-b450-b251f4ca6a6c",
+          "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"Deglobalization Is Happening. Crypto Is Part of the Answer\",\n    \"body\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"\n  },\n  {\n    \"id\": 2,\n    \"title\": \"Deglobalization Is Happening. Crypto Is Part of the Answer\",\n    \"body\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"\n  },\n  {\n    \"id\": 3,\n    \"title\": \"Deglobalization Is Happening. Crypto Is Part of the Answer\",\n    \"body\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"\n  },\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
