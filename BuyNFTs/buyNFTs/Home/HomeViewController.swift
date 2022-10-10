@@ -160,7 +160,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     let addButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Adicionar ao carrinho", for: .normal)
+        button.setTitle(NSLocalizedString("HomeViewController.addToCart", comment: ""), for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
         return button

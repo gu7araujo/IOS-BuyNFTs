@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  BuyNFTs
+
+  Created by Gustavo Araujo Santos on 10/10/22.
+  
+*/
+
+"HomeViewController.addToCart" = "Add to Cart";
