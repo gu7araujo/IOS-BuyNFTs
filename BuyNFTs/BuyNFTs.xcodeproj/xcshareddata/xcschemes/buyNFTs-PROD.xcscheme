@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B75FD70728C0F91100141F62"
-               BuildableName = "buyNFTs.app"
-               BlueprintName = "buyNFTs"
+               BlueprintIdentifier = "B7B4DAB428F48D4000BF7CBA"
+               BuildableName = "buyNFTs-PROD.app"
+               BlueprintName = "buyNFTs-PROD"
                ReferencedContainer = "container:BuyNFTs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B75FD70728C0F91100141F62"
-            BuildableName = "buyNFTs.app"
-            BlueprintName = "buyNFTs"
+            BlueprintIdentifier = "B7B4DAB428F48D4000BF7CBA"
+            BuildableName = "buyNFTs-PROD.app"
+            BlueprintName = "buyNFTs-PROD"
             ReferencedContainer = "container:BuyNFTs.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B75FD70728C0F91100141F62"
-            BuildableName = "buyNFTs.app"
-            BlueprintName = "buyNFTs"
+            BlueprintIdentifier = "B7B4DAB428F48D4000BF7CBA"
+            BuildableName = "buyNFTs-PROD.app"
+            BlueprintName = "buyNFTs-PROD"
             ReferencedContainer = "container:BuyNFTs.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
