@@ -40,6 +40,12 @@
 		B78D972228C2841200C99AF1 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D972128C2841200C99AF1 /* LoginCoordinator.swift */; };
 		B78D972428C2845000C99AF1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D972328C2845000C99AF1 /* Coordinator.swift */; };
 		B78D972628C2861C00C99AF1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D972528C2861C00C99AF1 /* MainCoordinator.swift */; };
+		B79141C928F480DE0027BB31 /* AppStartUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79141C828F480DE0027BB31 /* AppStartUp.swift */; };
+		B79141CC28F484F30027BB31 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79141CB28F484F30027BB31 /* Environments.swift */; };
+		B79141CE28F485210027BB31 /* EnvironmentDevelopmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79141CD28F485210027BB31 /* EnvironmentDevelopmentVariables.swift */; };
+		B79141D028F485400027BB31 /* EnvironmentProductionVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79141CF28F485400027BB31 /* EnvironmentProductionVariables.swift */; };
+		B79141D228F4856E0027BB31 /* InitializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79141D128F4856E0027BB31 /* InitializerProtocol.swift */; };
+		B79141D428F485830027BB31 /* AuthInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79141D328F485830027BB31 /* AuthInitializer.swift */; };
 		B79B7D0328EB0F4600132E84 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B7D0228EB0F4600132E84 /* Article.swift */; };
 		B79B7D0528EB0FAE00132E84 /* ArticleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B7D0428EB0FAE00132E84 /* ArticleRepository.swift */; };
 		B79B7D0728EB113D00132E84 /* ListArticlesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B7D0628EB113D00132E84 /* ListArticlesUseCase.swift */; };
@@ -126,7 +132,7 @@
 		B75FD70E28C0F91100141F62 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B75FD71328C0F91300141F62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B75FD71628C0F91300141F62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B75FD71828C0F91300141F62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B75FD71828C0F91300141F62 /* Info-dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-dev.plist"; sourceTree = "<group>"; };
 		B770092728D4B48E007232B8 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		B77304922892DFA000F0F3F5 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77304992892E40D00F0F3F5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -139,6 +145,12 @@
 		B78D972128C2841200C99AF1 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B78D972328C2845000C99AF1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B78D972528C2861C00C99AF1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		B79141C828F480DE0027BB31 /* AppStartUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartUp.swift; sourceTree = "<group>"; };
+		B79141CB28F484F30027BB31 /* Environments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environments.swift; sourceTree = "<group>"; };
+		B79141CD28F485210027BB31 /* EnvironmentDevelopmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentDevelopmentVariables.swift; sourceTree = "<group>"; };
+		B79141CF28F485400027BB31 /* EnvironmentProductionVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProductionVariables.swift; sourceTree = "<group>"; };
+		B79141D128F4856E0027BB31 /* InitializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializerProtocol.swift; sourceTree = "<group>"; };
+		B79141D328F485830027BB31 /* AuthInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInitializer.swift; sourceTree = "<group>"; };
 		B79B7D0228EB0F4600132E84 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		B79B7D0428EB0FAE00132E84 /* ArticleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRepository.swift; sourceTree = "<group>"; };
 		B79B7D0628EB113D00132E84 /* ListArticlesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListArticlesUseCase.swift; sourceTree = "<group>"; };
@@ -195,7 +207,6 @@
 				51B228BD42CE3CE100F9392C /* Pods-buyNFTs.debug.xcconfig */,
 				B13E76CBF7D37B2EC27A3EF1 /* Pods-buyNFTs.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -260,6 +271,7 @@
 		B75FD70928C0F91100141F62 /* buyNFTs */ = {
 			isa = PBXGroup;
 			children = (
+				B79141CA28F484D50027BB31 /* Initialization */,
 				B7B9B30728CA6A56002175B3 /* Extension */,
 				B734A04B28E20DB500359633 /* Article */,
 				B78C517528E8CE3700B4F0FA /* Home */,
@@ -269,7 +281,7 @@
 				B75FD70C28C0F91100141F62 /* SceneDelegate.swift */,
 				B75FD71328C0F91300141F62 /* Assets.xcassets */,
 				B75FD71528C0F91300141F62 /* LaunchScreen.storyboard */,
-				B75FD71828C0F91300141F62 /* Info.plist */,
+				B75FD71828C0F91300141F62 /* Info-dev.plist */,
 			);
 			path = buyNFTs;
 			sourceTree = "<group>";
@@ -337,6 +349,19 @@
 				B734A04728E2060E00359633 /* TabCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B79141CA28F484D50027BB31 /* Initialization */ = {
+			isa = PBXGroup;
+			children = (
+				B79141C828F480DE0027BB31 /* AppStartUp.swift */,
+				B79141CB28F484F30027BB31 /* Environments.swift */,
+				B79141CD28F485210027BB31 /* EnvironmentDevelopmentVariables.swift */,
+				B79141CF28F485400027BB31 /* EnvironmentProductionVariables.swift */,
+				B79141D128F4856E0027BB31 /* InitializerProtocol.swift */,
+				B79141D328F485830027BB31 /* AuthInitializer.swift */,
+			);
+			path = Initialization;
 			sourceTree = "<group>";
 		};
 		B7B2DABD28CF750F000B5D83 /* DomainTests */ = {
@@ -603,11 +628,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79141D028F485400027BB31 /* EnvironmentProductionVariables.swift in Sources */,
 				B72ABF6F28C778C400028027 /* HomeCoordinator.swift in Sources */,
 				B79B7D0928EB12A000132E84 /* ArticleViewModel.swift in Sources */,
 				B75FD70F28C0F91100141F62 /* LoginViewController.swift in Sources */,
 				B72ABF6D28C775B500028027 /* HomeViewModel.swift in Sources */,
 				B734A04828E2060E00359633 /* TabCoordinator.swift in Sources */,
+				B79141CE28F485210027BB31 /* EnvironmentDevelopmentVariables.swift in Sources */,
 				B78D972628C2861C00C99AF1 /* MainCoordinator.swift in Sources */,
 				B75FD70B28C0F91100141F62 /* AppDelegate.swift in Sources */,
 				B72ABF6B28C7757F00028027 /* HomeViewController.swift in Sources */,
@@ -617,6 +644,10 @@
 				B78D972228C2841200C99AF1 /* LoginCoordinator.swift in Sources */,
 				B78D971C28C2484500C99AF1 /* LoginViewModel.swift in Sources */,
 				B770092828D4B48E007232B8 /* ProductDetailsViewController.swift in Sources */,
+				B79141D428F485830027BB31 /* AuthInitializer.swift in Sources */,
+				B79141C928F480DE0027BB31 /* AppStartUp.swift in Sources */,
+				B79141D228F4856E0027BB31 /* InitializerProtocol.swift in Sources */,
+				B79141CC28F484F30027BB31 /* Environments.swift in Sources */,
 				B75FD70D28C0F91100141F62 /* SceneDelegate.swift in Sources */,
 				B734A04A28E20D3400359633 /* ArticleCoordinator.swift in Sources */,
 			);
@@ -706,7 +737,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RHBH6Q62PG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = buyNFTs/Info.plist;
+				INFOPLIST_FILE = "buyNFTs/Info-dev.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = buyNFTs;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -735,7 +766,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RHBH6Q62PG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = buyNFTs/Info.plist;
+				INFOPLIST_FILE = "buyNFTs/Info-dev.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = buyNFTs;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
