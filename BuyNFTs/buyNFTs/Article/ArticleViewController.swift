@@ -51,14 +51,15 @@ class ArticleViewController: UIViewController {
     }
 
     func buildConstraints() {
-        collectionView.backgroundColor = .purple
-
+        let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
         ])
+        collectionView.backgroundColor = .purple
+        view.backgroundColor = .purple
     }
 
     // MARK: - View lifecycle
