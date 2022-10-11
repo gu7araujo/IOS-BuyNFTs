@@ -15,6 +15,16 @@
 		B734A04A28E20D3400359633 /* ArticleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B734A04928E20D3400359633 /* ArticleCoordinator.swift */; };
 		B734A04D28E20DEE00359633 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B734A04C28E20DEE00359633 /* ArticleViewController.swift */; };
 		B734F24728F48E7900CFFA98 /* Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = B75FD71828C0F91300141F62 /* Info-dev.plist */; };
+		B750B65428F5DD430044C213 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750B65328F5DD430044C213 /* Typography.swift */; };
+		B750B66628F5E0BD0044C213 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750B66528F5E0BD0044C213 /* UIFont+Extension.swift */; };
+		B750B66728F5E0BD0044C213 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750B66528F5E0BD0044C213 /* UIFont+Extension.swift */; };
+		B750B66828F5E3FC0044C213 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750B65328F5DD430044C213 /* Typography.swift */; };
+		B750B68A28F5EA280044C213 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B750B68728F5EA270044C213 /* Roboto-Regular.ttf */; };
+		B750B68B28F5EA280044C213 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B750B68728F5EA270044C213 /* Roboto-Regular.ttf */; };
+		B750B68C28F5EA280044C213 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B750B68828F5EA280044C213 /* Roboto-Bold.ttf */; };
+		B750B68D28F5EA280044C213 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B750B68828F5EA280044C213 /* Roboto-Bold.ttf */; };
+		B750B68E28F5EA280044C213 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B750B68928F5EA280044C213 /* Roboto-Light.ttf */; };
+		B750B68F28F5EA280044C213 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B750B68928F5EA280044C213 /* Roboto-Light.ttf */; };
 		B752F90128C5609600E279F2 /* SaveTokenInKeyChainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752F90028C5609600E279F2 /* SaveTokenInKeyChainUseCase.swift */; };
 		B752F90328C569E700E279F2 /* ReadTokenInKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752F90228C569E700E279F2 /* ReadTokenInKeyChain.swift */; };
 		B75FD70B28C0F91100141F62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FD70A28C0F91100141F62 /* AppDelegate.swift */; };
@@ -172,6 +182,11 @@
 		B734A04728E2060E00359633 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
 		B734A04928E20D3400359633 /* ArticleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCoordinator.swift; sourceTree = "<group>"; };
 		B734A04C28E20DEE00359633 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		B750B65328F5DD430044C213 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		B750B66528F5E0BD0044C213 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		B750B68728F5EA270044C213 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		B750B68828F5EA280044C213 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		B750B68928F5EA280044C213 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		B752F90028C5609600E279F2 /* SaveTokenInKeyChainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTokenInKeyChainUseCase.swift; sourceTree = "<group>"; };
 		B752F90228C569E700E279F2 /* ReadTokenInKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTokenInKeyChain.swift; sourceTree = "<group>"; };
 		B75E61F928A574D700D4E7A4 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -310,6 +325,32 @@
 			path = Article;
 			sourceTree = "<group>";
 		};
+		B750B65128F5DC050044C213 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B750B68828F5EA280044C213 /* Roboto-Bold.ttf */,
+				B750B68928F5EA280044C213 /* Roboto-Light.ttf */,
+				B750B68728F5EA270044C213 /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B750B65228F5DD320044C213 /* Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				B750B65328F5DD430044C213 /* Typography.swift */,
+			);
+			path = Tokens;
+			sourceTree = "<group>";
+		};
+		B750B66428F5E0930044C213 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B750B66528F5E0BD0044C213 /* UIFont+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B75BBE82289D756E0008E9A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +471,9 @@
 		B79141D528F4871A0027BB31 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B750B66428F5E0930044C213 /* Extensions */,
+				B750B65228F5DD320044C213 /* Tokens */,
+				B750B65128F5DC050044C213 /* Fonts */,
 				B75FD71528C0F91300141F62 /* LaunchScreen.storyboard */,
 				B75FD71328C0F91300141F62 /* Assets.xcassets */,
 				B79141E628F489280027BB31 /* Localizable.strings */,
@@ -651,6 +695,9 @@
 			files = (
 				B734F24728F48E7900CFFA98 /* Info-dev.plist in Resources */,
 				B75FD71728C0F91300141F62 /* LaunchScreen.storyboard in Resources */,
+				B750B68C28F5EA280044C213 /* Roboto-Bold.ttf in Resources */,
+				B750B68A28F5EA280044C213 /* Roboto-Regular.ttf in Resources */,
+				B750B68E28F5EA280044C213 /* Roboto-Light.ttf in Resources */,
 				B79141E428F489280027BB31 /* Localizable.strings in Resources */,
 				B75FD71428C0F91300141F62 /* Assets.xcassets in Resources */,
 			);
@@ -676,6 +723,9 @@
 			files = (
 				B7B4DAD328F48D4000BF7CBA /* LaunchScreen.storyboard in Resources */,
 				B7B4DAD428F48D4000BF7CBA /* Localizable.strings in Resources */,
+				B750B68D28F5EA280044C213 /* Roboto-Bold.ttf in Resources */,
+				B750B68B28F5EA280044C213 /* Roboto-Regular.ttf in Resources */,
+				B750B68F28F5EA280044C213 /* Roboto-Light.ttf in Resources */,
 				B7B4DAD528F48D4000BF7CBA /* Assets.xcassets in Resources */,
 				B7E3177028F4918B0071888F /* Info-prod.plist in Resources */,
 			);
@@ -782,6 +832,7 @@
 				B75FD70F28C0F91100141F62 /* LoginViewController.swift in Sources */,
 				B72ABF6D28C775B500028027 /* HomeViewModel.swift in Sources */,
 				B734A04828E2060E00359633 /* TabCoordinator.swift in Sources */,
+				B750B66628F5E0BD0044C213 /* UIFont+Extension.swift in Sources */,
 				B79141CE28F485210027BB31 /* EnvironmentDevelopmentVariables.swift in Sources */,
 				B78D972628C2861C00C99AF1 /* MainCoordinator.swift in Sources */,
 				B75FD70B28C0F91100141F62 /* AppDelegate.swift in Sources */,
@@ -795,6 +846,7 @@
 				B79141D428F485830027BB31 /* AuthInitializer.swift in Sources */,
 				B79141C928F480DE0027BB31 /* AppStartUp.swift in Sources */,
 				B79141D228F4856E0027BB31 /* InitializerProtocol.swift in Sources */,
+				B750B65428F5DD430044C213 /* Typography.swift in Sources */,
 				B79141CC28F484F30027BB31 /* Environments.swift in Sources */,
 				B75FD70D28C0F91100141F62 /* SceneDelegate.swift in Sources */,
 				B734A04A28E20D3400359633 /* ArticleCoordinator.swift in Sources */,
@@ -844,10 +896,12 @@
 				B7B4DABB28F48D4000BF7CBA /* ArticleViewModel.swift in Sources */,
 				B7B4DABC28F48D4000BF7CBA /* LoginViewController.swift in Sources */,
 				B7B4DABD28F48D4000BF7CBA /* HomeViewModel.swift in Sources */,
+				B750B66728F5E0BD0044C213 /* UIFont+Extension.swift in Sources */,
 				B7B4DABE28F48D4000BF7CBA /* TabCoordinator.swift in Sources */,
 				B7B4DABF28F48D4000BF7CBA /* EnvironmentDevelopmentVariables.swift in Sources */,
 				B7B4DAC028F48D4000BF7CBA /* MainCoordinator.swift in Sources */,
 				B7B4DAC128F48D4000BF7CBA /* AppDelegate.swift in Sources */,
+				B750B66828F5E3FC0044C213 /* Typography.swift in Sources */,
 				B7B4DAC228F48D4000BF7CBA /* HomeViewController.swift in Sources */,
 				B7B4DAC328F48D4000BF7CBA /* ArticleViewController.swift in Sources */,
 				B7B4DAC428F48D4000BF7CBA /* Coordinator.swift in Sources */,
@@ -930,7 +984,7 @@
 				DEVELOPMENT_TEAM = RHBH6Q62PG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "buyNFTs/Initialization/Info-dev.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = buyNFTs;
+				INFOPLIST_KEY_CFBundleDisplayName = "buyNFTs-DEV";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -959,7 +1013,7 @@
 				DEVELOPMENT_TEAM = RHBH6Q62PG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "buyNFTs/Initialization/Info-dev.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = buyNFTs;
+				INFOPLIST_KEY_CFBundleDisplayName = "buyNFTs-DEV";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

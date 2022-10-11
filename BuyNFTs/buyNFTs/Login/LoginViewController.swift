@@ -39,6 +39,7 @@ class LoginViewController: UIViewController {
         button.setTitle("do Login", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(loginButtonClick), for: .touchUpInside)
+        button.titleLabel?.font = Typography.p1Bold.rawValue
         return button
     }()
 
