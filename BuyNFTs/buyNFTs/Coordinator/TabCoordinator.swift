@@ -108,8 +108,8 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber()
         tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.backgroundColor = .systemGray
-        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.backgroundColor = Colors.white.rawValue
+        tabBarController.tabBar.tintColor = Colors.happiness.rawValue
         tabBarController.tabBar.unselectedItemTintColor = .black
         navigationController.viewControllers = [tabBarController]
         setupTabItemsAppearance()
