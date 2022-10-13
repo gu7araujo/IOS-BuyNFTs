@@ -17,9 +17,10 @@ class LoginViewController: UIViewController {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.font = .systemFont(ofSize: 20)
-        field.placeholder = "login"
+        field.placeholder = NSLocalizedString("LoginViewController.login", comment: "")
         field.borderStyle = .roundedRect
         field.autocapitalizationType = .none
+        field.font = Typography.p1Light.rawValue
         return field
     }()
 
@@ -27,19 +28,20 @@ class LoginViewController: UIViewController {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.font = .systemFont(ofSize: 20)
-        field.placeholder = "password"
+        field.placeholder = NSLocalizedString("LoginViewController.password", comment: "")
         field.borderStyle = .roundedRect
         field.isSecureTextEntry = true
+        field.font = Typography.p1Light.rawValue
         return field
     }()
 
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("do Login", for: .normal)
+        button.setTitle(NSLocalizedString("LoginViewController.loginButton", comment: ""), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(loginButtonClick), for: .touchUpInside)
-        button.titleLabel?.font = Typography.p1Bold.rawValue
+        button.titleLabel?.font = Typography.p1Light.rawValue
         return button
     }()
 
@@ -64,20 +66,20 @@ class LoginViewController: UIViewController {
     }
 
     func setupConstraints() {
-        view.addSubview(loginField)
-        NSLayoutConstraint.activate([
-            loginField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            loginField.widthAnchor.constraint(equalToConstant: 150),
-            loginField.heightAnchor.constraint(equalToConstant: 50)
-        ])
-
         view.addSubview(passwordField)
         NSLayoutConstraint.activate([
             passwordField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passwordField.topAnchor.constraint(equalTo: loginField.bottomAnchor, constant: 10),
+            passwordField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             passwordField.widthAnchor.constraint(equalToConstant: 150),
             passwordField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
+        view.addSubview(loginField)
+        NSLayoutConstraint.activate([
+            loginField.bottomAnchor.constraint(equalTo: passwordField.topAnchor, constant: -10),
+            loginField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginField.widthAnchor.constraint(equalToConstant: 150),
+            loginField.heightAnchor.constraint(equalToConstant: 50)
         ])
 
         view.addSubview(loginButton)

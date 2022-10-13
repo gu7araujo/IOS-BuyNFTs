@@ -346,6 +346,7 @@
 		B750B66428F5E0930044C213 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B7B9B30828CA6A81002175B3 /* UIImageView+Extension.swift */,
 				B750B66528F5E0BD0044C213 /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
@@ -376,7 +377,6 @@
 			children = (
 				B79141D528F4871A0027BB31 /* Resources */,
 				B79141CA28F484D50027BB31 /* Initialization */,
-				B7B9B30728CA6A56002175B3 /* Extension */,
 				B734A04B28E20DB500359633 /* Article */,
 				B78C517528E8CE3700B4F0FA /* Home */,
 				B78C517428E8CE0F00B4F0FA /* Login */,
@@ -487,14 +487,6 @@
 				B7B2DABE28CF750F000B5D83 /* LoginUseCaseTests.swift */,
 			);
 			path = DomainTests;
-			sourceTree = "<group>";
-		};
-		B7B9B30728CA6A56002175B3 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				B7B9B30828CA6A81002175B3 /* UIImageView+Extension.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		B7B9B30A28CA6B9F002175B3 /* Helpers */ = {
