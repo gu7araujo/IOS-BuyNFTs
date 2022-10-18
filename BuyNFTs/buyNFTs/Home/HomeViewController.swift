@@ -18,12 +18,12 @@ class HomeViewController: UIViewController {
     // MARK: - Private properties
 
     private let navView = CartNavigationView()
-    private var viewModel: HomeViewModelProtocol?
+    private var viewModel: HomeViewModel?
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Initialization
 
-    init(_ viewModel: HomeViewModelProtocol) {
+    init(_ viewModel: HomeViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
         setupConstraints()
@@ -50,28 +50,24 @@ class HomeViewController: UIViewController {
     }
 
     func setupBinders() {
-        viewModel?.errorPublisher.sink { error in
-            guard let error = error else {
-                return
-            }
-            print(error)
-        }.store(in: &cancellables)
+        viewModel?.$error
+            .receive(on: RunLoop.main)
+            .sink { [weak self] error in
+                guard (error != nil) else { return }
+            }.store(in: &cancellables)
 
-//        viewModel?.productsPublisher
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveValue: { [weak self] products in
-//                self?.products = products
-//                self?.collectionView.reloadData()
-//            }).store(in: &cancellables)
+        viewModel?.$products
+            .receive(on: RunLoop.main)
+            .sink { [weak self] products in
+                guard !products.isEmpty else { return }
+            }.store(in: &cancellables)
 
-        viewModel?.cartPublisher
-            .receive(on: DispatchQueue.main)
+        viewModel?.$cart
+            .receive(on: RunLoop.main)
             .sink { [weak self] cart in
-            guard let cart = cart else {
-                return
-            }
-            self?.navView.set(badgeValue: cart.products.count)
-        }.store(in: &cancellables)
+                guard let cart = cart else { return }
+                self?.navView.set(badgeValue: cart.products.count)
+            }.store(in: &cancellables)
     }
 
     // MARK: - View lifecycle

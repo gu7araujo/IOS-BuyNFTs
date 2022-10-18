@@ -12,8 +12,8 @@ class ArticleViewModel {
 
     // MARK: - Public properties
 
-    var articles: [Article] = []
-    var error: String?
+    @Published var articles: [Article] = []
+    @Published var error: String?
 
     // MARK: - Private properties
 

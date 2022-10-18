@@ -8,38 +8,13 @@
 import Foundation
 import Domain
 
-protocol HomeViewModelProtocol {
-    var error: String? { get }
-    var errorPublished: Published<String?> { get }
-    var errorPublisher: Published<String?>.Publisher { get }
-    var products: [Product] { get }
-    var productsPublished: Published<[Product]> { get }
-    var productsPublisher: Published<[Product]>.Publisher { get }
-    var cart: ShoppingCart? { get }
-    var cartPublished: Published<ShoppingCart?> { get }
-    var cartPublisher: Published<ShoppingCart?>.Publisher { get }
-    func getProducts()
-    func createShoopingCart()
-    func addToShoopingCart(product: Product)
-    func openProductDetails(_ product: Product)
-}
-
-class HomeViewModel: HomeViewModelProtocol {
+class HomeViewModel {
 
     // MARK: - Public properties
 
     @Published var error: String?
-    var errorPublished: Published<String?> { _error }
-    var errorPublisher: Published<String?>.Publisher { $error }
-
     @Published var products: [Product] = []
-    var productsPublished: Published<[Product]> { _products }
-    var productsPublisher: Published<[Product]>.Publisher { $products }
-
     @Published var cart: ShoppingCart?
-    var cartPublished: Published<ShoppingCart?> { _cart }
-    var cartPublisher: Published<ShoppingCart?>.Publisher { $cart }
-
     var didSendEventClosure: ((HomeViewModel.Event) -> Void)?
 
     // MARK: - Private properties
@@ -50,7 +25,10 @@ class HomeViewModel: HomeViewModelProtocol {
 
     // MARK: - Initialization
 
-    init(listProductsUseCase: ListProductsUseCaseProtocol = ListProductsUseCase(), createCartUseCase: CreateCartUseCaseProtocol = CreateCartUseCase(), addToCartUseCase: AddToCartUseCaseProtocol = AddToCartUseCase()) {
+    init(listProductsUseCase: ListProductsUseCaseProtocol = ListProductsUseCase(),
+         createCartUseCase: CreateCartUseCaseProtocol = CreateCartUseCase(),
+         addToCartUseCase: AddToCartUseCaseProtocol = AddToCartUseCase())
+    {
         self.listProductsUseCase = listProductsUseCase
         self.createCartUseCase = createCartUseCase
         self.addToCartUseCase = addToCartUseCase
