@@ -33,11 +33,10 @@ class ArticleViewModel {
 
     func getArticles() {
         Task {
-            let result = await listArticlesUseCase.execute()
-            switch result {
-            case .success(let articles):
-                self.articles = articles
-            case .failure(let error):
+            do {
+                let articlesResult = try await listArticlesUseCase.execute()
+                self.articles = articlesResult
+            } catch {
                 self.error = error.localizedDescription
             }
         }

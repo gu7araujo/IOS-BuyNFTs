@@ -9,7 +9,7 @@ import Foundation
 import Infrastructure
 
 public protocol ArticleRepositoryProtocol {
-    func get() async -> Result<[Article], Error>
+    func get() async throws -> [Article]
 }
 
 public class ArticleRepository: ArticleRepositoryProtocol {
@@ -22,28 +22,15 @@ public class ArticleRepository: ArticleRepositoryProtocol {
         self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
     }
 
-    public func get() async -> Result<[Article], Error> {
-        var token = ""
-        var articles: [Article] = []
+    public func get() async throws -> [Article] {
+        let tokenResult = try readTokenInKeyChainUseCase.execute()
+        let response = try await networkService.request(path: Router.getArticles.path, httpMethod: Router.getArticles.httpMethod, body: nil, headerAuthorization: tokenResult)
 
         do {
-            token = try readTokenInKeyChainUseCase.execute()
+            let articlesResult = try JSONDecoder().decode([Article].self, from: response)
+            return articlesResult
         } catch {
-            return .failure(error)
-        }
-
-        let result = await networkService.request(path: Router.getArticles.path, httpMethod: Router.getArticles.httpMethod, body: nil, headerAuthorization: token)
-        switch result {
-        case .success(let data):
-            do {
-                articles = try JSONDecoder().decode([Article].self, from: data)
-
-                return .success(articles)
-            } catch {
-                fatalError("Json Decoder with Article in getArticles router")
-            }
-        case .failure(let error):
-            return .failure(error)
+            fatalError("Json Decoder with Article in getArticles router")
         }
     }
 

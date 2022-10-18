@@ -8,20 +8,11 @@
 import Foundation
 import Domain
 
-protocol LoginViewModelProtocol {
-    var errorPublished: Published<String?> { get }
-    var errorPublisher: Published<String?>.Publisher { get }
-    func doLogin(_ username: String, _ password: String)
-}
-
-class LoginViewModel: LoginViewModelProtocol {
+class LoginViewModel {
 
     // MARK: - Public properties
 
     @Published var error: String?
-    var errorPublished: Published<String?> { _error }
-    var errorPublisher: Published<String?>.Publisher { $error }
-
     var didSendEventClosure: ((LoginViewModel.Event) -> Void)?
 
     // MARK: - Private properties
@@ -40,13 +31,11 @@ class LoginViewModel: LoginViewModelProtocol {
 
     func doLogin(_ username: String, _ password: String) {
         Task {
-            let result = await loginUseCase.execute(userName: username, password: password)
-
-            switch result {
-            case .success(let token):
-                saveToken(username: username, token: token)
+            do {
+                let tokenResult = try await loginUseCase.execute(userName: username, password: password)
+                saveToken(username: username, token: tokenResult)
                 navigateToHome()
-            case .failure(let error):
+            } catch {
                 self.error = error.localizedDescription
             }
         }

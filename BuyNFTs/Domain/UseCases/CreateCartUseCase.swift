@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol CreateCartUseCaseProtocol {
-    func execute() async -> Result<ShoppingCart, Error>
+    func execute() async throws -> ShoppingCart
 }
 
 public class CreateCartUseCase: CreateCartUseCaseProtocol {
@@ -19,14 +19,8 @@ public class CreateCartUseCase: CreateCartUseCaseProtocol {
         self.cartRepository = CartRepository()
     }
 
-    public func execute() async -> Result<ShoppingCart, Error> {
-        let result = await cartRepository.get()
-
-        switch result {
-        case .success(let cart):
-            return .success(cart)
-        case .failure(let error):
-            return .failure(error)
-        }
+    public func execute() async throws -> ShoppingCart {
+        let shoopingCartResult = try await cartRepository.get()
+        return shoopingCartResult
     }
 }

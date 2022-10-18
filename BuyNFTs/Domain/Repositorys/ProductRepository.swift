@@ -9,7 +9,7 @@ import Foundation
 import Infrastructure
 
 protocol ProductRepositoryProtocol {
-    func get() async -> Result<[Product], Error>
+    func get() async throws -> [Product]
 }
 
 class ProductRepository: ProductRepositoryProtocol {
@@ -22,28 +22,15 @@ class ProductRepository: ProductRepositoryProtocol {
         self.getTokenAuthorization = ReadTokenInKeyChainUseCase()
     }
 
-    func get() async -> Result<[Product], Error> {
-        var token = ""
+    func get() async throws -> [Product] {
+        let tokenResult = try getTokenAuthorization.execute()
+        let response = try await network.request(path: Router.getProducts.path, httpMethod: Router.getProducts.httpMethod, body: nil, headerAuthorization: tokenResult)
 
         do {
-            token = try getTokenAuthorization.execute()
+            let products = try JSONDecoder().decode([Product].self, from: response)
+            return products
         } catch {
-            return .failure(error)
-        }
-
-        let result = await network.request(path: Router.getProducts.path, httpMethod: Router.getProducts.httpMethod, body: nil, headerAuthorization: token)
-
-        switch result {
-        case .success(let data):
-            do {
-                let parsedData = try JSONDecoder().decode([Product].self, from: data)
-
-                return .success(parsedData)
-            } catch {
-                fatalError("Json Decoder with Product in getProducts router")
-            }
-        case .failure(let error):
-            return .failure(error)
+            fatalError("Json Decoder with Product in getProducts router")
         }
     }
 }

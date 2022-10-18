@@ -47,12 +47,12 @@ class LoginViewController: UIViewController {
 
     // MARK: - Private properties
 
-    private var viewModel: LoginViewModelProtocol?
+    private var viewModel: LoginViewModel?
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Initialization
 
-    init(_ viewModel: LoginViewModelProtocol) {
+    init(_ viewModel: LoginViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
     }
@@ -103,11 +103,11 @@ class LoginViewController: UIViewController {
     // MARK: - Methods
 
     func setupBinders() {
-        viewModel?.errorPublisher.sink { error in
-            guard let error = error else {
-                return
-            }
-            print(error)
+        viewModel?.$error
+            .receive(on: RunLoop.main)
+            .sink { error in
+                guard (error != nil) else { return }
+                self.loginButton.setTitleColor(.red, for: .normal)
         }.store(in: &cancellables)
     }
 

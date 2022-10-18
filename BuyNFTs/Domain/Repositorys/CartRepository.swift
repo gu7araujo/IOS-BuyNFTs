@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CartRepositoryProtocol {
-    func get() async -> Result<ShoppingCart, Error>
+    func get() async throws -> ShoppingCart
     func addProduct(_ cart: ShoppingCart, product: Product) -> ShoppingCart
     func deleteProduct(_ cart: ShoppingCart, product: Product) -> ShoppingCart
 }
@@ -21,16 +21,9 @@ class CartRepository: CartRepositoryProtocol {
         self.userRepository = UserRepository()
     }
 
-    func get() async -> Result<ShoppingCart, Error> {
-        let userResult = await userRepository.getByToken()
-
-        switch userResult {
-        case .success(let customer):
-            let cart = ShoppingCart(customer: customer, products: [])
-            return .success(cart)
-        case .failure(let error):
-            return .failure(error)
-        }
+    func get() async throws -> ShoppingCart {
+        let userResult = try await userRepository.getByToken()
+        return ShoppingCart(customer: userResult, products: [])
     }
 
     func addProduct(_ cart: ShoppingCart, product: Product) -> ShoppingCart {

@@ -8,6 +8,7 @@
 import Foundation
 
 enum NetworkError: Error {
+    case badResponse
     case error(Error)
 }
 
@@ -17,13 +18,13 @@ public enum HTTPMethodType: String {
 }
 
 public protocol NetworkServiceProtocol {
-    func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]?, headerAuthorization: String?) async -> Result<Data, Error>
+    func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]?, headerAuthorization: String?) async throws -> Data
 }
 
 public class NetworkService: NetworkServiceProtocol {
     public init() {}
 
-    public func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]?, headerAuthorization: String?) async -> Result<Data, Error> {
+    public func request(path: String, httpMethod: HTTPMethodType, body: [String: Any]?, headerAuthorization: String?) async throws -> Data {
         // make url
         guard var urlComponents = URLComponents(string: "http://localhost:3001") else {
             fatalError("Url generation")
@@ -57,11 +58,17 @@ public class NetworkService: NetworkServiceProtocol {
 
         // urlSession
         do {
-            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
 
-            return .success(data)
+            if let httpResponse = response as? HTTPURLResponse {
+                guard httpResponse.statusCode == 200 else {
+                    throw NetworkError.badResponse
+                }
+            }
+
+            return data
         } catch {
-            return .failure(NetworkError.error(error))
+            throw NetworkError.error(error)
         }
     }
 }

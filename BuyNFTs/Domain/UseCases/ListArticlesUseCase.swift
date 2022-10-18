@@ -21,7 +21,7 @@ extension ListArticlesError: LocalizedError {
 }
 
 public protocol ListArticlesUseCaseProtocol {
-    func execute() async -> Result<[Article], Error>
+    func execute() async throws -> [Article]
 }
 
 public class ListArticlesUseCase: ListArticlesUseCaseProtocol {
@@ -32,13 +32,12 @@ public class ListArticlesUseCase: ListArticlesUseCaseProtocol {
         self.articleRepository = articleRepository
     }
 
-    public func execute() async -> Result<[Article], Error> {
-        let result = await articleRepository.get()
-        switch result {
-        case .success(let articles):
-            return .success(articles)
-        case .failure(_):
-            return .failure(ListArticlesError.notReturnedArticles)
+    public func execute() async throws -> [Article] {
+        do {
+            let articlesResponse = try await articleRepository.get()
+            return articlesResponse
+        } catch {
+            throw ListArticlesError.notReturnedArticles
         }
     }
 

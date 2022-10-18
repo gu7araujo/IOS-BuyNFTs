@@ -21,7 +21,7 @@ extension LoginError: LocalizedError {
 }
 
 public protocol LoginUseCaseProtocol {
-    func execute(userName: String, password: String) async -> Result<String, Error>
+    func execute(userName: String, password: String) async throws -> String
 }
 
 public class LoginUseCase: LoginUseCaseProtocol {
@@ -32,14 +32,12 @@ public class LoginUseCase: LoginUseCaseProtocol {
         self.userRepository = useRepository
     }
 
-    public func execute(userName: String, password: String) async -> Result<String, Error> {
-        let result = await userRepository.get(userName: userName, password: password)
-
-        switch result {
-        case .success(let user):
-            return .success(user.token)
-        case .failure(_):
-            return .failure(LoginError.userNotFound)
+    public func execute(userName: String, password: String) async throws -> String {
+        do {
+            let userResult = try await userRepository.get(userName: userName, password: password)
+            return userResult.token
+        } catch {
+            throw LoginError.userNotFound
         }
     }
 }

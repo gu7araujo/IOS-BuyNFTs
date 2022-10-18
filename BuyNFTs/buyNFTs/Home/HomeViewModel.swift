@@ -73,12 +73,10 @@ class HomeViewModel: HomeViewModelProtocol {
 
     func createShoopingCart() {
         Task {
-            let result = await createCartUseCase.execute()
-
-            switch result {
-            case .success(let cart):
-                self.cart = cart
-            case .failure(let error):
+            do {
+                let shoopingCartResult = try await createCartUseCase.execute()
+                self.cart = shoopingCartResult
+            } catch {
                 self.error = error.localizedDescription
             }
         }
@@ -86,12 +84,10 @@ class HomeViewModel: HomeViewModelProtocol {
 
     func getProducts() {
         Task {
-            let result = await listProductsUseCase.execute()
-
-            switch result {
-            case .success(let products):
-                self.products = products
-            case .failure(let error):
+            do {
+                let productsResult = try await listProductsUseCase.execute()
+                self.products = productsResult
+            } catch {
                 self.error = error.localizedDescription
             }
         }

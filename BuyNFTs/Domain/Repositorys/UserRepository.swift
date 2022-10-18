@@ -9,8 +9,8 @@ import Foundation
 import Infrastructure
 
 public protocol UserRepositoryProtocol {
-    func get(userName: String, password: String) async -> Result<Customer, Error>
-    func getByToken() async -> Result<Customer, Error>
+    func get(userName: String, password: String) async throws -> Customer
+    func getByToken() async throws -> Customer
 }
 
 public class UserRepository: UserRepositoryProtocol {
@@ -23,46 +23,29 @@ public class UserRepository: UserRepositoryProtocol {
         self.getTokenAuthorization = ReadTokenInKeyChainUseCase()
     }
 
-    public func get(userName: String, password: String) async -> Result<Customer, Error> {
+    public func get(userName: String, password: String) async throws -> Customer {
         let body = ["username": userName, "password": password]
-        let result = await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: body, headerAuthorization: nil)
+        let response = try await network.request(path: Router.doLogin.path, httpMethod: Router.doLogin.httpMethod, body: body, headerAuthorization: nil)
 
-        switch result {
-        case .success(let data):
-            do {
-                let parsedData = try JSONDecoder().decode(Customer.self, from: data)
+        do {
+            let customer = try JSONDecoder().decode(Customer.self, from: response)
 
-                return .success(parsedData)
-            } catch {
-                fatalError("Json Decoder with Customer in login router")
-            }
-        case .failure(let error):
-            return .failure(error)
+            return customer
+        } catch {
+            fatalError("Json Decoder with Customer in login router")
         }
     }
 
-    public func getByToken() async -> Result<Customer, Error> {
-        var token = ""
+    public func getByToken() async throws -> Customer {
+        let token = try getTokenAuthorization.execute()
+        let response = try await network.request(path: Router.getUser.path, httpMethod: Router.getUser.httpMethod, body: nil, headerAuthorization: token)
 
         do {
-            token = try getTokenAuthorization.execute()
+            let customer = try JSONDecoder().decode(Customer.self, from: response)
+
+            return customer
         } catch {
-            return .failure(error)
-        }
-
-        let result = await network.request(path: Router.getUser.path, httpMethod: Router.getUser.httpMethod, body: nil, headerAuthorization: token)
-
-        switch result {
-        case .success(let data):
-            do {
-                let parsedData = try JSONDecoder().decode(Customer.self, from: data)
-
-                return .success(parsedData)
-            } catch {
-                fatalError("Json Decoder with Customer in get user router")
-            }
-        case .failure(let error):
-            return .failure(error)
+            fatalError("Json Decoder with Customer in get user router")
         }
     }
 }
