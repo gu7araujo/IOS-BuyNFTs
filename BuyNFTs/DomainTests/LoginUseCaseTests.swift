@@ -25,25 +25,22 @@ class LoginUseCaseTests: XCTestCase {
     // MARK: - Tests
 
     func testExecute() async {
-        let result = await useCase.execute(userName: "test", password: "tst")
-
-        switch result {
-        case .failure(let error):
+        do {
+            let result = try await useCase.execute(userName: "test", password: "tst")
+            XCTAssertEqual(result, "aaaa-xxxx-bbbb")
+        } catch {
             XCTFail("Expected to be a success but got a failure with \(error)")
-        case .success(let value):
-            XCTAssertEqual(value, "aaaa-xxxx-bbbb")
         }
     }
 
     func testExecuteError() async {
         self.useCase = LoginUseCase(useRepository: repositoryMock(returnError: true))
-        let result = await useCase.execute(userName: "test", password: "tst")
 
-        switch result {
-        case .failure(let error):
+        do {
+            let result = try await useCase.execute(userName: "test", password: "tst")
+            XCTFail("Expected to be a failure but got a success with value: \(result)")
+        } catch {
             XCTAssertEqual(error.localizedDescription, LoginError.userNotFound.localizedDescription)
-        case .success(let value):
-            XCTFail("Expected to be a failure but got a success with value: \(value)")
         }
     }
 }
@@ -61,15 +58,15 @@ class repositoryMock: UserRepositoryProtocol {
         case returnedError
     }
 
-    func get(userName: String, password: String) async -> Result<Customer, Error> {
+    func get(userName: String, password: String) async throws -> Customer {
         if isReturnError {
-            return .failure(RepositoryError.returnedError)
+            throw RepositoryError.returnedError
         } else {
-            return .success(customer)
+            return customer
         }
     }
 
-    func getByToken() async -> Result<Customer, Error> {
+    func getByToken() async throws -> Customer {
         fatalError("not used in this case")
     }
 }
