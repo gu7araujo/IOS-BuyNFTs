@@ -15,7 +15,6 @@ class HomeViewModel {
     @Published var error: String?
     @Published var products: [Product] = []
     @Published var cart: ShoppingCart?
-    var didSendEventClosure: ((HomeViewModel.Event) -> Void)?
 
     // MARK: - Private properties
 
@@ -35,11 +34,6 @@ class HomeViewModel {
     }
 
     // MARK: - Methods
-
-    func openProductDetails(_ product: Product) {
-        guard let didSendEventClosure = self.didSendEventClosure else { fatalError("Closure didn't set") }
-        didSendEventClosure(.openDetails(product))
-    }
 
     func addToShoopingCart(product: Product) {
         guard let cart = self.cart else { return }
@@ -70,6 +64,7 @@ class HomeViewModel {
             }
         }
     }
+
 }
 
 extension HomeViewModel {

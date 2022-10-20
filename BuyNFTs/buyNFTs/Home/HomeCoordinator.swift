@@ -35,13 +35,13 @@ class HomeCoordinator: HomeCoordinatorProtocol {
 
     func start() {
         let homeVM = HomeViewModel()
-        homeVM.didSendEventClosure = { event in
+        let homeVC = HomeViewController(homeVM)
+        homeVC.didSendEventsClosure = { event in
             switch event {
-            case .openDetails(let product):
-                self.showProductDetails(product)
+            case CryptosCell.Event.openCryptoDetails(let product): self.showProductDetails(product)
+            default: break
             }
         }
-        let homeVC = HomeViewController(homeVM)
         navigationController.pushViewController(homeVC, animated: true)
     }
 

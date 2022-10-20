@@ -13,7 +13,14 @@ class HomeViewController: UIViewController {
 
     // MARK: - UI properties
 
-    // create table view here
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = Colors.cloud.rawValue
+        tableView.register(CryptosCell.self, forCellReuseIdentifier: "CryptosCell")
+        return tableView
+    }()
 
     // MARK: - Private properties
 
@@ -21,13 +28,18 @@ class HomeViewController: UIViewController {
     private var viewModel: HomeViewModel?
     private var cancellables: Set<AnyCancellable> = []
 
+    // MARK: - Public properties
+
+    var didSendEventsClosure: ((Any) -> Void)?
+
     // MARK: - Initialization
 
     init(_ viewModel: HomeViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
+        buildTree()
         setupConstraints()
-        view.backgroundColor = Colors.cloud.rawValue
+        setupBinders()
     }
 
     required init?(coder: NSCoder) {
@@ -38,14 +50,33 @@ class HomeViewController: UIViewController {
         print("HomeViewController deinit")
     }
 
-    func setupConstraints() {
+    func buildTree() {
         view.addSubview(navView)
+        view.addSubview(tableView)
+    }
+
+    func setupConstraints() {
+        setupNavigationViewConstraints()
+        setupTableViewConstraints()
+    }
+
+    func setupNavigationViewConstraints() {
         navView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             navView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navView.topAnchor.constraint(equalTo: view.topAnchor),
             navView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+
+    func setupTableViewConstraints() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: navView.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
@@ -60,6 +91,7 @@ class HomeViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] products in
                 guard !products.isEmpty else { return }
+                self?.tableView.reloadData()
             }.store(in: &cancellables)
 
         viewModel?.$cart
@@ -75,9 +107,34 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        setupBinders()
         viewModel?.createShoopingCart()
         viewModel?.getProducts()
+    }
+
+}
+
+// MARK: - UITableViewDelegate
+extension HomeViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CryptosCell.preferredHeight
+    }
+
+}
+
+// MARK: - UITableViewDataSource
+extension HomeViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let products = viewModel?.products else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CryptosCell", for: indexPath) as? CryptosCell
+        cell?.didSendEventClosure = didSendEventsClosure
+        cell?.set(cryptos: products.filter { $0.type == .crypto })
+        return cell ?? UITableViewCell()
     }
 
 }
