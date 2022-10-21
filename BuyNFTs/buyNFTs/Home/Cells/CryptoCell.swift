@@ -13,7 +13,6 @@ class CryptoCell: UICollectionViewCell {
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.clipsToBounds = true
         imageView.layer.cornerRadius = CryptoCell.preferredSize.width / 2
         return imageView
     }()

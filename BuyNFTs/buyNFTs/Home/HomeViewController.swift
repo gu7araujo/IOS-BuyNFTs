@@ -18,7 +18,10 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = Colors.cloud.rawValue
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(CryptosCell.self, forCellReuseIdentifier: "CryptosCell")
+        tableView.register(NftCell.self, forCellReuseIdentifier: "NftCell")
         return tableView
     }()
 
@@ -27,6 +30,8 @@ class HomeViewController: UIViewController {
     private let navView = CartNavigationView()
     private var viewModel: HomeViewModel?
     private var cancellables: Set<AnyCancellable> = []
+    private var cryptos: [Product] = []
+    private var nfts: [Product] = []
 
     // MARK: - Public properties
 
@@ -91,6 +96,8 @@ class HomeViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] products in
                 guard !products.isEmpty else { return }
+                self?.cryptos = products.filter { $0.type == .crypto }
+                self?.nfts = products.filter { $0.type == .nft }
                 self?.tableView.reloadData()
             }.store(in: &cancellables)
 
@@ -117,7 +124,16 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CryptosCell.preferredHeight
+        if indexPath.row == 0 {
+            return CryptosCell.preferredHeight
+        } else {
+            return NftCell.preferredHeight
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let didSendEventClosure = self.didSendEventsClosure else { fatalError("Closure didn't set") }
+        didSendEventClosure(NftCell.Event.openNftDetails(nfts[indexPath.row - 1]))
     }
 
 }
@@ -126,15 +142,26 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        guard !nfts.isEmpty else { return 0 }
+        var quantityTableViewRows = 1 // begging with collection view and show nfts.
+        quantityTableViewRows += nfts.count
+        return quantityTableViewRows
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let products = viewModel?.products else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CryptosCell", for: indexPath) as? CryptosCell
-        cell?.didSendEventClosure = didSendEventsClosure
-        cell?.set(cryptos: products.filter { $0.type == .crypto })
-        return cell ?? UITableViewCell()
+        guard !nfts.isEmpty, !cryptos.isEmpty else { return UITableViewCell() }
+
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CryptosCell", for: indexPath) as? CryptosCell
+            cell?.didSendEventClosure = didSendEventsClosure
+            cell?.set(cryptos: cryptos)
+            return cell ?? UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NftCell", for: indexPath) as? NftCell
+            cell?.set(nft: nfts[indexPath.row - 1])
+            return cell ?? UITableViewCell()
+        }
+
     }
 
 }

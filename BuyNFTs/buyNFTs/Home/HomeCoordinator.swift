@@ -39,6 +39,7 @@ class HomeCoordinator: HomeCoordinatorProtocol {
         homeVC.didSendEventsClosure = { event in
             switch event {
             case CryptosCell.Event.openCryptoDetails(let product): self.showProductDetails(product)
+            case NftCell.Event.openNftDetails(let product): self.showProductDetails(product)
             default: break
             }
         }
