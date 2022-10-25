@@ -37,6 +37,11 @@
 		B773049C2892E77F00F0F3F5 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049B2892E77F00F0F3F5 /* Customer.swift */; };
 		B773049E2892E9D300F0F3F5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773049D2892E9D300F0F3F5 /* Product.swift */; };
 		B77304A22892EF1000F0F3F5 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77304A12892EF1000F0F3F5 /* ShoppingCart.swift */; };
+		B77A7050290809E7002CC9B6 /* Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */; };
+		B77A7051290809E7002CC9B6 /* Infrastructure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B77A705429080A0E002CC9B6 /* Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */; };
+		B77A705529080A0E002CC9B6 /* Infrastructure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7C06F5B28A42F9D00F50070 /* Infrastructure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B77A705829080A26002CC9B6 /* NftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8120228F87B2F00FBE5CD /* NftCell.swift */; };
 		B789AF4B28C79B25001DF7FE /* BackendRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B789AF4A28C79B25001DF7FE /* BackendRouters.swift */; };
 		B78C514428E8AE3E00B4F0FA /* ExistsTokenInKeyChainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78C514328E8AE3E00B4F0FA /* ExistsTokenInKeyChainUseCase.swift */; };
 		B78D970E28C2324100C99AF1 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75E61F928A574D700D4E7A4 /* UserRepository.swift */; };
@@ -114,6 +119,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B77A7052290809E7002CC9B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B773047A2892DE0000F0F3F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7C06F5A28A42F9D00F50070;
+			remoteInfo = Infrastructure;
+		};
+		B77A705629080A0E002CC9B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B773047A2892DE0000F0F3F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7C06F5A28A42F9D00F50070;
+			remoteInfo = Infrastructure;
+		};
 		B7B2DAC128CF750F000B5D83 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B773047A2892DE0000F0F3F5 /* Project object */;
@@ -152,6 +171,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B7F6B064290180F900F44897 /* Domain.framework in Embed Frameworks */,
+				B77A705529080A0E002CC9B6 /* Infrastructure.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +194,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B7F6B06E290181D900F44897 /* Domain.framework in Embed Frameworks */,
+				B77A7051290809E7002CC9B6 /* Infrastructure.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +278,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77A7050290809E7002CC9B6 /* Infrastructure.framework in Frameworks */,
 				B7F6B06D290181D900F44897 /* Domain.framework in Frameworks */,
 				C9274493D733F1B9FD860AF0 /* Pods_buyNFTs.framework in Frameworks */,
 			);
@@ -282,6 +304,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77A705429080A0E002CC9B6 /* Infrastructure.framework in Frameworks */,
 				B7F6B063290180F900F44897 /* Domain.framework in Frameworks */,
 				B7B4DAD128F48D4000BF7CBA /* Pods_buyNFTs.framework in Frameworks */,
 			);
@@ -598,6 +621,7 @@
 			);
 			dependencies = (
 				B7F6B070290181D900F44897 /* PBXTargetDependency */,
+				B77A7053290809E7002CC9B6 /* PBXTargetDependency */,
 			);
 			name = "buyNFTs-DEV";
 			productName = buyNFTs;
@@ -657,6 +681,7 @@
 			);
 			dependencies = (
 				B7F6B066290180F900F44897 /* PBXTargetDependency */,
+				B77A705729080A0E002CC9B6 /* PBXTargetDependency */,
 			);
 			name = "buyNFTs-PROD";
 			productName = buyNFTs;
@@ -958,6 +983,7 @@
 				B750B66828F5E3FC0044C213 /* Typography.swift in Sources */,
 				B7B4DAC228F48D4000BF7CBA /* HomeViewController.swift in Sources */,
 				B7B4DAC328F48D4000BF7CBA /* ArticleViewController.swift in Sources */,
+				B77A705829080A26002CC9B6 /* NftCell.swift in Sources */,
 				B7B4DAC428F48D4000BF7CBA /* Coordinator.swift in Sources */,
 				B7B4DAC528F48D4000BF7CBA /* UIImageView+Extension.swift in Sources */,
 				B7B4DAC628F48D4000BF7CBA /* LoginCoordinator.swift in Sources */,
@@ -983,6 +1009,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B77A7053290809E7002CC9B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7C06F5A28A42F9D00F50070 /* Infrastructure */;
+			targetProxy = B77A7052290809E7002CC9B6 /* PBXContainerItemProxy */;
+		};
+		B77A705729080A0E002CC9B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7C06F5A28A42F9D00F50070 /* Infrastructure */;
+			targetProxy = B77A705629080A0E002CC9B6 /* PBXContainerItemProxy */;
+		};
 		B7B2DAC228CF750F000B5D83 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B77304912892DFA000F0F3F5 /* Domain */;
