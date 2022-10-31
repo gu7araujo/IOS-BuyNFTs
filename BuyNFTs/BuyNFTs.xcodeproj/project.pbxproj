@@ -103,6 +103,7 @@
 		B7B9B30C28CA6BED002175B3 /* CartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B9B30B28CA6BED002175B3 /* CartRepository.swift */; };
 		B7BEB47828FEEEF400E6BE63 /* CryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEB47728FEEEF400E6BE63 /* CryptoCell.swift */; };
 		B7C06F6428A42FD300F50070 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C06F6328A42FD300F50070 /* NetworkService.swift */; };
+		B7C07D91291007A700CDF2DA /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8120C28F8817000FBE5CD /* ArticleCell.swift */; };
 		B7E3177028F4918B0071888F /* Info-prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7E3176F28F4918B0071888F /* Info-prod.plist */; };
 		B7F6B063290180F900F44897 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77304922892DFA000F0F3F5 /* Domain.framework */; };
 		B7F6B064290180F900F44897 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B77304922892DFA000F0F3F5 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -969,6 +970,7 @@
 				B7B4DABA28F48D4000BF7CBA /* HomeCoordinator.swift in Sources */,
 				B7F6B0762901824900F44897 /* CartNavigationBar.swift in Sources */,
 				B7F6B0742901821100F44897 /* CryptoCell.swift in Sources */,
+				B7C07D91291007A700CDF2DA /* ArticleCell.swift in Sources */,
 				B7B4DABB28F48D4000BF7CBA /* ArticleViewModel.swift in Sources */,
 				B7B4DABC28F48D4000BF7CBA /* LoginViewController.swift in Sources */,
 				B7B4DABD28F48D4000BF7CBA /* HomeViewModel.swift in Sources */,
