@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         safeWindow.frame = UIScreen.main.bounds
 
         let navViewController = UINavigationController()
+        navViewController.isNavigationBarHidden = true
         coordinator = MainCoordinator.init(navViewController)
         coordinator?.start()
         safeWindow.rootViewController = navViewController

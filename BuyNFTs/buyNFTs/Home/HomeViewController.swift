@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
     func setupBinders() {
         viewModel?.$error
             .receive(on: RunLoop.main)
-            .sink { [weak self] error in
+            .sink { error in
                 guard (error != nil) else { return }
             }.store(in: &cancellables)
 

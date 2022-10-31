@@ -13,6 +13,16 @@ class ArticleViewController: UIViewController {
 
     // MARK: - UI properties
 
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = Colors.cloud.rawValue
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(ArticleCell.self, forCellReuseIdentifier: "ArticleCell")
+        return tableView
+    }()
 
     // MARK: - Private properties
 
@@ -27,7 +37,6 @@ class ArticleViewController: UIViewController {
         buildTree()
         buildConstraints()
         setupBinders()
-        view.backgroundColor = Colors.cloud.rawValue
     }
 
     required init?(coder: NSCoder) {
@@ -39,11 +48,17 @@ class ArticleViewController: UIViewController {
     }
 
     func buildTree() {
-
+        view.addSubview(tableView)
     }
 
     func buildConstraints() {
-
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 
     func setupBinders() {
@@ -55,8 +70,9 @@ class ArticleViewController: UIViewController {
 
         viewModel?.$articles
             .receive(on: RunLoop.main)
-            .sink { articles in
+            .sink { [weak self] articles in
                 guard !articles.isEmpty else { return }
+                self?.tableView.reloadData()
             }.store(in: &cancellables)
     }
 
@@ -65,6 +81,31 @@ class ArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.getArticles()
+    }
+
+}
+
+// MARK: - UITableViewDelegate
+extension ArticleViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ArticleCell.preferredHeight
+    }
+
+}
+
+// MARK: - UITableViewDataSource
+extension ArticleViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.articles.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let articles = viewModel?.articles else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? ArticleCell
+        cell?.set(article: articles[indexPath.row])
+        return cell ?? UITableViewCell()
     }
 
 }
