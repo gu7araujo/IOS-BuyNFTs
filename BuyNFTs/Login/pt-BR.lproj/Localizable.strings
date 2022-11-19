@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Login
+
+  Created by Gustavo Araujo Santos on 14/11/22.
+  
+*/
+
+"LoginViewController.login" = "usuário";
+"LoginViewController.password" = "senha";
+"LoginViewController.loginButton" = "Fazer Login";

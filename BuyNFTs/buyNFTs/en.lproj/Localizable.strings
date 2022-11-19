@@ -6,7 +6,3 @@
   
 */
 
-"HomeViewController.addToCart" = "Add to Cart";
-"LoginViewController.login" = "login";
-"LoginViewController.password" = "password";
-"LoginViewController.loginButton" = "do Login";

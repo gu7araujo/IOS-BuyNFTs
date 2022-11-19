@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Home
+
+  Created by Gustavo Araujo Santos on 14/11/22.
+  
+*/
+
+"HomeViewController.addToCart" = "Adicionar ao carrinho";
