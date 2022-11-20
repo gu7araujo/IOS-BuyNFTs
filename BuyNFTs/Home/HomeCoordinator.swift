@@ -8,7 +8,7 @@
 import UIKit
 import Shared
 
-protocol HomeCoordinatorProtocol: CoordinatorProtocol {
+public protocol HomeCoordinatorProtocol: CoordinatorProtocol {
     func showProductDetails(_ product: Product)
 }
 
@@ -34,8 +34,8 @@ public class HomeCoordinator: HomeCoordinatorProtocol {
     // MARK: - Methods
 
     public func start() {
-        let homeVM = HomeViewModel()
-        let homeVC = HomeViewController(homeVM)
+        let homeVM = HomeCompositionRoot.shared.buildHomeViewModel()
+        let homeVC = HomeCompositionRoot.shared.buildHomeViewController(homeVM)
         homeVC.didSendEventsClosure = { event in
             switch event {
             case CryptosCell.Event.openCryptoDetails(let product): self.showProductDetails(product)
@@ -46,8 +46,8 @@ public class HomeCoordinator: HomeCoordinatorProtocol {
         navigationController.pushViewController(homeVC, animated: true)
     }
 
-    func showProductDetails(_ product: Product) {
-        let productDetailsVC = ProductDetailsViewController(product: product)
+    public func showProductDetails(_ product: Product) {
+        let productDetailsVC = HomeCompositionRoot.shared.buildProductDetailsViewController(product: product)
         navigationController.present(productDetailsVC, animated: true)
     }
 }

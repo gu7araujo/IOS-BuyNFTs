@@ -23,9 +23,9 @@ class HomeViewModel {
 
     // MARK: - Initialization
 
-    init(listProductsUseCase: ListProductsUseCaseProtocol = ListProductsUseCase(),
-         createCartUseCase: CreateCartUseCaseProtocol = CreateCartUseCase(),
-         addToCartUseCase: AddToCartUseCaseProtocol = AddToCartUseCase())
+    init(listProductsUseCase: ListProductsUseCaseProtocol,
+         createCartUseCase: CreateCartUseCaseProtocol,
+         addToCartUseCase: AddToCartUseCaseProtocol)
     {
         self.listProductsUseCase = listProductsUseCase
         self.createCartUseCase = createCartUseCase

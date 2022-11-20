@@ -8,7 +8,7 @@
 import Foundation
 import Shared
 
-class LoginViewModel {
+public class LoginViewModel {
 
     // MARK: - Public properties
 
@@ -22,7 +22,7 @@ class LoginViewModel {
 
     // MARK: - Initialization
 
-    init(loginUseCase: LoginUseCaseProtocol = LoginUseCase(), saveTokenUseCase: SaveTokenInKeyChainUseCaseProtocol = SaveTokenInKeyChainUseCase()) {
+    public init(loginUseCase: LoginUseCaseProtocol, saveTokenUseCase: SaveTokenInKeyChainUseCaseProtocol) {
         self.loginUseCase = loginUseCase
         self.saveTokenUseCase = saveTokenUseCase
     }

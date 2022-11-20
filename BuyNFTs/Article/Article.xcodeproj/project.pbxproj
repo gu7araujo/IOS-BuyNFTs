@@ -19,6 +19,7 @@
 		B76C65A62922BAD000A6BEE3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B76C65A82922BAD000A6BEE3 /* Localizable.strings */; };
 		B76C65DF2922BDB700A6BEE3 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C65DE2922BDB700A6BEE3 /* Shared.framework */; };
 		B76C65E02922BDB700A6BEE3 /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B76C65DE2922BDB700A6BEE3 /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7796D71292A8B680067F455 /* ArticleCompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7796D70292A8B680067F455 /* ArticleCompositionRoot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		B76C65A72922BAD000A6BEE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B76C65A92922BAD300A6BEE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B76C65DE2922BDB700A6BEE3 /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7796D70292A8B680067F455 /* ArticleCompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCompositionRoot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		B76C650D2922B1B800A6BEE3 = {
 			isa = PBXGroup;
 			children = (
+				B7796D70292A8B680067F455 /* ArticleCompositionRoot.swift */,
 				B76C65582922B53B00A6BEE3 /* ArticleCoordinator.swift */,
 				B76C65A82922BAD000A6BEE3 /* Localizable.strings */,
 				B76C65352922B26400A6BEE3 /* ArticleServices */,
@@ -293,6 +296,7 @@
 				B76C65942922B7E900A6BEE3 /* Article.swift in Sources */,
 				B76C655E2922B55600A6BEE3 /* ArticleCell.swift in Sources */,
 				B76C655B2922B54300A6BEE3 /* ArticleViewModel.swift in Sources */,
+				B7796D71292A8B680067F455 /* ArticleCompositionRoot.swift in Sources */,
 				B76C65572922B53100A6BEE3 /* ArticleViewController.swift in Sources */,
 				B76C65592922B53B00A6BEE3 /* ArticleCoordinator.swift in Sources */,
 				B76C65882922B79A00A6BEE3 /* ListArticlesUseCase.swift in Sources */,

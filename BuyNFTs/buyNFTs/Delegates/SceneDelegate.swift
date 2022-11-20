@@ -9,7 +9,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var coordinator: MainCoordinator?
+    var coordinator: MainCoordinatorProtocol?
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let navViewController = UINavigationController()
         navViewController.isNavigationBarHidden = true
-        coordinator = MainCoordinator.init(navViewController)
+        coordinator = MainCompositionRoot.shared.buildMainCoordinator(navViewController)
         coordinator?.start()
         safeWindow.rootViewController = navViewController
         safeWindow.makeKeyAndVisible()

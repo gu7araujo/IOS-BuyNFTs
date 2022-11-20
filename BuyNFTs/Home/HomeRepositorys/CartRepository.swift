@@ -18,8 +18,8 @@ class CartRepository: CartRepositoryProtocol {
 
     private var userRepository: UserRepositoryProtocol
 
-    init() {
-        self.userRepository = UserRepository()
+    init(userRepository: UserRepositoryProtocol) {
+        self.userRepository = userRepository
     }
 
     func get() async throws -> ShoppingCart {

@@ -8,7 +8,7 @@
 import UIKit
 import Shared
 
-protocol ArticleCoordinatorProtocol: CoordinatorProtocol { }
+public protocol ArticleCoordinatorProtocol: CoordinatorProtocol { }
 
 public class ArticleCoordinator: ArticleCoordinatorProtocol {
 
@@ -32,8 +32,8 @@ public class ArticleCoordinator: ArticleCoordinatorProtocol {
     // MARK: - Methods
 
     public func start() {
-        let articleVM = ArticleViewModel()
-        let articleVC = ArticleViewController(articleVM)
+        let articleVM = ArticleCompositionRoot.shared.buildArticleViewModel()
+        let articleVC = ArticleCompositionRoot.shared.buildArticleViewController(articleVM)
         navigationController.pushViewController(articleVC, animated: false)
     }
 }

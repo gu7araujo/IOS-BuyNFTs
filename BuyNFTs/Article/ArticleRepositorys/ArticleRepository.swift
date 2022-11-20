@@ -17,7 +17,8 @@ public class ArticleRepository: ArticleRepositoryProtocol {
     private var networkService: NetworkServiceProtocol
     private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
 
-    public init(networkService: NetworkServiceProtocol = NetworkService(), readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol = ReadTokenInKeyChainUseCase()) {
+    public init(networkService: NetworkServiceProtocol,
+                readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol) {
         self.networkService = networkService
         self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
     }

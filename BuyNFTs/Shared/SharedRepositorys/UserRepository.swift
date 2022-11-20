@@ -15,11 +15,11 @@ public protocol UserRepositoryProtocol {
 public class UserRepository: UserRepositoryProtocol {
 
     private var network: NetworkServiceProtocol
-    private var getTokenAuthorization: ReadTokenInKeyChainUseCaseProtocol
+    private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
 
-    public init() {
-        self.network = NetworkService()
-        self.getTokenAuthorization = ReadTokenInKeyChainUseCase()
+    public init(network: NetworkServiceProtocol, readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol) {
+        self.network = network
+        self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
     }
 
     public func get(userName: String, password: String) async throws -> Customer {
@@ -36,7 +36,7 @@ public class UserRepository: UserRepositoryProtocol {
     }
 
     public func getByToken() async throws -> Customer {
-        let token = try getTokenAuthorization.execute()
+        let token = try readTokenInKeyChainUseCase.execute()
         let response = try await network.request(path: Router.getUser.path, httpMethod: Router.getUser.httpMethod, body: nil, headerAuthorization: token)
 
         do {
@@ -47,5 +47,5 @@ public class UserRepository: UserRepositoryProtocol {
             fatalError("Json Decoder with Customer in get user router")
         }
     }
-}
 
+}

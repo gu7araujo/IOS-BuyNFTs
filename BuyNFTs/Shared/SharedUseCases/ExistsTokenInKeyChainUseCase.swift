@@ -7,7 +7,7 @@
 
 import Security
 
-protocol ExistsTokenInKeyChainUseCaseProtocol {
+public protocol ExistsTokenInKeyChainUseCaseProtocol {
     func execute() throws
 }
 

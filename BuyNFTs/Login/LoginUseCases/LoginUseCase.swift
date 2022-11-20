@@ -21,19 +21,19 @@ extension LoginError: LocalizedError {
     }
 }
 
-protocol LoginUseCaseProtocol {
+public protocol LoginUseCaseProtocol {
     func execute(userName: String, password: String) async throws -> String
 }
 
-class LoginUseCase: LoginUseCaseProtocol {
+public class LoginUseCase: LoginUseCaseProtocol {
 
     private var userRepository: UserRepositoryProtocol
 
-    init(useRepository: UserRepositoryProtocol = UserRepository()) {
+    public init(useRepository: UserRepositoryProtocol) {
         self.userRepository = useRepository
     }
 
-    func execute(userName: String, password: String) async throws -> String {
+    public func execute(userName: String, password: String) async throws -> String {
         do {
             let userResult = try await userRepository.get(userName: userName, password: password)
             return userResult.token

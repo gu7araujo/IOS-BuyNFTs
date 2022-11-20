@@ -15,8 +15,8 @@ class RemoveToCartUseCase: RemoveToCartUseCaseProtocol {
 
     private var cartRepository: CartRepositoryProtocol
 
-    init() {
-        self.cartRepository = CartRepository()
+    init(cartRepository: CartRepositoryProtocol) {
+        self.cartRepository = cartRepository
     }
 
     func execute(product: Product, cart: ShoppingCart) -> ShoppingCart {

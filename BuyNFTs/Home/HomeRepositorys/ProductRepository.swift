@@ -15,15 +15,15 @@ protocol ProductRepositoryProtocol {
 class ProductRepository: ProductRepositoryProtocol {
 
     private var network: NetworkServiceProtocol
-    private var getTokenAuthorization: ReadTokenInKeyChainUseCaseProtocol
+    private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
 
-    init() {
-        self.network = NetworkService()
-        self.getTokenAuthorization = ReadTokenInKeyChainUseCase()
+    init(network: NetworkServiceProtocol, readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol) {
+        self.network = network
+        self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
     }
 
     func get() async throws -> [Product] {
-        let tokenResult = try getTokenAuthorization.execute()
+        let tokenResult = try readTokenInKeyChainUseCase.execute()
         let response = try await network.request(path: Router.getProducts.path, httpMethod: Router.getProducts.httpMethod, body: nil, headerAuthorization: tokenResult)
 
         do {

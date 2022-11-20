@@ -130,10 +130,10 @@ class TabCoordinator: NSObject, TabCoordinatorProtocol {
 
         switch page {
         case .home:
-            let homeCoordinator: HomeCoordinator = .init(navController)
+            let homeCoordinator = MainCompositionRoot.shared.buildHomeCoordinator(navController)
             homeCoordinator.start()
         case .article:
-            let articleCoordinator: ArticleCoordinator = .init(navController)
+            let articleCoordinator = MainCompositionRoot.shared.buildArticleCoordinator(navController)
             articleCoordinator.start()
         }
 

@@ -7,16 +7,16 @@
 
 import Foundation
 
-public protocol CreateCartUseCaseProtocol {
+protocol CreateCartUseCaseProtocol {
     func execute() async throws -> ShoppingCart
 }
 
-public class CreateCartUseCase: CreateCartUseCaseProtocol {
+class CreateCartUseCase: CreateCartUseCaseProtocol {
 
     private var cartRepository: CartRepositoryProtocol
 
-    public init() {
-        self.cartRepository = CartRepository()
+    init(cartRepository: CartRepositoryProtocol) {
+        self.cartRepository = cartRepository
     }
 
     public func execute() async throws -> ShoppingCart {

@@ -40,14 +40,14 @@ class MainCoordinator: MainCoordinatorProtocol {
     }
 
     func showLoginFlow() {
-        let loginCoordinator = LoginCoordinator(navigationController)
+        let loginCoordinator = MainCompositionRoot.shared.buildLoginCoordinator(navigationController)
         loginCoordinator.finishDelegate = self
         loginCoordinator.start()
         childCoordinators.append(loginCoordinator)
     }
 
     func showMainFlow() {
-        let tabCoordinator = TabCoordinator(navigationController)
+        let tabCoordinator = MainCompositionRoot.shared.buildTabCoordinator(navigationController)
         tabCoordinator.finishDelegate = self
         tabCoordinator.start()
         childCoordinators.append(tabCoordinator)

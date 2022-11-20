@@ -29,6 +29,8 @@
 		B75FD70D28C0F91100141F62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FD70C28C0F91100141F62 /* SceneDelegate.swift */; };
 		B75FD71428C0F91300141F62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75FD71328C0F91300141F62 /* Assets.xcassets */; };
 		B75FD71728C0F91300141F62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75FD71528C0F91300141F62 /* LaunchScreen.storyboard */; };
+		B7796D6D292977B40067F455 /* MainCompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7796D6C292977B40067F455 /* MainCompositionRoot.swift */; };
+		B7796D72292A8D8A0067F455 /* MainCompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7796D6C292977B40067F455 /* MainCompositionRoot.swift */; };
 		B78D972628C2861C00C99AF1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D972528C2861C00C99AF1 /* MainCoordinator.swift */; };
 		B79141C928F480DE0027BB31 /* AppStartUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79141C828F480DE0027BB31 /* AppStartUp.swift */; };
 		B79141CC28F484F30027BB31 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79141CB28F484F30027BB31 /* Environments.swift */; };
@@ -100,6 +102,7 @@
 		B75FD71328C0F91300141F62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B75FD71628C0F91300141F62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B75FD71828C0F91300141F62 /* Info-dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-dev.plist"; sourceTree = "<group>"; };
+		B7796D6C292977B40067F455 /* MainCompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCompositionRoot.swift; sourceTree = "<group>"; };
 		B78D972528C2861C00C99AF1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		B79141C828F480DE0027BB31 /* AppStartUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartUp.swift; sourceTree = "<group>"; };
 		B79141CB28F484F30027BB31 /* Environments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environments.swift; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 		B75FD70928C0F91100141F62 /* buyNFTs */ = {
 			isa = PBXGroup;
 			children = (
+				B7796D6C292977B40067F455 /* MainCompositionRoot.swift */,
 				B744D7E329250193008FEF57 /* Delegates */,
 				B79141D528F4871A0027BB31 /* Resources */,
 				B79141CA28F484D50027BB31 /* Initializations */,
@@ -337,6 +341,7 @@
 				B75FD70B28C0F91100141F62 /* AppDelegate.swift in Sources */,
 				B79141D428F485830027BB31 /* AuthInitializer.swift in Sources */,
 				B79141C928F480DE0027BB31 /* AppStartUp.swift in Sources */,
+				B7796D6D292977B40067F455 /* MainCompositionRoot.swift in Sources */,
 				B79141D228F4856E0027BB31 /* InitializerProtocol.swift in Sources */,
 				B79141CC28F484F30027BB31 /* Environments.swift in Sources */,
 				B75FD70D28C0F91100141F62 /* SceneDelegate.swift in Sources */,
@@ -354,6 +359,7 @@
 				B7B4DAC128F48D4000BF7CBA /* AppDelegate.swift in Sources */,
 				B7B4DAC928F48D4000BF7CBA /* AuthInitializer.swift in Sources */,
 				B7B4DACA28F48D4000BF7CBA /* AppStartUp.swift in Sources */,
+				B7796D72292A8D8A0067F455 /* MainCompositionRoot.swift in Sources */,
 				B7B4DACB28F48D4000BF7CBA /* InitializerProtocol.swift in Sources */,
 				B7B4DACC28F48D4000BF7CBA /* Environments.swift in Sources */,
 				B7B4DACD28F48D4000BF7CBA /* SceneDelegate.swift in Sources */,

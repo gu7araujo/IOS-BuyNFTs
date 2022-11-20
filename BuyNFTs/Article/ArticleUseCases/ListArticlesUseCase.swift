@@ -20,19 +20,19 @@ extension ListArticlesError: LocalizedError {
     }
 }
 
-public protocol ListArticlesUseCaseProtocol {
+protocol ListArticlesUseCaseProtocol {
     func execute() async throws -> [Article]
 }
 
-public class ListArticlesUseCase: ListArticlesUseCaseProtocol {
+class ListArticlesUseCase: ListArticlesUseCaseProtocol {
 
     private var articleRepository: ArticleRepositoryProtocol
 
-    public init(articleRepository: ArticleRepositoryProtocol = ArticleRepository()) {
+    init(articleRepository: ArticleRepositoryProtocol) {
         self.articleRepository = articleRepository
     }
 
-    public func execute() async throws -> [Article] {
+    func execute() async throws -> [Article] {
         do {
             let articlesResponse = try await articleRepository.get()
             return articlesResponse

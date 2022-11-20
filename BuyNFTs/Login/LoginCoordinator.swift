@@ -8,7 +8,9 @@
 import UIKit
 import Shared
 
-protocol LoginCoordinatorProtocol: CoordinatorProtocol {
+public protocol LoginCoordinatorProtocol: CoordinatorProtocol {
+    init(_ navigationController: UINavigationController,
+              existsTokenInKeyChainUseCase: ExistsTokenInKeyChainUseCaseProtocol)
     func verifyExistsApiToken() -> Bool
     func showLoginViewController()
 }
@@ -24,12 +26,18 @@ public class LoginCoordinator: LoginCoordinatorProtocol {
 
     // MARK: - Private properties
 
-    private var existsTokenInKeyChainUseCase: ExistsTokenInKeyChainUseCase = .init()
+    private var existsTokenInKeyChainUseCase: ExistsTokenInKeyChainUseCaseProtocol?
 
     // MARK: - Initialization
 
-    required public init(_ navigationController: UINavigationController) {
+    public required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+
+    public required init(_ navigationController: UINavigationController,
+                         existsTokenInKeyChainUseCase: ExistsTokenInKeyChainUseCaseProtocol) {
+        self.navigationController = navigationController
+        self.existsTokenInKeyChainUseCase = existsTokenInKeyChainUseCase
     }
 
     deinit {
@@ -46,8 +54,8 @@ public class LoginCoordinator: LoginCoordinatorProtocol {
         }
     }
 
-    func showLoginViewController() {
-        let loginVM = LoginViewModel()
+    public func showLoginViewController() {
+        let loginVM = LoginCompositionRoot.shared.buildLoginViewModel()
         loginVM.didSendEventClosure = { [weak self] _ in
             self?.finish()
         }
@@ -55,9 +63,9 @@ public class LoginCoordinator: LoginCoordinatorProtocol {
         navigationController.pushViewController(loginVC, animated: true)
     }
 
-    func verifyExistsApiToken() -> Bool {
+    public func verifyExistsApiToken() -> Bool {
         do {
-            try existsTokenInKeyChainUseCase.execute()
+            try existsTokenInKeyChainUseCase?.execute()
             return true
         } catch {
             return false

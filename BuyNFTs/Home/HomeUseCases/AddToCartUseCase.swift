@@ -23,19 +23,19 @@ extension ShoopingCartError: LocalizedError {
     }
 }
 
-public protocol AddToCartUseCaseProtocol {
+protocol AddToCartUseCaseProtocol {
     func execute(product: Product, cart: ShoppingCart) -> ShoppingCart
 }
 
-public class AddToCartUseCase: AddToCartUseCaseProtocol {
+class AddToCartUseCase: AddToCartUseCaseProtocol {
 
     private var cartRepository: CartRepositoryProtocol
 
-    public init() {
-        self.cartRepository = CartRepository()
+    init(cartRepository: CartRepositoryProtocol) {
+        self.cartRepository = cartRepository
     }
 
-    public func execute(product: Product, cart: ShoppingCart) -> ShoppingCart {
+    func execute(product: Product, cart: ShoppingCart) -> ShoppingCart {
         let newCart = cartRepository.addProduct(cart, product: product)
         return newCart
     }

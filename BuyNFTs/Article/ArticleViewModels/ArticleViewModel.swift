@@ -20,7 +20,7 @@ class ArticleViewModel {
 
     // MARK: - Initialization
 
-    init(listArticlesUseCase: ListArticlesUseCaseProtocol = ListArticlesUseCase()) {
+    init(listArticlesUseCase: ListArticlesUseCaseProtocol) {
         self.listArticlesUseCase = listArticlesUseCase
     }
 

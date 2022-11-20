@@ -17,6 +17,7 @@
 		B76C65632922B5BF00A6BEE3 /* LoginUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C65622922B5BF00A6BEE3 /* LoginUseCaseTests.swift */; };
 		B76C65D52922BDAA00A6BEE3 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C65D42922BDAA00A6BEE3 /* Shared.framework */; };
 		B76C65D62922BDAA00A6BEE3 /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B76C65D42922BDAA00A6BEE3 /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7796D68292976370067F455 /* LoginCompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7796D67292976370067F455 /* LoginCompositionRoot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		B76C65A12922BA6F00A6BEE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B76C65A32922BA7B00A6BEE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B76C65D42922BDAA00A6BEE3 /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7796D67292976370067F455 /* LoginCompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCompositionRoot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				B76C653A2922B2CF00A6BEE3 /* LoginCoordinator.swift */,
-				B76C65A22922BA6F00A6BEE3 /* Localizable.strings */,
+				B7796D67292976370067F455 /* LoginCompositionRoot.swift */,
+				B7796D692929764A0067F455 /* LoginResources */,
 				B76C65332922B25700A6BEE3 /* LoginServices */,
 				B76C64E62922B10800A6BEE3 /* LoginRepositorys */,
 				B76C64E52922B10100A6BEE3 /* LoginUseCases */,
@@ -155,6 +158,14 @@
 				B76C65D42922BDAA00A6BEE3 /* Shared.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7796D692929764A0067F455 /* LoginResources */ = {
+			isa = PBXGroup;
+			children = (
+				B76C65A22922BA6F00A6BEE3 /* Localizable.strings */,
+			);
+			path = LoginResources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +283,7 @@
 				B76C65392922B2B800A6BEE3 /* LoginViewModel.swift in Sources */,
 				B76C65372922B29100A6BEE3 /* LoginViewController.swift in Sources */,
 				B75A1AF02927A66B00A12293 /* LoginUseCase.swift in Sources */,
+				B7796D68292976370067F455 /* LoginCompositionRoot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,6 +29,7 @@
 		B76C65BD2922BC8B00A6BEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76C65BC2922BC8B00A6BEE3 /* Assets.xcassets */; };
 		B76C65DA2922BDB100A6BEE3 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C65D92922BDB100A6BEE3 /* Shared.framework */; };
 		B76C65DB2922BDB100A6BEE3 /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B76C65D92922BDB100A6BEE3 /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7796D6F292A85FB0067F455 /* HomeCompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7796D6E292A85FB0067F455 /* HomeCompositionRoot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		B76C659D2922BA1E00A6BEE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B76C65BC2922BC8B00A6BEE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B76C65D92922BDB100A6BEE3 /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7796D6E292A85FB0067F455 /* HomeCompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCompositionRoot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		B76C64E72922B16900A6BEE3 = {
 			isa = PBXGroup;
 			children = (
+				B7796D6E292A85FB0067F455 /* HomeCompositionRoot.swift */,
 				B76C653F2922B32C00A6BEE3 /* HomeCoordinator.swift */,
 				B7796D5D292969F90067F455 /* HomeResources */,
 				B76C65342922B25E00A6BEE3 /* HomeServices */,
@@ -346,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76C65762922B6F800A6BEE3 /* ListProductsUseCase.swift in Sources */,
+				B7796D6F292A85FB0067F455 /* HomeCompositionRoot.swift in Sources */,
 				B76C654E2922B46B00A6BEE3 /* NftCell.swift in Sources */,
 				B76C65552922B50800A6BEE3 /* CartNavigationBar.swift in Sources */,
 				B76C656B2922B68F00A6BEE3 /* ProductRepository.swift in Sources */,
