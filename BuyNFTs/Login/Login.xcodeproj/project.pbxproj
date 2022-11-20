@@ -10,7 +10,6 @@
 		B75A1AF02927A66B00A12293 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C65732922B6EC00A6BEE3 /* LoginUseCase.swift */; };
 		B75A1B2B2927E9B800A12293 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B76C65A22922BA6F00A6BEE3 /* Localizable.strings */; };
 		B76C64D42922B0DE00A6BEE3 /* Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C64CB2922B0DD00A6BEE3 /* Login.framework */; };
-		B76C64D92922B0DE00A6BEE3 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C64D82922B0DE00A6BEE3 /* LoginTests.swift */; };
 		B76C65372922B29100A6BEE3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C65362922B29100A6BEE3 /* LoginViewController.swift */; };
 		B76C65392922B2B800A6BEE3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C65382922B2B800A6BEE3 /* LoginViewModel.swift */; };
 		B76C653B2922B2CF00A6BEE3 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76C653A2922B2CF00A6BEE3 /* LoginCoordinator.swift */; };
@@ -47,7 +46,6 @@
 /* Begin PBXFileReference section */
 		B76C64CB2922B0DD00A6BEE3 /* Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76C64D32922B0DE00A6BEE3 /* LoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B76C64D82922B0DE00A6BEE3 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		B76C65362922B29100A6BEE3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B76C65382922B2B800A6BEE3 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B76C653A2922B2CF00A6BEE3 /* LoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 		B76C64D72922B0DE00A6BEE3 /* LoginTests */ = {
 			isa = PBXGroup;
 			children = (
-				B76C64D82922B0DE00A6BEE3 /* LoginTests.swift */,
 				B76C65622922B5BF00A6BEE3 /* LoginUseCaseTests.swift */,
 			);
 			path = LoginTests;
@@ -291,7 +288,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B76C64D92922B0DE00A6BEE3 /* LoginTests.swift in Sources */,
 				B76C65632922B5BF00A6BEE3 /* LoginUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
