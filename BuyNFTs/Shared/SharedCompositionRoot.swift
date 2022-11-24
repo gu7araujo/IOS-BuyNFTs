@@ -31,11 +31,13 @@ public final class SharedCompositionRoot {
         return service
     }
 
+    public func buildUserService() -> UserServiceProtocol {
+        let service = UserService(networkService: buildNetworkService())
+        return service
+    }
+
     public func buildUserRepository() -> UserRepositoryProtocol {
-        let networkService = buildNetworkService()
-        let readTokenInKeyChainUseCase = buildReadTokenInKeyChainUseCase()
-        let repository = UserRepository(network: networkService,
-                                        readTokenInKeyChainUseCase: readTokenInKeyChainUseCase)
+        let repository = UserRepository(userService: buildUserService())
         return repository
     }
 

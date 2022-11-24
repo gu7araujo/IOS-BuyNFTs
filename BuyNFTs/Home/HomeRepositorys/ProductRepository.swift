@@ -9,28 +9,20 @@ import Foundation
 import Shared
 
 protocol ProductRepositoryProtocol {
-    func get() async throws -> [Product]
+    func getProducts(token: String) async throws -> [Product]
 }
 
 class ProductRepository: ProductRepositoryProtocol {
 
-    private var network: NetworkServiceProtocol
-    private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
+    private let productService: ProductServiceProtocol
 
-    init(network: NetworkServiceProtocol, readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol) {
-        self.network = network
-        self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
+    init(productService: ProductServiceProtocol) {
+        self.productService = productService
     }
 
-    func get() async throws -> [Product] {
-        let tokenResult = try readTokenInKeyChainUseCase.execute()
-        let response = try await network.request(path: Router.getProducts.path, httpMethod: Router.getProducts.httpMethod, body: nil, headerAuthorization: tokenResult)
-
-        do {
-            let products = try JSONDecoder().decode([Product].self, from: response)
-            return products
-        } catch {
-            fatalError("Json Decoder with Product in getProducts router")
-        }
+    func getProducts(token: String) async throws -> [Product] {
+        let response = try await productService.fetchProducts(token: token)
+        return response
     }
+
 }

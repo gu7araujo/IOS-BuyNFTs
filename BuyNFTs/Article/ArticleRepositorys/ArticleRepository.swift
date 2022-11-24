@@ -9,30 +9,20 @@ import Foundation
 import Shared
 
 public protocol ArticleRepositoryProtocol {
-    func get() async throws -> [Article]
+    func getArticles(token: String) async throws -> [Article]
 }
 
 public class ArticleRepository: ArticleRepositoryProtocol {
 
-    private var networkService: NetworkServiceProtocol
-    private var readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
+    private let articleService: ArticleServiceProtocol
 
-    public init(networkService: NetworkServiceProtocol,
-                readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol) {
-        self.networkService = networkService
-        self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
+    public init(articleService: ArticleServiceProtocol) {
+        self.articleService = articleService
     }
 
-    public func get() async throws -> [Article] {
-        let tokenResult = try readTokenInKeyChainUseCase.execute()
-        let response = try await networkService.request(path: Router.getArticles.path, httpMethod: Router.getArticles.httpMethod, body: nil, headerAuthorization: tokenResult)
-
-        do {
-            let articlesResult = try JSONDecoder().decode([Article].self, from: response)
-            return articlesResult
-        } catch {
-            fatalError("Json Decoder with Article in getArticles router")
-        }
+    public func getArticles(token: String) async throws -> [Article] {
+        let response = try await articleService.fetchArticles(token: token)
+        return response
     }
 
 }

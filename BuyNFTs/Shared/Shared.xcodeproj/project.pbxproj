@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B72E78DE292FA1FD002B071B /* MockReadTokenInKeyChainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72E78DC292FA1CB002B071B /* MockReadTokenInKeyChainUseCase.swift */; };
 		B75A1B062927A85000A12293 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A1B052927A85000A12293 /* UserRepository.swift */; };
-		B75A1B0F2927A93E00A12293 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A1B0D2927A93E00A12293 /* Customer.swift */; };
-		B75A1B102927A93E00A12293 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A1B0E2927A93E00A12293 /* User.swift */; };
+		B75A1B0F2927A93E00A12293 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A1B0D2927A93E00A12293 /* CustomerModel.swift */; };
+		B75A1B102927A93E00A12293 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A1B0E2927A93E00A12293 /* UserModel.swift */; };
 		B75A1B152927A9E700A12293 /* ReadTokenInKeyChainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A1B142927A9E700A12293 /* ReadTokenInKeyChainUseCase.swift */; };
 		B75A1B192927AA3F00A12293 /* ExistsTokenInKeyChainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A1B182927AA3F00A12293 /* ExistsTokenInKeyChainUseCase.swift */; };
 		B75A1B1D2927AA7E00A12293 /* SaveTokenInKeyChainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75A1B1C2927AA7E00A12293 /* SaveTokenInKeyChainUseCase.swift */; };
@@ -28,6 +29,7 @@
 		B76C65BB2922BC5400A6BEE3 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B76C65B82922BC5400A6BEE3 /* Roboto-Regular.ttf */; };
 		B7796D6029296D3D0067F455 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B7796D5F29296D3D0067F455 /* Kingfisher */; };
 		B7796D6B292976750067F455 /* SharedCompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7796D6A292976750067F455 /* SharedCompositionRoot.swift */; };
+		B7AD1208292E392D00150312 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AD1207292E392D00150312 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B72E78DC292FA1CB002B071B /* MockReadTokenInKeyChainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReadTokenInKeyChainUseCase.swift; sourceTree = "<group>"; };
 		B75A1B052927A85000A12293 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		B75A1B0D2927A93E00A12293 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
-		B75A1B0E2927A93E00A12293 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B75A1B0D2927A93E00A12293 /* CustomerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
+		B75A1B0E2927A93E00A12293 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B75A1B142927A9E700A12293 /* ReadTokenInKeyChainUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadTokenInKeyChainUseCase.swift; sourceTree = "<group>"; };
 		B75A1B182927AA3F00A12293 /* ExistsTokenInKeyChainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsTokenInKeyChainUseCase.swift; sourceTree = "<group>"; };
 		B75A1B1C2927AA7E00A12293 /* SaveTokenInKeyChainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTokenInKeyChainUseCase.swift; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 		B76C65B72922BC5400A6BEE3 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		B76C65B82922BC5400A6BEE3 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		B7796D6A292976750067F455 /* SharedCompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCompositionRoot.swift; sourceTree = "<group>"; };
+		B7AD1207292E392D00150312 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +88,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B72E78DB292FA1B7002B071B /* SharedMocks */ = {
+			isa = PBXGroup;
+			children = (
+				B72E78DC292FA1CB002B071B /* MockReadTokenInKeyChainUseCase.swift */,
+			);
+			path = SharedMocks;
+			sourceTree = "<group>";
+		};
 		B75A1B112927A96E00A12293 /* SharedRepositorys */ = {
 			isa = PBXGroup;
 			children = (
-				B75A1B1E2927AAAC00A12293 /* Models */,
 				B75A1B052927A85000A12293 /* UserRepository.swift */,
 			);
 			path = SharedRepositorys;
@@ -103,25 +114,18 @@
 			path = SharedUseCases;
 			sourceTree = "<group>";
 		};
-		B75A1B1E2927AAAC00A12293 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				B75A1B0E2927A93E00A12293 /* User.swift */,
-				B75A1B0D2927A93E00A12293 /* Customer.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		B76C64992922AED700A6BEE3 = {
 			isa = PBXGroup;
 			children = (
 				B7796D6A292976750067F455 /* SharedCompositionRoot.swift */,
+				B72E78DB292FA1B7002B071B /* SharedMocks */,
+				B7AD1209292E39E100150312 /* SharedModels */,
+				B76C64BE2922B00C00A6BEE3 /* SharedServices */,
 				B75A1B112927A96E00A12293 /* SharedRepositorys */,
 				B75A1B132927A9C000A12293 /* SharedUseCases */,
 				B76C65B02922BC0800A6BEE3 /* SharedTokens */,
 				B76C655F2922B57000A6BEE3 /* SharedExtensions */,
 				B76C653C2922B2F300A6BEE3 /* SharedProtocols */,
-				B76C64BE2922B00C00A6BEE3 /* SharedServices */,
 				B76C64AF2922AED800A6BEE3 /* SharedTests */,
 				B76C64A42922AED700A6BEE3 /* Products */,
 			);
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B76C64BF2922B04500A6BEE3 /* NetworkService.swift */,
+				B7AD1207292E392D00150312 /* UserService.swift */,
 				B76C65642922B65300A6BEE3 /* Helpers */,
 			);
 			path = SharedServices;
@@ -197,6 +202,15 @@
 				B76C65B82922BC5400A6BEE3 /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B7AD1209292E39E100150312 /* SharedModels */ = {
+			isa = PBXGroup;
+			children = (
+				B75A1B0E2927A93E00A12293 /* UserModel.swift */,
+				B75A1B0D2927A93E00A12293 /* CustomerModel.swift */,
+			);
+			path = SharedModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,9 +332,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76C65B22922BC2100A6BEE3 /* Typography.swift in Sources */,
-				B75A1B0F2927A93E00A12293 /* Customer.swift in Sources */,
+				B75A1B0F2927A93E00A12293 /* CustomerModel.swift in Sources */,
 				B76C65B42922BC2300A6BEE3 /* Colors.swift in Sources */,
 				B75A1B062927A85000A12293 /* UserRepository.swift in Sources */,
+				B72E78DE292FA1FD002B071B /* MockReadTokenInKeyChainUseCase.swift in Sources */,
 				B75A1B152927A9E700A12293 /* ReadTokenInKeyChainUseCase.swift in Sources */,
 				B76C653E2922B2FE00A6BEE3 /* CoordinatorProtocol.swift in Sources */,
 				B76C64C02922B04500A6BEE3 /* NetworkService.swift in Sources */,
@@ -329,9 +344,10 @@
 				B76C65AF2922BAEF00A6BEE3 /* UIColor+Extension.swift in Sources */,
 				B7796D6B292976750067F455 /* SharedCompositionRoot.swift in Sources */,
 				B75A1B1D2927AA7E00A12293 /* SaveTokenInKeyChainUseCase.swift in Sources */,
+				B7AD1208292E392D00150312 /* UserService.swift in Sources */,
 				B76C65AE2922BAEF00A6BEE3 /* UIFont+Extension.swift in Sources */,
 				B76C65662922B65B00A6BEE3 /* BackendRouters.swift in Sources */,
-				B75A1B102927A93E00A12293 /* User.swift in Sources */,
+				B75A1B102927A93E00A12293 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

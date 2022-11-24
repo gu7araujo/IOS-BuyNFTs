@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shared
 
 protocol CreateCartUseCaseProtocol {
     func execute() async throws -> ShoppingCart
@@ -14,13 +15,20 @@ protocol CreateCartUseCaseProtocol {
 class CreateCartUseCase: CreateCartUseCaseProtocol {
 
     private var cartRepository: CartRepositoryProtocol
+    private let userRepository: UserRepositoryProtocol
+    private let readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
 
-    init(cartRepository: CartRepositoryProtocol) {
+    init(cartRepository: CartRepositoryProtocol, userRepository: UserRepositoryProtocol, readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol) {
         self.cartRepository = cartRepository
+        self.userRepository = userRepository
+        self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
     }
 
     public func execute() async throws -> ShoppingCart {
-        let shoopingCartResult = try await cartRepository.get()
-        return shoopingCartResult
+        let token = try readTokenInKeyChainUseCase.execute()
+        let user = try await userRepository.getUser(by: token)
+        let result = try await cartRepository.createCart(by: user)
+        return result
     }
+
 }

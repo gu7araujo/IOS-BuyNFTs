@@ -14,19 +14,24 @@ final class HomeCompositionRoot {
 
     private init() { }
 
+    /* Services */
+
+    func buildProductService() -> ProductServiceProtocol {
+        let networkService = SharedCompositionRoot.shared.buildNetworkService()
+        let service = ProductService(networkService: networkService)
+        return service
+    }
+
     /* Repositorys */
 
     func buildCartRepository() -> CartRepositoryProtocol {
-        let userRepository = SharedCompositionRoot.shared.buildUserRepository()
-        let repository = CartRepository(userRepository: userRepository)
+        let repository = CartRepository()
         return repository
     }
 
     func buildProductRepository() -> ProductRepositoryProtocol {
-        let networkService = SharedCompositionRoot.shared.buildNetworkService()
-        let readTokenInKeyChainUseCase = SharedCompositionRoot.shared.buildReadTokenInKeyChainUseCase()
-        let repository = ProductRepository(network: networkService,
-                                           readTokenInKeyChainUseCase: readTokenInKeyChainUseCase)
+        let productService = buildProductService()
+        let repository = ProductRepository(productService: productService)
         return repository
     }
 
@@ -39,14 +44,18 @@ final class HomeCompositionRoot {
     }
 
     func buildCreateCartUseCase() -> CreateCartUseCaseProtocol {
+        let readTokenInKeyChainUseCase = SharedCompositionRoot.shared.buildReadTokenInKeyChainUseCase()
+        let userRepository = SharedCompositionRoot.shared.buildUserRepository()
         let cartRepository = buildCartRepository()
-        let useCase = CreateCartUseCase(cartRepository: cartRepository)
+        let useCase = CreateCartUseCase(cartRepository: cartRepository, userRepository: userRepository, readTokenInKeyChainUseCase: readTokenInKeyChainUseCase)
         return useCase
     }
 
     func buildListProductsUseCase() -> ListProductsUseCaseProtocol {
+        let readTokenInKeyChainUseCase = SharedCompositionRoot.shared.buildReadTokenInKeyChainUseCase()
         let productRepository = buildProductRepository()
-        let useCase = ListProductsUseCase(productRepository: productRepository)
+        let useCase = ListProductsUseCase(productRepository: productRepository,
+                                          readTokenInKeyChainUseCase: readTokenInKeyChainUseCase)
         return useCase
     }
 

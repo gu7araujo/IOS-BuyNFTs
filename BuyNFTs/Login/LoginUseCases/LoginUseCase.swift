@@ -35,7 +35,7 @@ public class LoginUseCase: LoginUseCaseProtocol {
 
     public func execute(userName: String, password: String) async throws -> String {
         do {
-            let userResult = try await userRepository.get(userName: userName, password: password)
+            let userResult = try await userRepository.getUser(username: userName, password: password)
             return userResult.token
         } catch {
             throw LoginError.userNotFound

@@ -23,4 +23,5 @@ class RemoveToCartUseCase: RemoveToCartUseCaseProtocol {
         let newCart = cartRepository.deleteProduct(cart, product: product)
         return newCart
     }
+
 }

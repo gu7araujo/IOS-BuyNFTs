@@ -5,6 +5,7 @@
 //  Created by Gustavo Araujo Santos on 29/07/22.
 //
 
+import Shared
 import Foundation
 
 enum ListProductsError: Error {
@@ -26,18 +27,22 @@ protocol ListProductsUseCaseProtocol {
 
 class ListProductsUseCase: ListProductsUseCaseProtocol {
 
-    private var productRepository: ProductRepositoryProtocol
+    private let productRepository: ProductRepositoryProtocol
+    private let readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
 
-    init(productRepository: ProductRepositoryProtocol) {
+    init(productRepository: ProductRepositoryProtocol, readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol) {
         self.productRepository = productRepository
+        self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
     }
 
     func execute() async throws -> [Product] {
         do {
-            let productsResult = try await productRepository.get()
-            return productsResult
+            let token = try readTokenInKeyChainUseCase.execute()
+            let response = try await productRepository.getProducts(token: token)
+            return response
         } catch {
             throw ListProductsError.notReturnedProducts
         }
     }
+
 }

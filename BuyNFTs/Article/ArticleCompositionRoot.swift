@@ -13,21 +13,29 @@ final class ArticleCompositionRoot {
 
     private init() { }
 
+    /* Services */
+
+    func buildArticleService() -> ArticleServiceProtocol {
+        let networkService = SharedCompositionRoot.shared.buildNetworkService()
+        let service = ArticleService(networkService: networkService)
+        return service
+    }
+
     /* Repositorys */
 
     func buildArticleRepository() -> ArticleRepositoryProtocol {
-        let networkService = SharedCompositionRoot.shared.buildNetworkService()
-        let readTokenInKeyChainUseCase = SharedCompositionRoot.shared.buildReadTokenInKeyChainUseCase()
-        let repository = ArticleRepository(networkService: networkService,
-                                           readTokenInKeyChainUseCase: readTokenInKeyChainUseCase)
+        let articleService = buildArticleService()
+        let repository = ArticleRepository(articleService: articleService)
         return repository
     }
 
     /* UseCases */
 
     func buildListArticlesUseCase() -> ListArticlesUseCaseProtocol {
+        let readTokenInKeyChainUseCase = SharedCompositionRoot.shared.buildReadTokenInKeyChainUseCase()
         let articleRepository = buildArticleRepository()
-        let useCase = ListArticlesUseCase(articleRepository: articleRepository)
+        let useCase = ListArticlesUseCase(articleRepository: articleRepository,
+                                          readTokenInKeyChainUseCase: readTokenInKeyChainUseCase)
         return useCase
     }
 

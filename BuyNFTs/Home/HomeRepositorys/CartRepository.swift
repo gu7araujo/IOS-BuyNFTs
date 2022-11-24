@@ -9,22 +9,17 @@ import Foundation
 import Shared
 
 protocol CartRepositoryProtocol {
-    func get() async throws -> ShoppingCart
+    func createCart(by customer: Customer) async throws -> ShoppingCart
     func addProduct(_ cart: ShoppingCart, product: Product) -> ShoppingCart
     func deleteProduct(_ cart: ShoppingCart, product: Product) -> ShoppingCart
 }
 
 class CartRepository: CartRepositoryProtocol {
 
-    private var userRepository: UserRepositoryProtocol
+    init() { }
 
-    init(userRepository: UserRepositoryProtocol) {
-        self.userRepository = userRepository
-    }
-
-    func get() async throws -> ShoppingCart {
-        let userResult = try await userRepository.getByToken()
-        return ShoppingCart(customer: userResult, products: [])
+    func createCart(by customer: Customer) async throws -> ShoppingCart {
+        return ShoppingCart(customer: customer, products: [])
     }
 
     func addProduct(_ cart: ShoppingCart, product: Product) -> ShoppingCart {
@@ -41,4 +36,5 @@ class CartRepository: CartRepositoryProtocol {
         newCart.products.remove(at: index)
         return newCart
     }
+
 }

@@ -11,55 +11,53 @@ import Shared
 
 class LoginUseCaseTests: XCTestCase {
 
-    private var useCase: LoginUseCaseProtocol!
-
-    // MARK: - Mock dependencies
-
-    var userRepository: UserRepositoryProtocol = repositoryMock()
-
-    // MARK: - Life cycle
+    private var useCase: LoginUseCaseProtocol?
+    private var mockCustomer = Customer(id: 5, name: "Sr Test", token: "aaaa-xxxx-bbbb", wallet: "42ssss.ppppppp")
 
     override func setUp() {
-        useCase = LoginUseCase(useRepository: userRepository)
+        let mockUserRepository = MockUserRepository(customerReturn: mockCustomer)
+        useCase = LoginUseCase(useRepository: mockUserRepository)
     }
-
-    // MARK: - Tests
 
     func testExecute() async {
         do {
-            let result = try await useCase.execute(userName: "test", password: "tst")
-            XCTAssertEqual(result, "aaaa-xxxx-bbbb")
+            let result = try await useCase?.execute(userName: "tst", password: "tst")
+
+            XCTAssertEqual(result, mockCustomer.token)
         } catch {
             XCTFail("Expected to be a success but got a failure with \(error)")
         }
     }
 
     func testExecuteError() async {
-        self.useCase = LoginUseCase(useRepository: repositoryMock(returnError: true))
+        let mockRepository = MockUserRepository(returnError: true, customerReturn: mockCustomer)
+        useCase = LoginUseCase(useRepository: mockRepository)
 
         do {
-            let result = try await useCase.execute(userName: "test", password: "tst")
+            let result = try await useCase?.execute(userName: "tst", password: "tsts")
             XCTFail("Expected to be a failure but got a success with value: \(result)")
         } catch {
             XCTAssertEqual(error.localizedDescription, LoginError.userNotFound.localizedDescription)
         }
     }
+
 }
 
-class repositoryMock: UserRepositoryProtocol {
+class MockUserRepository: UserRepositoryProtocol {
 
     var isReturnError: Bool
-    var customer = Customer(id: 5, name: "Sr Test", token: "aaaa-xxxx-bbbb", wallet: "42ssss.ppppppp")
+    var customer: Customer
 
-    init(returnError: Bool = false) {
+    init(returnError: Bool = false, customerReturn: Customer) {
         self.isReturnError = returnError
+        self.customer = customerReturn
     }
 
     enum RepositoryError: Error {
         case returnedError
     }
 
-    func get(userName: String, password: String) async throws -> Customer {
+    func getUser(username: String, password: String) async throws -> Shared.Customer {
         if isReturnError {
             throw RepositoryError.returnedError
         } else {
@@ -67,7 +65,12 @@ class repositoryMock: UserRepositoryProtocol {
         }
     }
 
-    func getByToken() async throws -> Customer {
-        fatalError("not used in this case")
+    func getUser(by token: String) async throws -> Shared.Customer {
+        if isReturnError {
+            throw RepositoryError.returnedError
+        } else {
+            return customer
+        }
     }
+
 }

@@ -5,8 +5,6 @@
 //  Created by Gustavo Araujo Santos on 06/09/22.
 //
 
-//import Infrastructure
-
 public enum Router {
     case doLogin
     case getProducts
@@ -38,4 +36,5 @@ public enum Router {
             return HTTPMethodType.get
         }
     }
+
 }

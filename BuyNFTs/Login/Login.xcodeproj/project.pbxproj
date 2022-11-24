@@ -83,8 +83,6 @@
 				B76C653A2922B2CF00A6BEE3 /* LoginCoordinator.swift */,
 				B7796D67292976370067F455 /* LoginCompositionRoot.swift */,
 				B7796D692929764A0067F455 /* LoginResources */,
-				B76C65332922B25700A6BEE3 /* LoginServices */,
-				B76C64E62922B10800A6BEE3 /* LoginRepositorys */,
 				B76C64E52922B10100A6BEE3 /* LoginUseCases */,
 				B76C64E42922B0FB00A6BEE3 /* LoginViewModels */,
 				B76C64E32922B0EF00A6BEE3 /* LoginViewControllers */,
@@ -133,20 +131,6 @@
 				B76C65732922B6EC00A6BEE3 /* LoginUseCase.swift */,
 			);
 			path = LoginUseCases;
-			sourceTree = "<group>";
-		};
-		B76C64E62922B10800A6BEE3 /* LoginRepositorys */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoginRepositorys;
-			sourceTree = "<group>";
-		};
-		B76C65332922B25700A6BEE3 /* LoginServices */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoginServices;
 			sourceTree = "<group>";
 		};
 		B76C65D32922BDAA00A6BEE3 /* Frameworks */ = {

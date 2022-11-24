@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shared
 
 enum ListArticlesError: Error {
     case notReturnedArticles
@@ -26,16 +27,19 @@ protocol ListArticlesUseCaseProtocol {
 
 class ListArticlesUseCase: ListArticlesUseCaseProtocol {
 
-    private var articleRepository: ArticleRepositoryProtocol
+    private let articleRepository: ArticleRepositoryProtocol
+    private let readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol
 
-    init(articleRepository: ArticleRepositoryProtocol) {
+    init(articleRepository: ArticleRepositoryProtocol, readTokenInKeyChainUseCase: ReadTokenInKeyChainUseCaseProtocol) {
         self.articleRepository = articleRepository
+        self.readTokenInKeyChainUseCase = readTokenInKeyChainUseCase
     }
 
     func execute() async throws -> [Article] {
         do {
-            let articlesResponse = try await articleRepository.get()
-            return articlesResponse
+            let token = try readTokenInKeyChainUseCase.execute()
+            let response = try await articleRepository.getArticles(token: token)
+            return response
         } catch {
             throw ListArticlesError.notReturnedArticles
         }
