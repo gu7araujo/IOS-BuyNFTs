@@ -114,7 +114,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        viewModel?.createShoopingCart()
+        viewModel?.createShoppingCart()
         viewModel?.getProducts()
     }
 

@@ -34,7 +34,7 @@ class HomeViewModel {
 
     // MARK: - Methods
 
-    func addToShoopingCart(product: Product) {
+    func addToShoppingCart(product: Product) {
         guard let cart = self.cart else { return }
         guard !cart.products.contains(where: { $0.id == product.id }) else { return }
 
@@ -42,18 +42,18 @@ class HomeViewModel {
         self.cart = newCart
     }
 
-    func createShoopingCart() {
+    public func createShoppingCart() {
         Task {
             do {
-                let shoopingCartResult = try await createCartUseCase.execute()
-                self.cart = shoopingCartResult
+                let shoppingCartResult = try await createCartUseCase.execute()
+                self.cart = shoppingCartResult
             } catch {
                 self.error = error.localizedDescription
             }
         }
     }
 
-    func getProducts() {
+    public func getProducts() {
         Task {
             do {
                 let productsResult = try await listProductsUseCase.execute()
