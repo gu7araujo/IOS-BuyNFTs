@@ -4,6 +4,7 @@
 **Minimum SDK:** iOS 15+ <br/>
 **Reactivity:** Combine <br/>
 **Network:** URLSession <br/>
+**Dependency Injection:** Composition Root <br/>
 **Api Mock:** Mockoon <br/>
 **Interface Stack:** UIKit <br/>
 **Unit Test:** XCTest <br/>
